@@ -35,7 +35,5 @@ public class Ropa extends Producto{
     public String toString() {
         return super.toString() + "\n" + "Ropa{" + "talla=" + talla + '}';
     }
-
-    
     
 }
