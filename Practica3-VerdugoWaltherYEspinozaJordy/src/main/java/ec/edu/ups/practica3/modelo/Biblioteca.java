@@ -2,14 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ec.edu.ups.practica3.clases;
+package ec.edu.ups.practica3.modelo;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import ec.edu.ups.practica3.modelo.Libro;
+import ec.edu.ups.practica3.modelo.Usuario;
+import ec.edu.ups.practica3.modelo.Prestamo;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
-
+// l libro ebe saber a que biblioteca pertenece pues es un sistema de varias bibliotecas
 /**
  *
  * @author sebas
@@ -19,8 +18,6 @@ public class Biblioteca {
     private String direccion;
     private ArrayList<Libro> listaLibros = new ArrayList<>(); 
     private ArrayList<Usuario> listaUsuarios = new ArrayList<>();
-    
-    Scanner scanner = new Scanner(System.in);
 
     public Biblioteca() {
     }
@@ -79,7 +76,7 @@ public class Biblioteca {
         return "Biblioteca{" + "nombre=" + nombre + ", direccion=" + direccion + ", listaLibros=" + listaLibros + ", listaUsuarios=" + listaUsuarios + '}';
     }
 
-    public void agregarLibro(Libro libro){
+    /*public void agregarLibro(Libro libro){
         String title, writer;
         int year, code;
         boolean estaDisponible = true;
@@ -229,5 +226,5 @@ public class Biblioteca {
         } else {
             System.out.println("El libro no se encuentra en la biblioteca.");
         }
-    }
+    }*/
 }

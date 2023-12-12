@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package ec.edu.ups.practica3.principal;
+package ec.edu.ups.practica3dao;
 
-import ec.edu.ups.practica3.clases.Biblioteca;
-import ec.edu.ups.practica3.clases.Libro;
-import ec.edu.ups.practica3.clases.Usuario;
+import ec.edu.ups.practica3.modelo.Biblioteca;
+import ec.edu.ups.practica3.modelo.Libro;
+import ec.edu.ups.practica3.modelo.Usuario;
 import java.util.Scanner;
 
 /**
