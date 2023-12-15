@@ -3,37 +3,39 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ec.edu.ups.practica3.modelo;
-import java.time.Duration;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author sebas
  */
 public class Prestamo {
-    private Libro libro;
+    private int id;
+    private List<Libro> libros;
     private Usuario usuario;
     private Date fechaPrestamo;
-    private Date fechaDevolucion;
+    private double total;
 
     public Prestamo() {
+        libros = new ArrayList<>();
+        fechaPrestamo = new Date();
     }
 
-    public Prestamo(Libro libro, Usuario usuario, Date fechaPrestamo, Date fechaDevolucion) {
-        this.libro = libro;
-        this.usuario = usuario;
+    public Prestamo(int id, Date fechaPrestamo) {
+        this.id = id;
         this.fechaPrestamo = fechaPrestamo;
-        this.fechaDevolucion = fechaDevolucion;
+        libros = new ArrayList<>();
+    }
+    
+    public int getId() {
+        return id;
     }
 
-    public Libro getLibro() {
-        return libro;
-    }
-
-    public void setLibro(Libro libro) {
-        this.libro = libro;
-    }
+    public void setId(int id) {
+        this.id = id;
+    } 
 
     public Usuario getUsuario() {
         return usuario;
@@ -51,47 +53,54 @@ public class Prestamo {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public Date getFechaDevolucion() {
-        return fechaDevolucion;
+    public double getTotal() {
+        return total;
     }
 
-    public void setFechaDevolucion(Date fechaDevolucion) {
-        this.fechaDevolucion = fechaDevolucion;
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
+    public void agregarLibro(Libro libro){
+        libros.add(libro);
+    }
+
+    public List<Libro> getLibros() {
+        return libros;
+    }
+    
+    public void calcularTotal(){
+        double total=0;
+        for (Libro libros : libros) {
+            total += libros.getPrecio();
+        }
+        this.setTotal(total);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Prestamo other = (Prestamo) obj;
+        return this.id == other.id;
     }
 
     @Override
     public String toString() {
-        return "Prestamo{" + "libro=" + libro + ", usuario=" + usuario + ", fechaPrestamo=" + fechaPrestamo + ", fechaDevolucion=" + fechaDevolucion + '}';
+        return "Prestamo{" + "id=" + id + ", libros=" + libros + ", usuario=" + usuario + ", fechaPrestamo=" + fechaPrestamo +  ", total=" + total + '}';
     }
-    
-    public void calcularDiasPrestamo() {
-        LocalDate fechaInicial = convertirADateLocal(fechaPrestamo);
-        LocalDate fechaFinal = convertirADateLocal(fechaDevolucion);
-
-        // Calcular la diferencia de días entre las fechas
-        Duration diferencia = Duration.between(fechaInicial.atStartOfDay(), fechaFinal.atStartOfDay());
-        long diasDiferencia = diferencia.toDays();
-
-        System.out.println("La diferencia de días entre la fecha de préstamo y devolución es: " + diasDiferencia + " días.");
-    }
-
-    // Método para convertir de Date a LocalDate
-    private LocalDate convertirADateLocal(Date date) {
-        return new java.sql.Date(date.getTime()).toLocalDate();
-    }
-    
-    public void esPrestamoVigente() {
-        LocalDate fechaActual = LocalDate.now();
-        LocalDate fechaPrestamoLocal = convertirADateLocal(fechaPrestamo);
-        LocalDate fechaDevolucionLocal = convertirADateLocal(fechaDevolucion);
-
-        // Verificar si la fecha actual está dentro del rango del préstamo
-        if ((fechaActual.isEqual(fechaPrestamoLocal) || fechaActual.isAfter(fechaPrestamoLocal))
-                && fechaActual.isBefore(fechaDevolucionLocal)) {
-            System.out.println("El préstamo está vigente.");
-        } else {
-            System.out.println("El préstamo no está vigente.");
-        }
-    }
-    
 }

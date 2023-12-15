@@ -4,10 +4,17 @@
  */
 package ec.edu.ups.practica3.idao;
 
+import ec.edu.ups.practica3.modelo.Usuario;
+import java.util.List;
+
 /**
  *
  * @author sebas
  */
-public class IUsuarioDAO {
-    
+public interface IUsuarioDAO {
+    List<Usuario> obtenerUsuario();
+    Usuario obtenerUsuario(String id);
+    void crearUsuario(Usuario usuario);
+    boolean actualizarUsuario(String id, Usuario usuario);
+    boolean eliminarUsuario(String id);
 }

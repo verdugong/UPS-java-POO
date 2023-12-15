@@ -4,10 +4,17 @@
  */
 package ec.edu.ups.practica3.idao;
 
+import ec.edu.ups.practica3.modelo.Biblioteca;
+import java.util.List;
+
 /**
  *
  * @author sebas
  */
-public class IBibliotecaDAO {
-    
+public interface IBibliotecaDAO {
+    List<Biblioteca> obtenerBiblioteca();
+    Biblioteca obtenerBiblioteca(int id);
+    void crearBiblioteca(Biblioteca biblioteca);
+    boolean actualizarBiblioteca(int id, Biblioteca biblioteca);
+    boolean eliminarBiblioteca(int id);
 }

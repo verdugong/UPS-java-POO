@@ -4,7 +4,7 @@
  */
 package ec.edu.ups.practica3.modelo;
 
-import ec.edu.ups.practica3.modelo.Prestable;
+import ec.edu.ups.practica3.idao.Prestable;
 
 /**
  *
@@ -15,16 +15,26 @@ public class Libro implements Prestable{
     private String autor;
     private int anio;
     private int codigo;
+    private double precio;
     private boolean disponible;
 
     public Libro() {
     }
 
-    public Libro(String titulo, String autor, int anio, int codigo, boolean disponible) {
+    public Libro(String titulo, String autor, int anio, int codigo, double precio) {
         this.titulo = titulo;
         this.autor = autor;
         this.anio = anio;
         this.codigo = codigo;
+        this.precio = precio;
+    }
+
+    public Libro(String titulo, String autor, int anio, int codigo, double precio, boolean disponible) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anio = anio;
+        this.codigo = codigo;
+        this.precio = precio;
         this.disponible = disponible;
     }
 
@@ -60,6 +70,14 @@ public class Libro implements Prestable{
         this.codigo = codigo;
     }
 
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
     public boolean isDisponible() {
         return disponible;
     }
@@ -67,12 +85,34 @@ public class Libro implements Prestable{
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + this.codigo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Libro other = (Libro) obj;
+        return this.codigo == other.codigo;
+    }
     
     @Override
     public String toString() {
         return "Libro{" + "titulo=" + titulo + ", autor=" + autor + ", anio=" + anio + ", codigo=" + codigo + ", disponible=" + disponible + '}';
     }
-
+    
     @Override
     public void prestar() {
 
@@ -85,6 +125,4 @@ public class Libro implements Prestable{
         System.out.println("El método devolverLibro se realizará a continuación: ");
     }
 
-    
-    
 }
