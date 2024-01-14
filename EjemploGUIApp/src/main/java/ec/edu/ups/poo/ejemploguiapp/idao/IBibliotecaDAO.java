@@ -12,9 +12,9 @@ import java.util.List;
  * @author sebas
  */
 public interface IBibliotecaDAO {
-    void create(Biblioteca biblioteca);
-    Biblioteca read(int codigo);
-    void update(int codigo, Biblioteca biblioteca);
-    void delete(int codigo);
-    List<Biblioteca> list();
+    void crearBiblioteca(Biblioteca biblioteca);
+    Biblioteca obtenerBiblioteca(int codigo);
+    void actualizarBiblioteca(int codigo, Biblioteca biblioteca);
+    void eliminarBiblioteca(int codigo);
+    List<Biblioteca> listarBiblioteca();
 }

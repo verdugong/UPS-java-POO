@@ -4,9 +4,12 @@
  */
 package ec.edu.ups.poo.ejemploguiapp.vista.prestamo;
 
-import ec.edu.ups.poo.ejemploguiapp.vista.biblioteca.*;
-import ec.edu.ups.poo.ejemploguiapp.controlador.BibliotecaControlador;
-import ec.edu.ups.poo.ejemplouiapp.modelo.Biblioteca;
+import ec.edu.ups.poo.ejemploguiapp.controlador.PrestamoControlador;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Libro;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Prestamo;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,13 +18,13 @@ import javax.swing.JOptionPane;
  */
 public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
 
-    private BibliotecaControlador bibliotecaControlador;
+    private PrestamoControlador prestamoControlador;
     /**
-     * Creates new form VentanaCrearBilblioteca
+     * Creates new form VentanaEliminarPrestamo
      */
-    public VentanaEliminarPrestamo(BibliotecaControlador bibliotecaControlador) {
+    public VentanaEliminarPrestamo(PrestamoControlador prestamoControlador) {
         initComponents();
-        this.bibliotecaControlador = bibliotecaControlador;
+        this.prestamoControlador = prestamoControlador;
     }
 
     /**
@@ -34,17 +37,19 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtCode = new javax.swing.JTextField();
-        lblCode = new javax.swing.JLabel();
-        btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        txtNombre = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtTelef = new javax.swing.JTextField();
-        lblNombre = new javax.swing.JLabel();
-        lblDireccion = new javax.swing.JLabel();
-        lblTelef = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        lblFecha = new javax.swing.JLabel();
+        txtCode = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        lblTotal = new javax.swing.JLabel();
+        lblCode = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
+        lblLibro = new javax.swing.JLabel();
+        lblBiblioteca = new javax.swing.JLabel();
+        txtLibro = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -52,21 +57,6 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
         setResizable(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Datos"));
-
-        txtCode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodeActionPerformed(evt);
-            }
-        });
-
-        lblCode.setText("Código");
-
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,48 +72,72 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
-        lblNombre.setText("Nombre");
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
-        lblDireccion.setText("Dirección");
+        lblFecha.setText("Fecha");
 
-        lblTelef.setText("Teléfono");
+        txtCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodeActionPerformed(evt);
+            }
+        });
+
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaActionPerformed(evt);
+            }
+        });
+
+        lblTotal.setText("Total");
+
+        lblCode.setText("Código");
+
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalActionPerformed(evt);
+            }
+        });
+
+        lblLibro.setText("Libro");
+
+        lblBiblioteca.setText("Usuario");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
                         .addComponent(lblCode)
                         .addGap(12, 12, 12)
-                        .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblTelef, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(12, 12, 12)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnEliminar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtNombre)
-                                            .addComponent(txtTelef))
-                                        .addGap(18, 18, 18))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(lblDireccion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(lblLibro, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblBiblioteca, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFecha)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                            .addComponent(txtUsuario)
+                            .addComponent(txtLibro))))
+                .addGap(14, 14, 14))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(btnEliminar)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -134,23 +148,28 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
                     .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelef))
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
                     .addComponent(btnCancelar))
-                .addGap(106, 106, 106))
+                .addGap(11, 11, 11))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,26 +183,21 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodeActionPerformed
-
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas eliminar la biblioteca?");
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas eliminar el prestamo?");
         if(respuesta == JOptionPane.YES_OPTION){
             int codigo = Integer.parseInt(txtCode.getText());
 
-            bibliotecaControlador.eliminarBiblioteca(codigo);
+            prestamoControlador.eliminarPrestamo(codigo);
             JOptionPane.showMessageDialog(this, "Biblioteca eliminada exitosamente");
             limpiarDatos();
-        }
-        
+        }      
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -192,23 +206,64 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         int codigo = Integer.parseInt(txtCode.getText());
-        Biblioteca biblioteca = bibliotecaControlador.buscarBiblioteca(codigo);
-        if(biblioteca == null){
-            JOptionPane.showMessageDialog(this, "No se a encontrado la biblioteca");
+        Prestamo prestamo = prestamoControlador.buscarPrestamoPorId(codigo);
+        if(prestamo == null){
+            JOptionPane.showMessageDialog(this, "No se a encontrado el prestamo");
         }else{
-            txtNombre.setText(biblioteca.getNombre());
-            txtDireccion.setText(biblioteca.getDireccion());
-            txtTelef.setText(biblioteca.getTelefono());
+            String librosString = obtenerTitulosLibros(prestamo.getLibros());
+            String nombreUsuario = prestamo.getUsuario().getNombre();
+            String fechaString = formatearFecha(prestamo.getFechaPrestamo());
+            
+            txtLibro.setText(librosString);
+            txtLibro.setEditable(true);
+            txtUsuario.setText(nombreUsuario);
+            txtUsuario.setEditable(true);
+            txtFecha.setText(fechaString);
+            txtFecha.setEditable(true);
+            txtTotal.setText(Double.toString(prestamo.getTotal()));
+            txtTotal.setEditable(true);
             txtCode.setEditable(false);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+    
+    private String obtenerTitulosLibros(List<Libro> libros) {
+        StringBuilder titulos = new StringBuilder();
+
+        for (Libro libro : libros) {
+            titulos.append(libro.getTitulo()).append(", ");
+        }
+
+        // Eliminar la coma y el espacio final
+        if (titulos.length() > 2) {
+            titulos.setLength(titulos.length() - 2);
+        }
+
+        return titulos.toString();
+    }
+
+    private String formatearFecha(Date fecha) {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return formato.format(fecha);
+    }
+    
+    private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodeActionPerformed
+
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaActionPerformed
+
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalActionPerformed
 
     private void limpiarDatos(){
         txtCode.setEditable(true);
+        txtCode.setEditable(true);
         txtCode.setText("");
-        txtNombre.setText("");
-        txtDireccion.setText("");
-        txtTelef.setText("");
+        txtFecha.setText("");
+        txtTotal.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -216,13 +271,15 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblBiblioteca;
     private javax.swing.JLabel lblCode;
-    private javax.swing.JLabel lblDireccion;
-    private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblTelef;
+    private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblLibro;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JTextField txtCode;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelef;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtLibro;
+    private javax.swing.JTextField txtTotal;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

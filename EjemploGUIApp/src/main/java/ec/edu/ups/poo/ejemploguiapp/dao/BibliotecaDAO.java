@@ -23,12 +23,12 @@ public class BibliotecaDAO implements IBibliotecaDAO {
     }
     
     @Override
-    public void create(Biblioteca biblioteca) {
+    public void crearBiblioteca(Biblioteca biblioteca) {
         bibliotecas.add(biblioteca);
     }
 
     @Override
-    public Biblioteca read(int codigo) {
+    public Biblioteca obtenerBiblioteca(int codigo) {
         for(Biblioteca biblioteca : bibliotecas){
             if(biblioteca.getCodigo() == codigo){
                 return biblioteca;
@@ -38,7 +38,7 @@ public class BibliotecaDAO implements IBibliotecaDAO {
     }
 
     @Override
-    public void update(int codigo, Biblioteca biblioteca) {
+    public void actualizarBiblioteca(int codigo, Biblioteca biblioteca) {
         for (int i = 0; 1 < bibliotecas.size(); i++){
             Biblioteca bibliotecaBuscada = bibliotecas.get(i);
             if(bibliotecaBuscada.getCodigo() == codigo){
@@ -49,7 +49,7 @@ public class BibliotecaDAO implements IBibliotecaDAO {
     }
 
     @Override
-    public void delete(int codigo) {
+    public void eliminarBiblioteca(int codigo) {
         for (int i = 0; 1 < bibliotecas.size(); i++){
             Biblioteca bibliotecaBuscada = bibliotecas.get(i);
             if(bibliotecaBuscada.getCodigo() == codigo){
@@ -60,7 +60,7 @@ public class BibliotecaDAO implements IBibliotecaDAO {
     }
 
     @Override
-    public List<Biblioteca> list() {
+    public List<Biblioteca> listarBiblioteca() {
         return bibliotecas;
     }
     

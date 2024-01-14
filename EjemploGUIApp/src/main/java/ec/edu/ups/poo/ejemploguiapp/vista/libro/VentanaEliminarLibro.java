@@ -16,7 +16,7 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
 
     private LibroControlador libroControlador;
     /**
-     * Creates new form VentanaCrearBilblioteca
+     * Creates new form VentanaEliminarLibro
      */
     public VentanaEliminarLibro(LibroControlador libroControlador) {
         initComponents();
@@ -32,6 +32,7 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         txtCode = new javax.swing.JTextField();
         lblCode = new javax.swing.JLabel();
@@ -94,9 +95,11 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
 
         lblAutor.setText("Autor");
 
+        buttonGroup1.add(btnSi);
         btnSi.setText("SÍ");
         btnSi.setToolTipText("");
 
+        buttonGroup1.add(btnNo);
         btnNo.setText("NO");
 
         lblTelef.setText("Año");
@@ -135,7 +138,6 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -226,8 +228,13 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
             txtAnio.setEditable(true);
             txtPrecio.setText(Double.toString(libro.getPrecio()));
             txtPrecio.setEditable(true);
-            btnSi.setText(Boolean.toString(libro.isDisponible()));
-            btnSi.setEnabled(libro.isDisponible());
+            if (libro.isDisponible()) {
+                btnSi.setSelected(true);
+                btnNo.setSelected(false);
+            } else {
+                btnSi.setSelected(false);
+                btnNo.setSelected(true);
+            }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -238,7 +245,6 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
         txtAutor.setText("");
         txtAnio.setText("");
         txtPrecio.setText("");
-        btnSi.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -247,6 +253,7 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JRadioButton btnNo;
     private javax.swing.JRadioButton btnSi;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutor;
     private javax.swing.JLabel lblCode;

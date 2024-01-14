@@ -16,7 +16,7 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
 
     private LibroControlador libroControlador;
     /**
-     * Creates new form VentanaBuscarBiblioteca
+     * Creates new form VentanaBuscarLibro
      */
     public VentanaBuscarLibro(LibroControlador libroControlador) {
         initComponents();
@@ -191,7 +191,13 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
             txtAutor.setText(libro.getAutor());
             txtAnio.setText(Integer.toString(libro.getAnio()));
             txtPrecio.setText(Double.toString(libro.getPrecio()));
-            btnSi.setText(Boolean.toString(libro.isDisponible()));
+            if (libro.isDisponible()) {
+                btnSi.setSelected(true);
+                btnNo.setSelected(false);
+            } else {
+                btnSi.setSelected(false);
+                btnNo.setSelected(true);
+            }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 

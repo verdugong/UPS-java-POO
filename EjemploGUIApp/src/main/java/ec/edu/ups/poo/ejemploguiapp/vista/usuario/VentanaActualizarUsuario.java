@@ -16,7 +16,7 @@ public class VentanaActualizarUsuario extends javax.swing.JInternalFrame {
 
     private UsuarioControlador usuarioControlador;
     /**
-     * Creates new form VentanaCrearBilblioteca
+     * Creates new form VentanaActualizarUsuario
      */
     public VentanaActualizarUsuario(UsuarioControlador usuarioControlador) {
         initComponents();

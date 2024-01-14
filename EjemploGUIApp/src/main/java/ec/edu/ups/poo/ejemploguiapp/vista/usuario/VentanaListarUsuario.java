@@ -5,7 +5,6 @@
 package ec.edu.ups.poo.ejemploguiapp.vista.usuario;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.UsuarioControlador;
-import ec.edu.ups.poo.ejemploguiapp.vista.biblioteca.*;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Usuario;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +17,7 @@ public class VentanaListarUsuario extends javax.swing.JInternalFrame {
 
     private UsuarioControlador usuarioControlador;
     /**
-     * Creates new form VentanaListarBiblioteca
+     * Creates new form VentanaListarUsuario
      */
     public VentanaListarUsuario(UsuarioControlador usuarioControlador) {
         initComponents();

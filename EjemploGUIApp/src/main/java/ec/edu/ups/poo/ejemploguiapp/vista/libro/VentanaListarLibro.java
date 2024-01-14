@@ -18,7 +18,7 @@ public class VentanaListarLibro extends javax.swing.JInternalFrame {
     
     private LibroControlador libroControlador;
     /**
-     * Creates new form VentanaListarBiblioteca
+     * Creates new form VentanaListarLibro
      */
     public VentanaListarLibro(LibroControlador libroControlador) {
         initComponents();
@@ -68,9 +68,16 @@ public class VentanaListarLibro extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Boolean.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tblDatos);

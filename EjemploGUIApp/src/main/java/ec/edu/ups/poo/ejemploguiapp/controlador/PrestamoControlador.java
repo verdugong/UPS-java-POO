@@ -4,15 +4,14 @@
  */
 package ec.edu.ups.poo.ejemploguiapp.controlador;
 
-import ec.edu.ups.practica3.idao.ILibroDAO;
-import ec.edu.ups.practica3.idao.IPrestamoDAO;
-import ec.edu.ups.practica3.idao.IUsuarioDAO;
-import ec.edu.ups.practica3.modelo.Libro;
-import ec.edu.ups.practica3.modelo.Prestamo;
-import ec.edu.ups.practica3.modelo.Usuario;
-import ec.edu.ups.practica3.vista.LibroVista;
-import ec.edu.ups.practica3.vista.PrestamoVista;
-import ec.edu.ups.practica3.vista.UsuarioVista;
+import ec.edu.ups.poo.ejemploguiapp.idao.ILibroDAO;
+import ec.edu.ups.poo.ejemploguiapp.idao.IPrestamoDAO;
+import ec.edu.ups.poo.ejemploguiapp.idao.IUsuarioDAO;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Libro;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Prestamo;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Usuario;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,83 +20,73 @@ import java.util.List;
  */
 public class PrestamoControlador {
     private IPrestamoDAO prestamoDAO;
-    private PrestamoVista prestamoVista;
     private Prestamo prestamo;
     
     private ILibroDAO libroDAO;
-    private LibroVista libroVista;
     private Libro libro;
     
     private IUsuarioDAO usuarioDAO;
-    private UsuarioVista usuarioVista;
     private Usuario usuario;
 
-    public PrestamoControlador(IPrestamoDAO prestamoDAO, PrestamoVista prestamoVista, ILibroDAO libroDAO, LibroVista libroVista, IUsuarioDAO usuarioDAO, UsuarioVista usuarioVista) {
+    public PrestamoControlador(IPrestamoDAO prestamoDAO, ILibroDAO libroDAO, IUsuarioDAO usuarioDAO) {
         this.prestamoDAO = prestamoDAO;
-        this.prestamoVista = prestamoVista;
         this.libroDAO = libroDAO;
-        this.libroVista = libroVista;
         this.usuarioDAO = usuarioDAO;
-        this.usuarioVista = usuarioVista;
     }
 
                   
     
-    public void crearPrestamo(){
-        prestamo = prestamoVista.ingresarDatosPrestamo();
-        String idUsuario = usuarioVista.buscarDatosUsuario();
-        usuario = usuarioDAO.obtenerUsuario(idUsuario);
+    public void crearPrestamo(int id, List<Libro> libros, Usuario usuario, Date fechaPrestamo, double total) throws UsuarioNoEncontradoException, LibroNoEncontradoException{
         if(usuario != null){
+            prestamo = new Prestamo(id, libros, usuario, fechaPrestamo, total);
             prestamo.setUsuario(usuario);
-            int numeroDeLibros = prestamoVista.agregarProductosAPrestamo();
-            for (int i = 0; i < numeroDeLibros; i++) {
-                int idLibro = libroVista.buscarDatosLibro();
-                libro = libroDAO.obtenerLibro(idLibro);
-                if(libro != null){
-                    prestamo.agregarLibro(libro);
-                }else{
-                    libroVista.mostrarAlertas("No se ha encontrado los datos del Libro!");
+             for (Libro libro : libros) {
+                Libro libroExistente = libroDAO.obtenerLibro(libro.getCodigo());
+                if (libroExistente != null) {
+                    prestamo.agregarLibro(libroExistente);
+                } else {
+                    // Lanzar excepción si un libro no se encuentra
+                    throw new LibroNoEncontradoException("No se ha encontrado el libro con ID: " + libro.getCodigo());
                 }
-            } 
+            }
             prestamoDAO.crearPrestamo(prestamo);
         }else{
-            usuarioVista.mostrarAlertas("No se ha encontrado los datos del Usuario!");
+            throw new UsuarioNoEncontradoException("No se ha encontrado el usuario");
+        }        
+    }
+    
+    public class UsuarioNoEncontradoException extends Exception {
+        public UsuarioNoEncontradoException(String mensaje) {
+            super(mensaje);
         }
-        
     }
-    
-    public void actualizarPrestamo(){
-        prestamo = prestamoVista.actualizarDatosPrestamo();
-        if(prestamoDAO.actualizarPrestamo(prestamo.getId(), prestamo) == true){
-            prestamoVista.mostrarAlertas("Prestamo actualizado correctamente!");                    
-        }else{
-            prestamoVista.mostrarAlertas("Ha ocurrido un error!");                    
-        }            
-    }
-    
-    public void eliminarPrestamo(){
-        int id = prestamoVista.eliminarDatosPrestamo();
-        if(prestamoDAO.eliminarPrestamo(id) == true){
-            prestamoVista.mostrarAlertas("Prestamo eliminado correctamente!");                    
-        }else{
-            prestamoVista.mostrarAlertas("Ha ocurrido un error!");
+
+    public class LibroNoEncontradoException extends Exception {
+        public LibroNoEncontradoException(String mensaje) {
+            super(mensaje);
         }
     }
     
-    public void buscarPrestamoPorId(){
-        int id = prestamoVista.buscarDatosPrestamo();
+    public void actualizarPrestamo(int id, List<Libro> libros, Usuario usuario, Date fechaPrestamo, double total){
         prestamo = prestamoDAO.obtenerPrestamo(id);
-        if(prestamo == null){
-            prestamoVista.mostrarAlertas("Prestamo no encontrado");
-        }else{
-            prestamoVista.mostrarInformacionPrestamo(prestamo);
-        }
+        prestamo.setUsuario(usuario);
+        prestamo.setFechaPrestamo(fechaPrestamo);
+        prestamo.setTotal(total);
+        prestamoDAO.actualizarPrestamo(id, prestamo);
     }
     
-    public void listarPrestamos(){
-        List<Prestamo> listaPrestamos = prestamoDAO.obtenerPrestamo();
-        for (Prestamo prestamo : listaPrestamos) {
-            prestamoVista.mostrarInformacionPrestamo(prestamo);
-        }
+    public void eliminarPrestamo(int id){
+        prestamo = prestamoDAO.obtenerPrestamo(id);
+        prestamoDAO.eliminarPrestamo(prestamo.getId());
     }
+    
+    public Prestamo buscarPrestamoPorId(int id){
+        prestamo = prestamoDAO.obtenerPrestamo(id);
+        return prestamo;
+    }
+    
+    public List<Prestamo> listarPrestamos(){
+        return prestamoDAO.listarPrestamo();
+    }
+  
 }

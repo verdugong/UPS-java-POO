@@ -58,8 +58,8 @@ public class Biblioteca {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 61 * hash + this.codigo;
+        int hash = 3;
+        hash = 89 * hash + this.codigo;
         return hash;
     }
 

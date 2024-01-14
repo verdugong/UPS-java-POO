@@ -17,7 +17,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
 
     private UsuarioControlador usuarioControlador;
     /**
-     * Creates new form VentanaCrearBilblioteca
+     * Creates new form VentanaEliminarUsuario
      */
     public VentanaEliminarUsuario(UsuarioControlador usuarioControlador) {
         initComponents();

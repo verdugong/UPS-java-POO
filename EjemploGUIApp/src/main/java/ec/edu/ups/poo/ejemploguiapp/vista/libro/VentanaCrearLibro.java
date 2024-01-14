@@ -16,7 +16,7 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
     
     private LibroControlador libroControlador;
     /**
-     * Creates new form VentanaCrearBilblioteca
+     * Creates new form VentanaCrearLibro
      */
     public VentanaCrearLibro(LibroControlador libroControlador) {
         initComponents();
@@ -180,7 +180,7 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
         String autor = txtAutor.getText();
         int anio = Integer.parseInt(txtAnio.getText());
         double precio = Double.parseDouble(txtPrecio.getText());
-        boolean disponible = Boolean.parseBoolean(btnSi.getText());
+        boolean disponible = btnSi.isSelected();
         
         libroControlador.crearLibro(titulo, autor, anio, codigo, precio, disponible);
         JOptionPane.showMessageDialog(this, "Libro creado exitosamente");
@@ -190,7 +190,6 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
         txtAutor.setText("");
         txtAnio.setText("");
         txtPrecio.setText("");
-        btnSi.setText("");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 

@@ -4,17 +4,26 @@
  */
 package ec.edu.ups.poo.ejemploguiapp.vista.biblioteca;
 
+import ec.edu.ups.poo.ejemploguiapp.controlador.BibliotecaControlador;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Biblioteca;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Libro;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author sebas
  */
 public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
 
+    private BibliotecaControlador bibliotecaControlador;
+    
     /**
      * Creates new form VentanaListarBiblioteca
      */
-    public VentanaListarBiblioteca() {
+    public VentanaListarBiblioteca(BibliotecaControlador bibliotecaControlador) {
         initComponents();
+        this.bibliotecaControlador = bibliotecaControlador;
     }
 
     /**
@@ -40,6 +49,11 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listar Datos"));
 
         btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,9 +69,16 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tblDatos);
@@ -107,6 +128,19 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        cargarDatos();
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    public void cargarDatos(){
+        List<Biblioteca> bibliotecas = bibliotecaControlador.listarBiblioteca();
+        DefaultTableModel modelo = (DefaultTableModel) tblDatos.getModel();
+        modelo.setNumRows(0);
+        for (Biblioteca biblioteca : bibliotecas) {
+           Object[] rowData = {biblioteca.getCodigo(),biblioteca.getNombre(),biblioteca.getDireccion(),biblioteca.getTelefono()};
+           modelo.addRow(rowData);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnListar;

@@ -5,13 +5,40 @@
 package ec.edu.ups.poo.ejemploguiapp.vista;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.BibliotecaControlador;
+import ec.edu.ups.poo.ejemploguiapp.controlador.LibroControlador;
+import ec.edu.ups.poo.ejemploguiapp.controlador.PrestamoControlador;
+import ec.edu.ups.poo.ejemploguiapp.controlador.UsuarioControlador;
 import ec.edu.ups.poo.ejemploguiapp.dao.BibliotecaDAO;
+import ec.edu.ups.poo.ejemploguiapp.dao.LibroDAO;
+import ec.edu.ups.poo.ejemploguiapp.dao.PrestamoDAO;
+import ec.edu.ups.poo.ejemploguiapp.dao.UsuarioDAO;
 import ec.edu.ups.poo.ejemploguiapp.vista.biblioteca.VentanaActualizarBiblioteca;
 import ec.edu.ups.poo.ejemploguiapp.vista.biblioteca.VentanaListarBiblioteca;
 import ec.edu.ups.poo.ejemploguiapp.vista.biblioteca.VentanaEliminarBiblioteca;
 import ec.edu.ups.poo.ejemploguiapp.vista.biblioteca.VentanaBuscarBiblioteca;
 import ec.edu.ups.poo.ejemploguiapp.vista.biblioteca.VentanaCrearBiblioteca;
 import ec.edu.ups.poo.ejemploguiapp.idao.IBibliotecaDAO;
+import ec.edu.ups.poo.ejemploguiapp.idao.ILibroDAO;
+import ec.edu.ups.poo.ejemploguiapp.idao.IPrestamoDAO;
+import ec.edu.ups.poo.ejemploguiapp.idao.IUsuarioDAO;
+import ec.edu.ups.poo.ejemploguiapp.vista.libro.VentanaActualizarLibro;
+import ec.edu.ups.poo.ejemploguiapp.vista.libro.VentanaBuscarLibro;
+import ec.edu.ups.poo.ejemploguiapp.vista.libro.VentanaCrearLibro;
+import ec.edu.ups.poo.ejemploguiapp.vista.libro.VentanaEliminarLibro;
+import ec.edu.ups.poo.ejemploguiapp.vista.libro.VentanaListarLibro;
+import ec.edu.ups.poo.ejemploguiapp.vista.prestamo.VentanaActualizarPrestamo;
+import ec.edu.ups.poo.ejemploguiapp.vista.prestamo.VentanaBuscarPrestamo;
+import ec.edu.ups.poo.ejemploguiapp.vista.prestamo.VentanaCrearPrestamo;
+import ec.edu.ups.poo.ejemploguiapp.vista.prestamo.VentanaEliminarPrestamo;
+import ec.edu.ups.poo.ejemploguiapp.vista.prestamo.VentanaListarPrestamo;
+import ec.edu.ups.poo.ejemploguiapp.vista.usuario.VentanaActualizarUsuario;
+import ec.edu.ups.poo.ejemploguiapp.vista.usuario.VentanaBuscarUsuario;
+import ec.edu.ups.poo.ejemploguiapp.vista.usuario.VentanaCrearUsuario;
+import ec.edu.ups.poo.ejemploguiapp.vista.usuario.VentanaEliminarUsuario;
+import ec.edu.ups.poo.ejemploguiapp.vista.usuario.VentanaListarUsuario;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Libro;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Usuario;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -25,11 +52,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaBuscarBiblioteca ventanaBuscarBiblioteca;
     private VentanaEliminarBiblioteca ventanaEliminarBiblioteca;
     private VentanaListarBiblioteca ventanaListarBiblioteca;
+    private VentanaCrearUsuario ventanaCrearUsuario;
+    private VentanaActualizarUsuario ventanaActualizarUsuario;
+    private VentanaBuscarUsuario ventanaBuscarUsuario;
+    private VentanaEliminarUsuario ventanaEliminarUsuario;
+    private VentanaListarUsuario ventanaListarUsuario;
+    private VentanaCrearLibro ventanaCrearLibro;
+    private VentanaActualizarLibro ventanaActualizarLibro;
+    private VentanaBuscarLibro ventanaBuscarLibro;
+    private VentanaEliminarLibro ventanaEliminarLibro;
+    private VentanaListarLibro ventanaListarLibro;
+    private VentanaCrearPrestamo ventanaCrearPrestamo;
+    private VentanaActualizarPrestamo ventanaActualizarPrestamo;
+    private VentanaBuscarPrestamo ventanaBuscarPrestamo;
+    private VentanaEliminarPrestamo ventanaEliminarPrestamo;
+    private VentanaListarPrestamo ventanaListarPrestamo;
     private Locale locale;
     
     private IBibliotecaDAO bibliotecaDAO;
     private BibliotecaControlador bibliotecaControlador;
-
+    private IUsuarioDAO usuarioDAO;
+    private UsuarioControlador usuarioControlador;
+    private ILibroDAO libroDAO;
+    private LibroControlador libroControlador;
+    private IPrestamoDAO prestamoDAO;
+    private PrestamoControlador prestamoControlador;
+    private List<Libro> listaLibros;
+    private List<Usuario> listaUsuarios;
     
     /**
      * Creates new form VentanaPrincipal
@@ -38,6 +87,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         bibliotecaDAO = new BibliotecaDAO();
         bibliotecaControlador = new BibliotecaControlador(bibliotecaDAO);
+        usuarioDAO = new UsuarioDAO();
+        usuarioControlador = new UsuarioControlador(usuarioDAO);
+        libroDAO = new LibroDAO();
+        libroControlador = new LibroControlador(libroDAO);
+        prestamoDAO = new PrestamoDAO();
+        prestamoControlador = new PrestamoControlador(prestamoDAO, libroDAO, usuarioDAO);
+        this.listaLibros = listaLibros;
+        this.listaUsuarios = listaUsuarios;
         locale = new Locale("es", "EC");
     }
 
@@ -70,6 +127,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         actualizarClienteItem = new javax.swing.JMenuItem();
         listarClienteItem = new javax.swing.JMenuItem();
         eliminarClienteItem = new javax.swing.JMenuItem();
+        prestamoMenu = new javax.swing.JMenu();
+        crearPrestamoItem = new javax.swing.JMenuItem();
+        buscarPrestamoItem = new javax.swing.JMenuItem();
+        actualizarPrestamoItem = new javax.swing.JMenuItem();
+        listarPrestamoItem = new javax.swing.JMenuItem();
+        eliminarPrestamoItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         opcionUnoItem = new javax.swing.JMenuItem();
         menuItemIdiomaFrances = new javax.swing.JMenuItem();
@@ -151,6 +214,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         buscarLibroItem.setMnemonic('s');
         buscarLibroItem.setText("Buscar");
+        buscarLibroItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarLibroItemActionPerformed(evt);
+            }
+        });
         libroMenu.add(buscarLibroItem);
 
         actualizarLibroItem.setMnemonic('a');
@@ -163,6 +231,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         libroMenu.add(actualizarLibroItem);
 
         listarLibroItem.setText("Listar");
+        listarLibroItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarLibroItemActionPerformed(evt);
+            }
+        });
         libroMenu.add(listarLibroItem);
 
         eliminarLibroItem.setMnemonic('x');
@@ -190,6 +263,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         buscarClienteItem.setMnemonic('s');
         buscarClienteItem.setText("Buscar");
+        buscarClienteItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarClienteItemActionPerformed(evt);
+            }
+        });
         clienteMenu.add(buscarClienteItem);
 
         actualizarClienteItem.setMnemonic('a');
@@ -202,6 +280,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         clienteMenu.add(actualizarClienteItem);
 
         listarClienteItem.setText("Listar");
+        listarClienteItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarClienteItemActionPerformed(evt);
+            }
+        });
         clienteMenu.add(listarClienteItem);
 
         eliminarClienteItem.setMnemonic('x');
@@ -214,6 +297,55 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         clienteMenu.add(eliminarClienteItem);
 
         menuBar.add(clienteMenu);
+
+        prestamoMenu.setMnemonic('f');
+        prestamoMenu.setText("Prestamo");
+
+        crearPrestamoItem.setMnemonic('o');
+        crearPrestamoItem.setText("Crear");
+        crearPrestamoItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearPrestamoItemActionPerformed(evt);
+            }
+        });
+        prestamoMenu.add(crearPrestamoItem);
+
+        buscarPrestamoItem.setMnemonic('s');
+        buscarPrestamoItem.setText("Buscar");
+        buscarPrestamoItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarPrestamoItemActionPerformed(evt);
+            }
+        });
+        prestamoMenu.add(buscarPrestamoItem);
+
+        actualizarPrestamoItem.setMnemonic('a');
+        actualizarPrestamoItem.setText("Actualizar");
+        actualizarPrestamoItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarPrestamoItemActionPerformed(evt);
+            }
+        });
+        prestamoMenu.add(actualizarPrestamoItem);
+
+        listarPrestamoItem.setText("Listar");
+        listarPrestamoItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarPrestamoItemActionPerformed(evt);
+            }
+        });
+        prestamoMenu.add(listarPrestamoItem);
+
+        eliminarPrestamoItem.setMnemonic('x');
+        eliminarPrestamoItem.setText("Eliminar");
+        eliminarPrestamoItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarPrestamoItemActionPerformed(evt);
+            }
+        });
+        prestamoMenu.add(eliminarPrestamoItem);
+
+        menuBar.add(prestamoMenu);
 
         editMenu.setMnemonic('e');
         editMenu.setText("Opciones");
@@ -287,27 +419,63 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_actualizarBiblioItemActionPerformed
 
     private void crearLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearLibroItemActionPerformed
-        // TODO add your handling code here:
+        if(ventanaCrearLibro == null){
+        ventanaCrearLibro = new VentanaCrearLibro(libroControlador);
+        }
+        if(!ventanaCrearLibro.isVisible()){
+                ventanaCrearLibro.setVisible(true);
+                desktopPane.add(ventanaCrearLibro);
+        }
     }//GEN-LAST:event_crearLibroItemActionPerformed
 
     private void actualizarLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarLibroItemActionPerformed
-        // TODO add your handling code here:
+        if(ventanaActualizarLibro == null){
+        ventanaActualizarLibro = new VentanaActualizarLibro(libroControlador);
+        }
+        if(!ventanaActualizarLibro.isVisible()){
+                ventanaActualizarLibro.setVisible(true);
+                desktopPane.add(ventanaActualizarLibro);
+        }
     }//GEN-LAST:event_actualizarLibroItemActionPerformed
 
     private void eliminarLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarLibroItemActionPerformed
-        // TODO add your handling code here:
+        if(ventanaEliminarLibro == null){
+        ventanaEliminarLibro = new VentanaEliminarLibro(libroControlador);
+        }
+        if(!ventanaEliminarLibro.isVisible()){
+                ventanaEliminarLibro.setVisible(true);
+                desktopPane.add(ventanaEliminarLibro);
+        }
     }//GEN-LAST:event_eliminarLibroItemActionPerformed
 
     private void crearClienteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearClienteItemActionPerformed
-        // TODO add your handling code here:
+        if(ventanaCrearUsuario == null){
+        ventanaCrearUsuario = new VentanaCrearUsuario(usuarioControlador);
+        }
+        if(!ventanaCrearUsuario.isVisible()){
+                ventanaCrearUsuario.setVisible(true);
+                desktopPane.add(ventanaCrearUsuario);
+        }
     }//GEN-LAST:event_crearClienteItemActionPerformed
 
     private void actualizarClienteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarClienteItemActionPerformed
-        // TODO add your handling code here:
+        if(ventanaActualizarUsuario == null){
+        ventanaActualizarUsuario = new VentanaActualizarUsuario(usuarioControlador);
+        }
+        if(!ventanaActualizarUsuario.isVisible()){
+                ventanaActualizarUsuario.setVisible(true);
+                desktopPane.add(ventanaActualizarUsuario);
+        }
     }//GEN-LAST:event_actualizarClienteItemActionPerformed
 
     private void eliminarClienteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClienteItemActionPerformed
-        // TODO add your handling code here:
+        if(ventanaEliminarUsuario == null){
+        ventanaEliminarUsuario = new VentanaEliminarUsuario(usuarioControlador);
+        }
+        if(!ventanaEliminarUsuario.isVisible()){
+                ventanaEliminarUsuario.setVisible(true);
+                desktopPane.add(ventanaEliminarUsuario);
+        }
     }//GEN-LAST:event_eliminarClienteItemActionPerformed
 
     private void biblioMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biblioMenuActionPerformed
@@ -326,7 +494,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void listarBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarBiblioItemActionPerformed
         if(ventanaListarBiblioteca == null){
-        ventanaListarBiblioteca = new VentanaListarBiblioteca();
+        ventanaListarBiblioteca = new VentanaListarBiblioteca(bibliotecaControlador);
         }
         if(!ventanaListarBiblioteca.isVisible()){
                 ventanaListarBiblioteca.setVisible(true);
@@ -358,6 +526,96 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         locale = new Locale("fr", "FR");
        cambiarIdioma();
     }//GEN-LAST:event_menuItemIdiomaFrancesActionPerformed
+
+    private void buscarLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLibroItemActionPerformed
+        if(ventanaBuscarLibro == null){
+        ventanaBuscarLibro = new VentanaBuscarLibro(libroControlador);
+        }
+        if(!ventanaBuscarLibro.isVisible()){
+                ventanaBuscarLibro.setVisible(true);
+                desktopPane.add(ventanaBuscarLibro);
+        }
+    }//GEN-LAST:event_buscarLibroItemActionPerformed
+
+    private void listarLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarLibroItemActionPerformed
+        if(ventanaListarLibro == null){
+        ventanaListarLibro = new VentanaListarLibro(libroControlador);
+        }
+        if(!ventanaListarLibro.isVisible()){
+                ventanaListarLibro.setVisible(true);
+                desktopPane.add(ventanaListarLibro);
+        }
+    }//GEN-LAST:event_listarLibroItemActionPerformed
+
+    private void buscarClienteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarClienteItemActionPerformed
+        if(ventanaBuscarUsuario == null){
+        ventanaBuscarUsuario = new VentanaBuscarUsuario(usuarioControlador);
+        }
+        if(!ventanaBuscarUsuario.isVisible()){
+                ventanaBuscarUsuario.setVisible(true);
+                desktopPane.add(ventanaBuscarUsuario);
+        }
+    }//GEN-LAST:event_buscarClienteItemActionPerformed
+
+    private void listarClienteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClienteItemActionPerformed
+        if(ventanaListarUsuario == null){
+        ventanaListarUsuario = new VentanaListarUsuario(usuarioControlador);
+        }
+        if(!ventanaListarUsuario.isVisible()){
+                ventanaListarUsuario.setVisible(true);
+                desktopPane.add(ventanaListarUsuario);
+        }
+    }//GEN-LAST:event_listarClienteItemActionPerformed
+
+    private void crearPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPrestamoItemActionPerformed
+        if(ventanaCrearPrestamo == null){
+        ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,listaLibros,listaUsuarios);
+        }
+        if(!ventanaCrearPrestamo.isVisible()){
+                ventanaCrearPrestamo.setVisible(true);
+                desktopPane.add(ventanaCrearPrestamo);
+        }
+    }//GEN-LAST:event_crearPrestamoItemActionPerformed
+
+    private void buscarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPrestamoItemActionPerformed
+        if(ventanaBuscarPrestamo == null){
+        ventanaBuscarPrestamo = new VentanaBuscarPrestamo(prestamoControlador);
+        }
+        if(!ventanaActualizarPrestamo.isVisible()){
+                ventanaActualizarPrestamo.setVisible(true);
+                desktopPane.add(ventanaActualizarPrestamo);
+        }
+    }//GEN-LAST:event_buscarPrestamoItemActionPerformed
+
+    private void actualizarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPrestamoItemActionPerformed
+        if(ventanaActualizarPrestamo == null){
+        ventanaActualizarPrestamo = new VentanaActualizarPrestamo(prestamoControlador,listaLibros,listaUsuarios);
+        }
+        if(!ventanaActualizarPrestamo.isVisible()){
+                ventanaActualizarPrestamo.setVisible(true);
+                desktopPane.add(ventanaActualizarPrestamo);
+        }
+    }//GEN-LAST:event_actualizarPrestamoItemActionPerformed
+
+    private void listarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPrestamoItemActionPerformed
+        if(ventanaListarPrestamo == null){
+        ventanaListarPrestamo = new VentanaListarPrestamo(prestamoControlador);
+        }
+        if(!ventanaListarPrestamo.isVisible()){
+                ventanaListarPrestamo.setVisible(true);
+                desktopPane.add(ventanaListarPrestamo);
+        }
+    }//GEN-LAST:event_listarPrestamoItemActionPerformed
+
+    private void eliminarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPrestamoItemActionPerformed
+        if(ventanaEliminarPrestamo == null){
+        ventanaEliminarPrestamo = new VentanaEliminarPrestamo(prestamoControlador);
+        }
+        if(!ventanaEliminarPrestamo.isVisible()){
+                ventanaEliminarPrestamo.setVisible(true);
+                desktopPane.add(ventanaEliminarPrestamo);
+        }
+    }//GEN-LAST:event_eliminarPrestamoItemActionPerformed
 
     public void cambiarIdioma(){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
@@ -408,28 +666,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem actualizarBiblioItem;
     private javax.swing.JMenuItem actualizarClienteItem;
     private javax.swing.JMenuItem actualizarLibroItem;
+    private javax.swing.JMenuItem actualizarPrestamoItem;
     private javax.swing.JMenu biblioMenu;
     private javax.swing.JMenuItem buscarBiblioItem;
     private javax.swing.JMenuItem buscarClienteItem;
     private javax.swing.JMenuItem buscarLibroItem;
+    private javax.swing.JMenuItem buscarPrestamoItem;
     private javax.swing.JMenu clienteMenu;
     private javax.swing.JMenuItem crearBiblioItem;
     private javax.swing.JMenuItem crearClienteItem;
     private javax.swing.JMenuItem crearLibroItem;
+    private javax.swing.JMenuItem crearPrestamoItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem eliminarBiblioItem;
     private javax.swing.JMenuItem eliminarClienteItem;
     private javax.swing.JMenuItem eliminarLibroItem;
+    private javax.swing.JMenuItem eliminarPrestamoItem;
     private javax.swing.JMenu libroMenu;
     private javax.swing.JMenuItem listarBiblioItem;
     private javax.swing.JMenuItem listarClienteItem;
     private javax.swing.JMenuItem listarLibroItem;
+    private javax.swing.JMenuItem listarPrestamoItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItemIdiomaEspanol;
     private javax.swing.JMenuItem menuItemIdiomaFrances;
     private javax.swing.JMenuItem menuItemIdiomaIngles;
     private javax.swing.JMenuItem opcionUnoItem;
+    private javax.swing.JMenu prestamoMenu;
     // End of variables declaration//GEN-END:variables
 
 }

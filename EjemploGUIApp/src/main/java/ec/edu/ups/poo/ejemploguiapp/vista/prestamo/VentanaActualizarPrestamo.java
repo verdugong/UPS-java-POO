@@ -6,7 +6,16 @@ package ec.edu.ups.poo.ejemploguiapp.vista.prestamo;
 
 import ec.edu.ups.poo.ejemploguiapp.vista.biblioteca.*;
 import ec.edu.ups.poo.ejemploguiapp.controlador.BibliotecaControlador;
+import ec.edu.ups.poo.ejemploguiapp.controlador.PrestamoControlador;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Biblioteca;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Libro;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Prestamo;
+import ec.edu.ups.poo.ejemplouiapp.modelo.Usuario;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,13 +24,18 @@ import javax.swing.JOptionPane;
  */
 public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
 
-    private BibliotecaControlador bibliotecaControlador;
+    private PrestamoControlador prestamoControlador;
+    private List<Libro> listaLibros;
+    private List<Usuario> listaUsuarios;
+    
     /**
-     * Creates new form VentanaCrearBilblioteca
+     * Creates new form VentanaActualizarPrestamo
      */
-    public VeVentanaActualizarPrestamoibliotecaControlador bibliotecaControlador) {
+    public VentanaActualizarPrestamo(PrestamoControlador prestamoControlador, List<Libro> listaLibros, List<Usuario> listaUsuarios) {
         initComponents();
-        this.bibliotecaControlador = bibliotecaControlador;
+        this.prestamoControlador = prestamoControlador;
+        this.listaLibros = listaLibros;
+        this.listaUsuarios = listaUsuarios;
     }
 
     /**
@@ -35,16 +49,18 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtCode = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtTelef = new javax.swing.JTextField();
         lblCode = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
-        lblDireccion = new javax.swing.JLabel();
-        lblTelef = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        txtTotal = new javax.swing.JTextField();
+        lblLibro = new javax.swing.JLabel();
+        cmbxLibro = new javax.swing.JComboBox<>();
+        lblBiblioteca = new javax.swing.JLabel();
+        cmbxUsuario = new javax.swing.JComboBox<>();
+        lblFecha = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
+        lblTotal = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -60,12 +76,6 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
         });
 
         lblCode.setText("Código");
-
-        lblNombre.setText("Nombre");
-
-        lblDireccion.setText("Dirección");
-
-        lblTelef.setText("Teléfono");
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -88,32 +98,72 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalActionPerformed(evt);
+            }
+        });
+
+        lblLibro.setText("Libro");
+
+        cmbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbxLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbxLibroActionPerformed(evt);
+            }
+        });
+
+        lblBiblioteca.setText("Usuario");
+
+        cmbxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbxUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbxUsuarioActionPerformed(evt);
+            }
+        });
+
+        lblFecha.setText("Fecha");
+
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaActionPerformed(evt);
+            }
+        });
+
+        lblTotal.setText("Total");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCode, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTelef, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(12, 12, 12)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnActualizar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLibro, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblBiblioteca, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCode)
-                            .addComponent(txtNombre)
-                            .addComponent(txtDireccion)
-                            .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cmbxLibro, 0, 167, Short.MAX_VALUE)
+                            .addComponent(cmbxUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtFecha)
+                            .addComponent(txtTotal)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblCode)
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnActualizar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,23 +173,27 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
                     .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelef))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnCancelar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,8 +208,8 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,58 +219,149 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodeActionPerformed
 
+    private void llenarComboBoxLibros() {
+        for (Libro libro : listaLibros) {
+            cmbxLibro.addItem(libro.getTitulo()); 
+        }
+    }
+    
+    private void llenarComboBoxUsuarios() {
+        // Llena el ComboBox de usuarios con la información de la lista de usuarios
+        for (Usuario usuario : listaUsuarios) {
+            cmbxUsuario.addItem(usuario.getNombre());  // Ajusta según tus necesidades
+        }
+    }
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         int codigo = Integer.parseInt(txtCode.getText());
-        String nombre = txtNombre.getText();
-        String direccion = txtDireccion.getText();
-        String telefono = txtTelef.getText();
+        String tituloLibro = (String) cmbxLibro.getSelectedItem();
+        String nombreUsuario = (String) cmbxUsuario.getSelectedItem();
+        String textoFecha = txtFecha.getText();
+        Date fecha = null;
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        try {
+            fecha = formato.parse(textoFecha);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al parsear la fecha");
+            return;
+        }
+        double total = Double.parseDouble(txtTotal.getText());
         
-        bibliotecaControlador.actualizarBiblioteca(codigo, nombre, direccion, telefono);
-        JOptionPane.showMessageDialog(this, "Biblioteca actualizada exitosamente");
+        Libro libroSeleccionado = obtenerLibroPorTitulo(tituloLibro);
         
+        Usuario usuarioSeleccionado = obtenerUsuarioPorNombre(nombreUsuario);
+        
+        if (libroSeleccionado != null && usuarioSeleccionado != null) {
+                prestamoControlador.actualizarPrestamo(codigo, Collections.singletonList(libroSeleccionado), usuarioSeleccionado, fecha, total);
+                JOptionPane.showMessageDialog(this, "Prestamo actualizado exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el libro o el usuario");
+        }
         limpiarDatos();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         int codigo = Integer.parseInt(txtCode.getText());
-        Biblioteca biblioteca = bibliotecaControlador.buscarBiblioteca(codigo);
-        if(biblioteca == null){
-            JOptionPane.showMessageDialog(this, "No se a encontrado la biblioteca");
+        Prestamo prestamo = prestamoControlador.buscarPrestamoPorId(codigo);
+        if(prestamo == null){
+            JOptionPane.showMessageDialog(this, "No se a encontrado el prestamo");
         }else{
-            txtNombre.setText(biblioteca.getNombre());
-            txtNombre.setEditable(true);
-            txtDireccion.setText(biblioteca.getDireccion());
-            txtDireccion.setEditable(true);
-            txtTelef.setText(biblioteca.getTelefono());
-            txtTelef.setEditable(true);
+            String librosString = obtenerTitulosLibros(prestamo.getLibros());
+            String nombreUsuario = prestamo.getUsuario().getNombre();
+            String fechaString = formatearFecha(prestamo.getFechaPrestamo());
+            
+            cmbxLibro.setToolTipText(librosString);
+            cmbxLibro.setEditable(true);
+            cmbxUsuario.setToolTipText(nombreUsuario);
+            cmbxUsuario.setEditable(true);
+            txtFecha.setText(fechaString);
+            txtFecha.setEditable(true);
+            txtTotal.setText(Double.toString(prestamo.getTotal()));
+            txtTotal.setEditable(true);
             txtCode.setEditable(false);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private Libro obtenerLibroPorTitulo(String titulo) {
+        for (Libro libro : listaLibros) {
+            if (libro.getTitulo().equals(titulo)) {
+                return libro;
+            }
+        }
+        return null;
+    }
+    
+    private Usuario obtenerUsuarioPorNombre(String nombre) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getNombre().equals(nombre)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+    
+    private String obtenerTitulosLibros(List<Libro> libros) {
+        StringBuilder titulos = new StringBuilder();
+
+        for (Libro libro : libros) {
+            titulos.append(libro.getTitulo()).append(", ");
+        }
+
+        // Eliminar la coma y el espacio final
+        if (titulos.length() > 2) {
+            titulos.setLength(titulos.length() - 2);
+        }
+
+        return titulos.toString();
+    }
+
+    private String formatearFecha(Date fecha) {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return formato.format(fecha);
+    }
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         limpiarDatos();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalActionPerformed
+
+    private void cmbxLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxLibroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbxLibroActionPerformed
+
+    private void cmbxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbxUsuarioActionPerformed
+
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaActionPerformed
 
 
     private void limpiarDatos(){
         txtCode.setEditable(true);
         txtCode.setText("");
-        txtNombre.setText("");
-        txtDireccion.setText("");
-        txtTelef.setText("");
+        txtFecha.setText("");
+        txtTotal.setText("");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox<String> cmbxLibro;
+    private javax.swing.JComboBox<String> cmbxUsuario;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblBiblioteca;
     private javax.swing.JLabel lblCode;
-    private javax.swing.JLabel lblDireccion;
-    private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblTelef;
+    private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblLibro;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JTextField txtCode;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelef;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

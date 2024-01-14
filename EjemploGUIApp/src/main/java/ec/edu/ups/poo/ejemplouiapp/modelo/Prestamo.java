@@ -28,6 +28,14 @@ public class Prestamo {
         this.fechaPrestamo = fechaPrestamo;
         libros = new ArrayList<>();
     }
+
+    public Prestamo(int id, List<Libro> libros, Usuario usuario, Date fechaPrestamo, double total) {
+        this.id = id;
+        this.libros = libros;
+        this.usuario = usuario;
+        this.fechaPrestamo = fechaPrestamo;
+        this.total = total;
+    }
     
     public int getId() {
         return id;

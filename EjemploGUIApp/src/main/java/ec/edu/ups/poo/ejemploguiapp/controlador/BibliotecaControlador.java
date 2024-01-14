@@ -22,28 +22,28 @@ public class BibliotecaControlador {
     
     public void crearBiblioteca(int codigo, String nombre, String direccion, String telefono){
         biblioteca = new Biblioteca(codigo, nombre, direccion, telefono);
-        bibliotecaDAO.create(biblioteca);
-    }
-    
-    public void actualizarBiblioteca(int codigo, String nombre, String direccion, String telefono){
-        biblioteca = bibliotecaDAO.read(codigo);
-        biblioteca.setNombre(nombre);
-        biblioteca.setDireccion(direccion);
-        biblioteca.setTelefono(telefono);
-        bibliotecaDAO.update(codigo, biblioteca);
+        bibliotecaDAO.crearBiblioteca(biblioteca);
     }
     
     public Biblioteca buscarBiblioteca(int codigo){
-        biblioteca = bibliotecaDAO.read(codigo);
+        biblioteca = bibliotecaDAO.obtenerBiblioteca(codigo);
         return biblioteca;
     }
     
-    public void eliminarBiblioteca(int codigo){
-        biblioteca = bibliotecaDAO.read(codigo);
-        bibliotecaDAO.delete(biblioteca.getCodigo());
+    public void actualizarBiblioteca(int codigo, String nombre, String direccion, String telefono){
+        biblioteca = bibliotecaDAO.obtenerBiblioteca(codigo);
+        biblioteca.setNombre(nombre);
+        biblioteca.setDireccion(direccion);
+        biblioteca.setTelefono(telefono);
+        bibliotecaDAO.actualizarBiblioteca(codigo, biblioteca);
     }
     
-    public List<Biblioteca> list(){
-        return bibliotecaDAO.list();
+    public void eliminarBiblioteca(int codigo){
+        biblioteca = bibliotecaDAO.obtenerBiblioteca(codigo);
+        bibliotecaDAO.eliminarBiblioteca(biblioteca.getCodigo());
+    }
+    
+    public List<Biblioteca> listarBiblioteca(){
+        return bibliotecaDAO.listarBiblioteca();
     }
 }

@@ -24,35 +24,13 @@ public class PrestamoDAO implements IPrestamoDAO{
     }
     
     @Override
-    public List<Prestamo> obtenerPrestamo() {
+    public List<Prestamo> listarPrestamo() {
         return listaPrestamos;
-    }
-
-    @Override
-    public List<Prestamo> obtenerPrestamosPorUsuario(Usuario usuario) {
-        List<Prestamo> prestamosEncontrados = new ArrayList<>();
-        for (Prestamo prestamo : listaPrestamos) {
-            if(prestamo.getUsuario().getIdentificacion().equalsIgnoreCase(usuario.getIdentificacion())){
-                prestamosEncontrados.add(prestamo);
-            }
-        }
-        return prestamosEncontrados;
     }
 
     @Override
     public void crearPrestamo(Prestamo prestamo) {
         listaPrestamos.add(prestamo);
-    }
-
-    @Override
-    public List<Prestamo> obtenerPrestamoPorFecha(Date fechaPrestamo) {
-        List<Prestamo> prestamosEncontrados = new ArrayList<>();
-        for (Prestamo prestamo : listaPrestamos) {
-            if(prestamo.getFechaPrestamo().equals(fechaPrestamo)){
-                prestamosEncontrados.add(prestamo);
-            }
-        }
-        return prestamosEncontrados;
     }
 
     @Override
@@ -66,29 +44,24 @@ public class PrestamoDAO implements IPrestamoDAO{
     }
 
     @Override
-    public boolean actualizarPrestamo(int id, Prestamo prestamo) {
+    public void actualizarPrestamo(int id, Prestamo prestamo) {
         for (int i = 0; i < listaPrestamos.size(); i++) {
             Prestamo prestamoEncontrado = listaPrestamos.get(i);
             if(prestamoEncontrado.getId() == id){
                 listaPrestamos.set(i, prestamo);
-                return true;
+                break;
             }            
         }
-        return false;
     }
 
     @Override
-    public boolean eliminarPrestamo(int id) {
+    public void eliminarPrestamo(int id) {
         for (int i = 0; i < listaPrestamos.size(); i++) {
             Prestamo prestamoEncontrado = listaPrestamos.get(i);
             if(prestamoEncontrado.getId() == id){
                 listaPrestamos.remove(i);
-                return true;
+                break;
             }            
         }
-        return false;
-    }
-
-    
-    
+    }  
 }

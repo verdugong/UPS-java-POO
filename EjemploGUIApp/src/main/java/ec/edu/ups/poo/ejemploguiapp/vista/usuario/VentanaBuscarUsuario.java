@@ -16,7 +16,7 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
 
     private UsuarioControlador usuarioControlador;
     /**
-     * Creates new form VentanaBuscarBiblioteca
+     * Creates new form VentanaBuscarUsuario
      */
     public VentanaBuscarUsuario(UsuarioControlador usuarioControlador) {
         initComponents();
