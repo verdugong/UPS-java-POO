@@ -106,7 +106,6 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
 
         lblLibro.setText("Libro");
 
-        cmbxLibro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbxLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbxLibroActionPerformed(evt);
@@ -115,14 +114,13 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
 
         lblBiblioteca.setText("Usuario");
 
-        cmbxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbxUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbxUsuarioActionPerformed(evt);
             }
         });
 
-        lblFecha.setText("Fecha");
+        lblFecha.setText("Fecha (yyyy-MM-dd HH:mm:ss)");
 
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,33 +135,35 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblLibro, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblBiblioteca, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmbxLibro, 0, 167, Short.MAX_VALUE)
-                            .addComponent(cmbxUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFecha)
-                            .addComponent(txtTotal)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCode)
-                        .addGap(12, 12, 12)
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnActualizar)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblLibro, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblBiblioteca, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbxLibro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbxUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtFecha)
+                                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addComponent(lblCode)
+                                .addGap(12, 12, 12)
                                 .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnBuscar)))))
-                .addContainerGap())
+                                .addComponent(btnBuscar))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(btnActualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,6 +263,8 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        llenarComboBoxLibros();
+        llenarComboBoxUsuarios();
         int codigo = Integer.parseInt(txtCode.getText());
         Prestamo prestamo = prestamoControlador.buscarPrestamoPorId(codigo);
         if(prestamo == null){
@@ -330,11 +332,11 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTotalActionPerformed
 
     private void cmbxLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxLibroActionPerformed
-        // TODO add your handling code here:
+        llenarComboBoxLibros();
     }//GEN-LAST:event_cmbxLibroActionPerformed
 
     private void cmbxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxUsuarioActionPerformed
-        // TODO add your handling code here:
+        llenarComboBoxUsuarios();
     }//GEN-LAST:event_cmbxUsuarioActionPerformed
 
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
