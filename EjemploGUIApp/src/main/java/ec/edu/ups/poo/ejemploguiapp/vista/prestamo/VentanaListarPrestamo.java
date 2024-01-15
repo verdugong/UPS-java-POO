@@ -7,6 +7,10 @@ package ec.edu.ups.poo.ejemploguiapp.vista.prestamo;
 import ec.edu.ups.poo.ejemploguiapp.controlador.PrestamoControlador;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Prestamo;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,12 +20,40 @@ import javax.swing.table.DefaultTableModel;
 public class VentanaListarPrestamo extends javax.swing.JInternalFrame {
 
     private PrestamoControlador prestamoControlador;
+    private TitledBorder miBorder;
+    private DefaultTableModel modeloTabla;
     /**
      * Creates new form VentanaListarPrestamo
      */
     public VentanaListarPrestamo(PrestamoControlador prestamoControlador) {
         initComponents();
         this.prestamoControlador = prestamoControlador;
+        miBorder = BorderFactory.createTitledBorder(" Listar Datos ");
+        jPanel1.setBorder(miBorder);
+         modeloTabla = (DefaultTableModel) tblDatos.getModel();
+    }
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+       
+        cambiarNombresColumnasTabla(mensajes);
+        miBorder.setTitle(mensajes.getString("TBListar"));
+       jPanel1.repaint();
+       btnListar.setText(mensajes.getString("btnListar"));
+    }
+    
+    private void cambiarNombresColumnasTabla(ResourceBundle mensajes) {
+        // Cambia los nombres de las columnas según el idioma
+        String[] nombresColumnas = {
+                mensajes.getString("columnaCodigo"),
+                mensajes.getString("columnaLibro"),
+                mensajes.getString("columnaUsuario"),
+                mensajes.getString("columnaFecha"),
+                mensajes.getString("columnaTotal"),
+                // ... agrega más columnas según sea necesario
+        };
+
+        // Establece los nuevos nombres de las columnas en el modelo de la tabla
+        modeloTabla.setColumnIdentifiers(nombresColumnas);
     }
 
     /**

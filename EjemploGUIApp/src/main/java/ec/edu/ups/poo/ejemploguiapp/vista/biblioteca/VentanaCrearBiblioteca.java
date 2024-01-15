@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package ec.edu.ups.poo.ejemploguiapp.vista.biblioteca;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.BibliotecaControlador;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -16,18 +14,29 @@ import javax.swing.JOptionPane;
 public class VentanaCrearBiblioteca extends javax.swing.JInternalFrame {
     
     private BibliotecaControlador bibliotecaControlador;
+    private TitledBorder miBorder;
     /**
      * Creates new form VentanaCrearBilblioteca
      */
     public VentanaCrearBiblioteca(BibliotecaControlador bibliotecaControlador) {
         initComponents();
         this.bibliotecaControlador = bibliotecaControlador;
+        
+         miBorder = BorderFactory.createTitledBorder("Ingresar Datos");
+        jPanel1.setBorder(miBorder);
     }
     
     public void cambiarIdioma(Locale locale){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
        
+       this.setTitle(mensajes.getString("window.title"));
+       miBorder.setTitle(mensajes.getString("TBIngresar"));
+       jPanel1.repaint();
        lblNombre.setText(mensajes.getString("lblNombre"));
+       lblCode.setText(mensajes.getString("lblCode"));
+       lblDireccion.setText(mensajes.getString("lblDireccion"));
+       lblTelef.setText(mensajes.getString("lblTelef"));
+       btnGuardar.setText(mensajes.getString("btnGuardar"));
     }
 
     /**

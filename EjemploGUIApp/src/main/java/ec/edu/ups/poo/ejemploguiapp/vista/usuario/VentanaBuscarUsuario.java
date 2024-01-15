@@ -6,7 +6,11 @@ package ec.edu.ups.poo.ejemploguiapp.vista.usuario;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.UsuarioControlador;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Usuario;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -15,12 +19,26 @@ import javax.swing.JOptionPane;
 public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
 
     private UsuarioControlador usuarioControlador;
+    private TitledBorder miBorder;
     /**
      * Creates new form VentanaBuscarUsuario
      */
     public VentanaBuscarUsuario(UsuarioControlador usuarioControlador) {
         initComponents();
         this.usuarioControlador = usuarioControlador;
+        miBorder = BorderFactory.createTitledBorder("Buscar Datos");
+        jPanel1.setBorder(miBorder);
+    }
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+       
+        miBorder.setTitle(mensajes.getString("TBBuscar"));
+       jPanel1.repaint();
+       lblID.setText(mensajes.getString("lblID"));
+       lblNombre.setText(mensajes.getString("lblNombre"));
+       lblCorreo.setText(mensajes.getString("lblCorreo"));
+       btnBuscar.setText(mensajes.getString("btnBuscar"));
     }
 
     /**
@@ -34,7 +52,7 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtId = new javax.swing.JTextField();
-        lblCode = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         lblNombre = new javax.swing.JLabel();
         lblCorreo = new javax.swing.JLabel();
@@ -54,7 +72,7 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        lblCode.setText("ID");
+        lblID.setText("ID");
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +97,7 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCode)
+                        .addComponent(lblID)
                         .addGap(12, 12, 12)
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -100,7 +118,7 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,8 +168,8 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtId;

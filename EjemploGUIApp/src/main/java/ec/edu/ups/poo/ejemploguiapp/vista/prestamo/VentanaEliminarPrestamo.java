@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package ec.edu.ups.poo.ejemploguiapp.vista.prestamo;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.PrestamoControlador;
@@ -10,7 +6,11 @@ import ec.edu.ups.poo.ejemplouiapp.modelo.Prestamo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -19,13 +19,32 @@ import javax.swing.JOptionPane;
 public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
 
     private PrestamoControlador prestamoControlador;
+    private TitledBorder miBorder;
     /**
      * Creates new form VentanaEliminarPrestamo
      */
     public VentanaEliminarPrestamo(PrestamoControlador prestamoControlador) {
         initComponents();
         this.prestamoControlador = prestamoControlador;
+        miBorder = BorderFactory.createTitledBorder("Eliminar Datos");
+        jPanel1.setBorder(miBorder);
     }
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+       
+        miBorder.setTitle(mensajes.getString("TBEliminar"));
+       jPanel1.repaint();
+       lblCode.setText(mensajes.getString("lblCode"));
+       lblLibro.setText(mensajes.getString("lblLibro"));
+       lblUsuario.setText(mensajes.getString("lblUsuario"));
+       lblFecha.setText(mensajes.getString("lblFecha"));
+       lblTotal.setText(mensajes.getString("lblTotal"));
+       btnEliminar.setText(mensajes.getString("btnEliminar"));
+       btnCancelar.setText(mensajes.getString("btnCancelar"));
+       btnBuscar.setText(mensajes.getString("btnBuscar"));
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +66,7 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
         lblCode = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         lblLibro = new javax.swing.JLabel();
-        lblBiblioteca = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
         txtLibro = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
 
@@ -105,7 +124,7 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
 
         lblLibro.setText("Libro");
 
-        lblBiblioteca.setText("Usuario");
+        lblUsuario.setText("Usuario");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,7 +142,7 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLibro, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblBiblioteca, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -156,7 +175,7 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,11 +290,11 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblBiblioteca;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblLibro;
     private javax.swing.JLabel lblTotal;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtLibro;

@@ -8,6 +8,10 @@ import ec.edu.ups.poo.ejemploguiapp.controlador.BibliotecaControlador;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Biblioteca;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Libro;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,6 +21,8 @@ import javax.swing.table.DefaultTableModel;
 public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
 
     private BibliotecaControlador bibliotecaControlador;
+    private TitledBorder miBorder;
+    private DefaultTableModel modeloTabla;
     
     /**
      * Creates new form VentanaListarBiblioteca
@@ -24,7 +30,33 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
     public VentanaListarBiblioteca(BibliotecaControlador bibliotecaControlador) {
         initComponents();
         this.bibliotecaControlador = bibliotecaControlador;
+        miBorder = BorderFactory.createTitledBorder(" Listar Datos ");
+        jPanel1.setBorder(miBorder);
+        modeloTabla = (DefaultTableModel) tblDatos.getModel();
     }
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+       
+        cambiarNombresColumnasTabla(mensajes);
+        miBorder.setTitle(mensajes.getString("TBListar"));
+       jPanel1.repaint();
+       btnListar.setText(mensajes.getString("btnListar"));
+    }
+    
+    private void cambiarNombresColumnasTabla(ResourceBundle mensajes) {
+        // Cambia los nombres de las columnas según el idioma
+        String[] nombresColumnas = {
+                mensajes.getString("columnaCodigo"),
+                mensajes.getString("columnaNombre"),
+                mensajes.getString("columnaDireccion"),
+                mensajes.getString("columnaTelefono"),
+                // ... agrega más columnas según sea necesario
+        };
+
+        // Establece los nuevos nombres de las columnas en el modelo de la tabla
+        modeloTabla.setColumnIdentifiers(nombresColumnas);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,6 +113,7 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDatos.setToolTipText("");
         jScrollPane1.setViewportView(tblDatos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

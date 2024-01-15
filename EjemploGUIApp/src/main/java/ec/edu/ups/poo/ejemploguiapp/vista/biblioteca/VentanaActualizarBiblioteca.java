@@ -6,7 +6,11 @@ package ec.edu.ups.poo.ejemploguiapp.vista.biblioteca;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.BibliotecaControlador;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Biblioteca;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -15,12 +19,29 @@ import javax.swing.JOptionPane;
 public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
 
     private BibliotecaControlador bibliotecaControlador;
+    private TitledBorder miBorder;
     /**
      * Creates new form VentanaCrearBilblioteca
      */
     public VentanaActualizarBiblioteca(BibliotecaControlador bibliotecaControlador) {
         initComponents();
         this.bibliotecaControlador = bibliotecaControlador;
+        miBorder = BorderFactory.createTitledBorder("Actualizar Datos");
+        jPanel1.setBorder(miBorder);
+    }
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+       
+        miBorder.setTitle(mensajes.getString("TBActualizar"));
+       jPanel1.repaint();
+       lblNombre.setText(mensajes.getString("lblNombre"));
+       lblCode.setText(mensajes.getString("lblCode"));
+       lblDireccion.setText(mensajes.getString("lblDireccion"));
+       lblTelef.setText(mensajes.getString("lblTelef"));
+       btnBuscar.setText(mensajes.getString("btnBuscar"));
+       btnActualizar.setText(mensajes.getString("btnActualizar"));
+       btnCancelar.setText(mensajes.getString("btnCancelar"));
     }
 
     /**
@@ -218,4 +239,5 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelef;
     // End of variables declaration//GEN-END:variables
+
 }

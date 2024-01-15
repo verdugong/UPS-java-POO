@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
- */
 package ec.edu.ups.poo.ejemploguiapp.vista;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.BibliotecaControlador;
@@ -133,8 +129,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         actualizarPrestamoItem = new javax.swing.JMenuItem();
         listarPrestamoItem = new javax.swing.JMenuItem();
         eliminarPrestamoItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        opcionUnoItem = new javax.swing.JMenuItem();
+        lenguajeMenu = new javax.swing.JMenu();
         menuItemIdiomaFrances = new javax.swing.JMenuItem();
         menuItemIdiomaIngles = new javax.swing.JMenuItem();
         menuItemIdiomaEspanol = new javax.swing.JMenuItem();
@@ -347,12 +342,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuBar.add(prestamoMenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Opciones");
-
-        opcionUnoItem.setMnemonic('t');
-        opcionUnoItem.setText("Opcion1");
-        editMenu.add(opcionUnoItem);
+        lenguajeMenu.setMnemonic('e');
+        lenguajeMenu.setText("Lenguaje");
 
         menuItemIdiomaFrances.setMnemonic('y');
         menuItemIdiomaFrances.setText("Francés");
@@ -361,7 +352,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 menuItemIdiomaFrancesActionPerformed(evt);
             }
         });
-        editMenu.add(menuItemIdiomaFrances);
+        lenguajeMenu.add(menuItemIdiomaFrances);
 
         menuItemIdiomaIngles.setText("Inglés");
         menuItemIdiomaIngles.addActionListener(new java.awt.event.ActionListener() {
@@ -369,7 +360,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 menuItemIdiomaInglesActionPerformed(evt);
             }
         });
-        editMenu.add(menuItemIdiomaIngles);
+        lenguajeMenu.add(menuItemIdiomaIngles);
 
         menuItemIdiomaEspanol.setText("Español");
         menuItemIdiomaEspanol.addActionListener(new java.awt.event.ActionListener() {
@@ -377,9 +368,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 menuItemIdiomaEspanolActionPerformed(evt);
             }
         });
-        editMenu.add(menuItemIdiomaEspanol);
+        lenguajeMenu.add(menuItemIdiomaEspanol);
 
-        menuBar.add(editMenu);
+        menuBar.add(lenguajeMenu);
 
         setJMenuBar(menuBar);
 
@@ -411,6 +402,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void actualizarBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarBiblioItemActionPerformed
         if(ventanaActualizarBiblioteca == null){
         ventanaActualizarBiblioteca = new VentanaActualizarBiblioteca(bibliotecaControlador);
+        ventanaActualizarBiblioteca.cambiarIdioma(locale);
         }
         if(!ventanaActualizarBiblioteca.isVisible()){
                 ventanaActualizarBiblioteca.setVisible(true);
@@ -421,6 +413,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void crearLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearLibroItemActionPerformed
         if(ventanaCrearLibro == null){
         ventanaCrearLibro = new VentanaCrearLibro(libroControlador);
+        ventanaCrearLibro.cambiarIdioma(locale);
         }
         if(!ventanaCrearLibro.isVisible()){
                 ventanaCrearLibro.setVisible(true);
@@ -431,6 +424,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void actualizarLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarLibroItemActionPerformed
         if(ventanaActualizarLibro == null){
         ventanaActualizarLibro = new VentanaActualizarLibro(libroControlador);
+        ventanaActualizarLibro.cambiarIdioma(locale);
         }
         if(!ventanaActualizarLibro.isVisible()){
                 ventanaActualizarLibro.setVisible(true);
@@ -441,6 +435,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void eliminarLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarLibroItemActionPerformed
         if(ventanaEliminarLibro == null){
         ventanaEliminarLibro = new VentanaEliminarLibro(libroControlador);
+        ventanaEliminarLibro.cambiarIdioma(locale);
         }
         if(!ventanaEliminarLibro.isVisible()){
                 ventanaEliminarLibro.setVisible(true);
@@ -451,6 +446,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void crearClienteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearClienteItemActionPerformed
         if(ventanaCrearUsuario == null){
         ventanaCrearUsuario = new VentanaCrearUsuario(usuarioControlador);
+        ventanaCrearUsuario.cambiarIdioma(locale);
         }
         if(!ventanaCrearUsuario.isVisible()){
                 ventanaCrearUsuario.setVisible(true);
@@ -461,6 +457,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void actualizarClienteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarClienteItemActionPerformed
         if(ventanaActualizarUsuario == null){
         ventanaActualizarUsuario = new VentanaActualizarUsuario(usuarioControlador);
+        ventanaActualizarUsuario.cambiarIdioma(locale);
         }
         if(!ventanaActualizarUsuario.isVisible()){
                 ventanaActualizarUsuario.setVisible(true);
@@ -471,6 +468,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void eliminarClienteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClienteItemActionPerformed
         if(ventanaEliminarUsuario == null){
         ventanaEliminarUsuario = new VentanaEliminarUsuario(usuarioControlador);
+        ventanaEliminarUsuario.cambiarIdioma(locale);
         }
         if(!ventanaEliminarUsuario.isVisible()){
                 ventanaEliminarUsuario.setVisible(true);
@@ -485,6 +483,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void buscarBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBiblioItemActionPerformed
         if(ventanaBuscarBiblioteca == null){
         ventanaBuscarBiblioteca = new VentanaBuscarBiblioteca(bibliotecaControlador);
+        ventanaBuscarBiblioteca.cambiarIdioma(locale);
         }
         if(!ventanaBuscarBiblioteca.isVisible()){
                 ventanaBuscarBiblioteca.setVisible(true);
@@ -495,6 +494,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void listarBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarBiblioItemActionPerformed
         if(ventanaListarBiblioteca == null){
         ventanaListarBiblioteca = new VentanaListarBiblioteca(bibliotecaControlador);
+        ventanaListarBiblioteca.cambiarIdioma(locale);
         }
         if(!ventanaListarBiblioteca.isVisible()){
                 ventanaListarBiblioteca.setVisible(true);
@@ -505,6 +505,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void eliminarBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBiblioItemActionPerformed
         if(ventanaEliminarBiblioteca == null){
         ventanaEliminarBiblioteca = new VentanaEliminarBiblioteca(bibliotecaControlador);
+        ventanaEliminarBiblioteca.cambiarIdioma(locale);
         }
         if(!ventanaEliminarBiblioteca.isVisible()){
                 ventanaEliminarBiblioteca.setVisible(true);
@@ -530,6 +531,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void buscarLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLibroItemActionPerformed
         if(ventanaBuscarLibro == null){
         ventanaBuscarLibro = new VentanaBuscarLibro(libroControlador);
+        ventanaBuscarLibro.cambiarIdioma(locale);
         }
         if(!ventanaBuscarLibro.isVisible()){
                 ventanaBuscarLibro.setVisible(true);
@@ -540,6 +542,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void listarLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarLibroItemActionPerformed
         if(ventanaListarLibro == null){
         ventanaListarLibro = new VentanaListarLibro(libroControlador);
+        ventanaListarLibro.cambiarIdioma(locale);
         }
         if(!ventanaListarLibro.isVisible()){
                 ventanaListarLibro.setVisible(true);
@@ -550,6 +553,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void buscarClienteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarClienteItemActionPerformed
         if(ventanaBuscarUsuario == null){
         ventanaBuscarUsuario = new VentanaBuscarUsuario(usuarioControlador);
+        ventanaActualizarUsuario.cambiarIdioma(locale);
         }
         if(!ventanaBuscarUsuario.isVisible()){
                 ventanaBuscarUsuario.setVisible(true);
@@ -560,6 +564,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void listarClienteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClienteItemActionPerformed
         if(ventanaListarUsuario == null){
         ventanaListarUsuario = new VentanaListarUsuario(usuarioControlador);
+        ventanaListarUsuario.cambiarIdioma(locale);
         }
         if(!ventanaListarUsuario.isVisible()){
                 ventanaListarUsuario.setVisible(true);
@@ -570,6 +575,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void crearPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPrestamoItemActionPerformed
         if(ventanaCrearPrestamo == null){
         ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,listaLibros,listaUsuarios);
+        ventanaCrearPrestamo.cambiarIdioma(locale);
         }
         if(!ventanaCrearPrestamo.isVisible()){
                 ventanaCrearPrestamo.setVisible(true);
@@ -580,6 +586,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void buscarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPrestamoItemActionPerformed
         if(ventanaBuscarPrestamo == null){
         ventanaBuscarPrestamo = new VentanaBuscarPrestamo(prestamoControlador);
+        ventanaBuscarPrestamo.cambiarIdioma(locale);
         }
         if(!ventanaActualizarPrestamo.isVisible()){
                 ventanaActualizarPrestamo.setVisible(true);
@@ -590,6 +597,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void actualizarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPrestamoItemActionPerformed
         if(ventanaActualizarPrestamo == null){
         ventanaActualizarPrestamo = new VentanaActualizarPrestamo(prestamoControlador,listaLibros,listaUsuarios);
+        ventanaActualizarPrestamo.cambiarIdioma(locale);
         }
         if(!ventanaActualizarPrestamo.isVisible()){
                 ventanaActualizarPrestamo.setVisible(true);
@@ -600,6 +608,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void listarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPrestamoItemActionPerformed
         if(ventanaListarPrestamo == null){
         ventanaListarPrestamo = new VentanaListarPrestamo(prestamoControlador);
+        ventanaListarPrestamo.cambiarIdioma(locale);
         }
         if(!ventanaListarPrestamo.isVisible()){
                 ventanaListarPrestamo.setVisible(true);
@@ -610,6 +619,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void eliminarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPrestamoItemActionPerformed
         if(ventanaEliminarPrestamo == null){
         ventanaEliminarPrestamo = new VentanaEliminarPrestamo(prestamoControlador);
+        ventanaEliminarPrestamo.cambiarIdioma(locale);
         }
         if(!ventanaEliminarPrestamo.isVisible()){
                 ventanaEliminarPrestamo.setVisible(true);
@@ -622,9 +632,42 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        
        biblioMenu.setText(mensajes.getString("bibliotecaMenu"));
        libroMenu.setText(mensajes.getString("libroMenu"));
+       clienteMenu.setText(mensajes.getString("clienteMenu"));
+       prestamoMenu.setText(mensajes.getString("prestamoMenu"));
+       lenguajeMenu.setText(mensajes.getString("lenguajeMenu"));
+       crearBiblioItem.setText(mensajes.getString("crearBiblioItem"));
+       buscarBiblioItem.setText(mensajes.getString("buscarBiblioItem"));
+       actualizarBiblioItem.setText(mensajes.getString("actualizarBiblioItem"));
+       listarBiblioItem.setText(mensajes.getString("listarBiblioItem"));
+       eliminarBiblioItem.setText(mensajes.getString("eliminarBiblioItem"));
+       crearLibroItem.setText(mensajes.getString("crearLibroItem"));
+       buscarLibroItem.setText(mensajes.getString("buscarLibroItem"));
+       actualizarLibroItem.setText(mensajes.getString("actualizarLibroItem"));
+       listarLibroItem.setText(mensajes.getString("listarLibroItem"));
+       eliminarLibroItem.setText(mensajes.getString("eliminarLibroItem"));
+       crearClienteItem.setText(mensajes.getString("crearClienteItem"));
+       buscarClienteItem.setText(mensajes.getString("buscarClienteItem"));
+       actualizarClienteItem.setText(mensajes.getString("actualizarClienteItem"));
+       listarClienteItem.setText(mensajes.getString("listarClienteItem"));
+       eliminarClienteItem.setText(mensajes.getString("eliminarClienteItem"));
+       crearPrestamoItem.setText(mensajes.getString("crearPrestamoItem"));
+       buscarPrestamoItem.setText(mensajes.getString("buscarPrestamoItem"));
+       actualizarPrestamoItem.setText(mensajes.getString("actualizarPrestamoItem"));
+       listarPrestamoItem.setText(mensajes.getString("listarPrestamoItem"));
+       eliminarPrestamoItem.setText(mensajes.getString("eliminarPrestamoItem"));
+       
        
        if(ventanaCrearBiblioteca!= null){
            ventanaCrearBiblioteca.cambiarIdioma(locale);
+       }
+       if(ventanaActualizarBiblioteca!= null){
+           ventanaActualizarBiblioteca.cambiarIdioma(locale);
+       }
+       if(ventanaBuscarBiblioteca!= null){
+           ventanaBuscarBiblioteca.cambiarIdioma(locale);
+       }
+       if(ventanaEliminarBiblioteca!= null){
+           ventanaEliminarBiblioteca.cambiarIdioma(locale);
        }
     }
     /**
@@ -678,11 +721,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem crearLibroItem;
     private javax.swing.JMenuItem crearPrestamoItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem eliminarBiblioItem;
     private javax.swing.JMenuItem eliminarClienteItem;
     private javax.swing.JMenuItem eliminarLibroItem;
     private javax.swing.JMenuItem eliminarPrestamoItem;
+    private javax.swing.JMenu lenguajeMenu;
     private javax.swing.JMenu libroMenu;
     private javax.swing.JMenuItem listarBiblioItem;
     private javax.swing.JMenuItem listarClienteItem;
@@ -692,7 +735,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemIdiomaEspanol;
     private javax.swing.JMenuItem menuItemIdiomaFrances;
     private javax.swing.JMenuItem menuItemIdiomaIngles;
-    private javax.swing.JMenuItem opcionUnoItem;
     private javax.swing.JMenu prestamoMenu;
     // End of variables declaration//GEN-END:variables
 

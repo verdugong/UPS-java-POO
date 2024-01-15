@@ -64,7 +64,7 @@
                               <Component id="lblCode" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="lblTitulo" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="lblAutor" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTelef" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAño" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="lblPrecio" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="lblDisponible" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -114,7 +114,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtAnio" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="lblTelef" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAño" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -161,7 +161,7 @@
             <Property name="text" type="java.lang.String" value="Autor"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblTelef">
+        <Component class="javax.swing.JLabel" name="lblA&#xf1;o">
           <Properties>
             <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
           </Properties>

@@ -6,7 +6,11 @@ package ec.edu.ups.poo.ejemploguiapp.vista.libro;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.BibliotecaControlador;
 import ec.edu.ups.poo.ejemploguiapp.controlador.LibroControlador;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -15,12 +19,32 @@ import javax.swing.JOptionPane;
 public class VentanaCrearLibro extends javax.swing.JInternalFrame {
     
     private LibroControlador libroControlador;
+    private TitledBorder miBorder;
     /**
      * Creates new form VentanaCrearLibro
      */
     public VentanaCrearLibro(LibroControlador libroControlador) {
         initComponents();
         this.libroControlador = libroControlador;
+        miBorder = BorderFactory.createTitledBorder("Ingresar Datos");
+        jPanel1.setBorder(miBorder);
+    }
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        
+        
+       this.setTitle(mensajes.getString("window.titleLibro"));
+       miBorder.setTitle(mensajes.getString("TBIngresar"));
+       jPanel1.repaint();
+       lblCode.setText(mensajes.getString("lblCode"));
+       lblTitulo.setText(mensajes.getString("lblTitulo"));
+       lblAutor.setText(mensajes.getString("lblAutor"));
+       lblAño.setText(mensajes.getString("lblAño"));
+       lblPrecio.setText(mensajes.getString("lblPrecio"));
+       lblDisponible.setText(mensajes.getString("lblDisponible"));
+       btnSi.setText(mensajes.getString("btnSi"));
+       btnNo.setText(mensajes.getString("btnNo"));
+       btnGuardar.setText(mensajes.getString("btnGuardar"));
     }
 
     /**
@@ -41,7 +65,7 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
         lblCode = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         lblAutor = new javax.swing.JLabel();
-        lblTelef = new javax.swing.JLabel();
+        lblAño = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         txtPrecio = new javax.swing.JTextField();
         lblPrecio = new javax.swing.JLabel();
@@ -69,7 +93,7 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
 
         lblAutor.setText("Autor");
 
-        lblTelef.setText("Año");
+        lblAño.setText("Año");
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +124,7 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
                             .addComponent(lblCode, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblAutor, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTelef, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAño, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblPrecio, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblDisponible, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(12, 12, 12)
@@ -138,7 +162,7 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelef))
+                    .addComponent(lblAño))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,10 +224,10 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutor;
+    private javax.swing.JLabel lblAño;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblDisponible;
     private javax.swing.JLabel lblPrecio;
-    private javax.swing.JLabel lblTelef;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtAnio;
     private javax.swing.JTextField txtAutor;

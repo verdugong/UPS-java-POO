@@ -16,7 +16,11 @@ import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -27,6 +31,7 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
     private PrestamoControlador prestamoControlador;
     private List<Libro> listaLibros;
     private List<Usuario> listaUsuarios;
+    private TitledBorder miBorder;
     
     /**
      * Creates new form VentanaActualizarPrestamo
@@ -36,6 +41,24 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
         this.prestamoControlador = prestamoControlador;
         this.listaLibros = listaLibros;
         this.listaUsuarios = listaUsuarios;
+        
+        miBorder = BorderFactory.createTitledBorder("Actualizar Datos");
+        jPanel1.setBorder(miBorder);
+    }
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+       
+        miBorder.setTitle(mensajes.getString("TBActualizar"));
+       jPanel1.repaint();
+       lblCode.setText(mensajes.getString("lblCode"));
+       lblLibro.setText(mensajes.getString("lblLibro"));
+       lblUsuario.setText(mensajes.getString("lblUsuario"));
+       lblFecha.setText(mensajes.getString("lblFecha"));
+       lblTotal.setText(mensajes.getString("lblTotal"));
+       btnBuscar.setText(mensajes.getString("btnBuscar"));
+       btnActualizar.setText(mensajes.getString("btnActualizar"));
+       btnCancelar.setText(mensajes.getString("btnCancelar"));
     }
 
     /**
@@ -56,7 +79,7 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
         txtTotal = new javax.swing.JTextField();
         lblLibro = new javax.swing.JLabel();
         cmbxLibro = new javax.swing.JComboBox<>();
-        lblBiblioteca = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
         cmbxUsuario = new javax.swing.JComboBox<>();
         lblFecha = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
@@ -113,7 +136,7 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
-        lblBiblioteca.setText("Usuario");
+        lblUsuario.setText("Usuario");
 
         cmbxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbxUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +165,7 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLibro, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblBiblioteca, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -179,7 +202,7 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
                     .addComponent(cmbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,11 +378,11 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cmbxLibro;
     private javax.swing.JComboBox<String> cmbxUsuario;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblBiblioteca;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblLibro;
     private javax.swing.JLabel lblTotal;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtTotal;

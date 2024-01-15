@@ -7,7 +7,11 @@ package ec.edu.ups.poo.ejemploguiapp.vista.usuario;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.UsuarioControlador;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Usuario;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -16,12 +20,29 @@ import javax.swing.JOptionPane;
 public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
 
     private UsuarioControlador usuarioControlador;
+    private TitledBorder miBorder;
     /**
      * Creates new form VentanaEliminarUsuario
      */
     public VentanaEliminarUsuario(UsuarioControlador usuarioControlador) {
         initComponents();
         this.usuarioControlador = usuarioControlador;
+        miBorder = BorderFactory.createTitledBorder("Eliminar Datos");
+        jPanel1.setBorder(miBorder);
+    }
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+       
+        miBorder.setTitle(mensajes.getString("TBEliminar"));
+       jPanel1.repaint();
+       lblID.setText(mensajes.getString("lblID"));
+       lblNombre.setText(mensajes.getString("lblNombre"));
+       lblCorreo.setText(mensajes.getString("lblCorreo"));
+       btnEliminar.setText(mensajes.getString("btnEliminar"));
+       btnCancelar.setText(mensajes.getString("btnCancelar"));
+       btnBuscar.setText(mensajes.getString("btnBuscar"));
+       
     }
 
     /**
@@ -35,14 +56,14 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtId = new javax.swing.JTextField();
-        lblId = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
-        lblDireccion = new javax.swing.JLabel();
+        lblCorreo = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -57,7 +78,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        lblId.setText("ID");
+        lblID.setText("ID");
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +103,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
 
         lblNombre.setText("Nombre");
 
-        lblDireccion.setText("Correo");
+        lblCorreo.setText("Correo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,7 +113,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(71, Short.MAX_VALUE)
-                        .addComponent(lblId)
+                        .addComponent(lblID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -107,7 +128,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addContainerGap()
-                                    .addComponent(lblDireccion)
+                                    .addComponent(lblCorreo)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -124,7 +145,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -133,7 +154,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
@@ -202,8 +223,8 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblDireccion;
-    private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtId;

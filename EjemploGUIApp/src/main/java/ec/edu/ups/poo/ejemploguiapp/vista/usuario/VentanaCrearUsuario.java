@@ -5,7 +5,11 @@
 package ec.edu.ups.poo.ejemploguiapp.vista.usuario;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.UsuarioControlador;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -14,12 +18,27 @@ import javax.swing.JOptionPane;
 public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
     
     private UsuarioControlador usuarioControlador;
+    private TitledBorder miBorder;
     /**
      * Creates new form VentanaCrearUsuario
      */
     public VentanaCrearUsuario(UsuarioControlador usuarioControlador) {
         initComponents();
         this.usuarioControlador = usuarioControlador;
+        miBorder = BorderFactory.createTitledBorder("Ingresar Datos");
+        jPanel1.setBorder(miBorder);
+    }
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+       
+       this.setTitle(mensajes.getString("window.titleUsuario"));
+       miBorder.setTitle(mensajes.getString("TBIngresar"));
+       jPanel1.repaint();
+       lblID.setText(mensajes.getString("lblID"));
+       lblNombre.setText(mensajes.getString("lblNombre"));
+       lblCorreo.setText(mensajes.getString("lblCorreo"));
+       btnGuardar.setText(mensajes.getString("btnGuardar"));
     }
 
     /**
@@ -36,7 +55,7 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
         txtId = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
-        lblId = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
         lblCorreo = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
 
@@ -62,7 +81,7 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
 
         lblNombre.setText("Nombre");
 
-        lblId.setText("ID");
+        lblID.setText("ID");
 
         lblCorreo.setText("Correo");
 
@@ -83,7 +102,7 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblNombre)
-                            .addComponent(lblId))
+                            .addComponent(lblID))
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtId)
@@ -103,7 +122,7 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,7 +179,7 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCorreo;
-    private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtId;

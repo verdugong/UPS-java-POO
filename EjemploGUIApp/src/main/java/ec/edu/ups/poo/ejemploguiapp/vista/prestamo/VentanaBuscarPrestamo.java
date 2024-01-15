@@ -10,7 +10,11 @@ import ec.edu.ups.poo.ejemplouiapp.modelo.Prestamo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -19,12 +23,28 @@ import javax.swing.JOptionPane;
 public class VentanaBuscarPrestamo extends javax.swing.JInternalFrame {
 
     private PrestamoControlador prestamoControlador;
+    private TitledBorder miBorder;
     /**
      * Creates new form VentanaBuscarPrestamo
      */
     public VentanaBuscarPrestamo(PrestamoControlador prestamoControlador) {
         initComponents();
         this.prestamoControlador = prestamoControlador;
+        miBorder = BorderFactory.createTitledBorder("Buscar Datos");
+        jPanel1.setBorder(miBorder);
+    }
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+       
+        miBorder.setTitle(mensajes.getString("TBBuscar"));
+       jPanel1.repaint();
+       lblCode.setText(mensajes.getString("lblCode"));
+       lblLibro.setText(mensajes.getString("lblLibro"));
+       lblUsuario.setText(mensajes.getString("lblUsuario"));
+       lblFecha.setText(mensajes.getString("lblFecha"));
+       lblTotal.setText(mensajes.getString("lblTotal"));
+       btnBuscar.setText(mensajes.getString("btnBuscar"));
     }
 
     /**
@@ -43,8 +63,8 @@ public class VentanaBuscarPrestamo extends javax.swing.JInternalFrame {
         txtTotal = new javax.swing.JTextField();
         txtCode = new javax.swing.JTextField();
         lblLibro = new javax.swing.JLabel();
-        lblBiblioteca = new javax.swing.JLabel();
-        lblCode1 = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
+        lblCode = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         lblTotal = new javax.swing.JLabel();
@@ -82,9 +102,9 @@ public class VentanaBuscarPrestamo extends javax.swing.JInternalFrame {
 
         lblLibro.setText("Libro");
 
-        lblBiblioteca.setText("Usuario");
+        lblUsuario.setText("Usuario");
 
-        lblCode1.setText("Código");
+        lblCode.setText("Código");
 
         lblFecha.setText("Fecha");
 
@@ -105,8 +125,8 @@ public class VentanaBuscarPrestamo extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLibro, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblCode1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblBiblioteca, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblCode, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -126,14 +146,14 @@ public class VentanaBuscarPrestamo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(lblCode1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,11 +237,11 @@ public class VentanaBuscarPrestamo extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblBiblioteca;
-    private javax.swing.JLabel lblCode1;
+    private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblLibro;
     private javax.swing.JLabel lblTotal;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtLibro;

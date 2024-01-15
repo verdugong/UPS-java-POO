@@ -6,7 +6,11 @@ package ec.edu.ups.poo.ejemploguiapp.vista.libro;
 
 import ec.edu.ups.poo.ejemploguiapp.controlador.LibroControlador;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Libro;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -15,13 +19,32 @@ import javax.swing.JOptionPane;
 public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
 
     private LibroControlador libroControlador;
+    private TitledBorder miBorder;
     /**
      * Creates new form VentanaBuscarLibro
      */
     public VentanaBuscarLibro(LibroControlador libroControlador) {
         initComponents();
         this.libroControlador = libroControlador;
+        miBorder = BorderFactory.createTitledBorder("Buscar Datos");
+        jPanel1.setBorder(miBorder);
     }
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        
+        miBorder.setTitle(mensajes.getString("TBBuscar"));
+       jPanel1.repaint();
+       lblCode.setText(mensajes.getString("lblCode"));
+       lblTitulo.setText(mensajes.getString("lblTitulo"));
+       lblAutor.setText(mensajes.getString("lblAutor"));
+       lblAño.setText(mensajes.getString("lblAño"));
+       lblPrecio.setText(mensajes.getString("lblPrecio"));
+       lblDisponible.setText(mensajes.getString("lblDisponible"));
+       btnSi.setText(mensajes.getString("btnSi"));
+       btnBuscar.setText(mensajes.getString("btnBuscar"));
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +69,7 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
         lblAutor = new javax.swing.JLabel();
         btnSi = new javax.swing.JRadioButton();
         btnNo = new javax.swing.JRadioButton();
-        lblTelef = new javax.swing.JLabel();
+        lblAño = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -93,7 +116,7 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
         btnNo.setText("NO");
         btnNo.setEnabled(false);
 
-        lblTelef.setText("Año");
+        lblAño.setText("Año");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,7 +133,7 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblAutor, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTelef, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAño, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblPrecio, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblDisponible, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(12, 12, 12)
@@ -145,7 +168,7 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelef))
+                    .addComponent(lblAño))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,10 +231,10 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton btnSi;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutor;
+    private javax.swing.JLabel lblAño;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblDisponible;
     private javax.swing.JLabel lblPrecio;
-    private javax.swing.JLabel lblTelef;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtAnio;
     private javax.swing.JTextField txtAutor;
