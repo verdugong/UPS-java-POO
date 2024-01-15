@@ -29,8 +29,11 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
     private PrestamoControlador prestamoControlador;
     private List<Libro> listaLibros;
     private List<Usuario> listaUsuarios;
+<<<<<<< HEAD
     private TitledBorder miBorder;
     
+=======
+>>>>>>> d13c2569eb787b9e974ae1a782fcbac74574a394
     /**
      * Creates new form VentanaCrearPrestamo
      */
@@ -39,6 +42,7 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
         this.prestamoControlador = prestamoControlador;
         this.listaLibros = listaLibros;
         this.listaUsuarios = listaUsuarios;
+<<<<<<< HEAD
         miBorder = BorderFactory.createTitledBorder("Ingresar Datos");
         jPanel1.setBorder(miBorder);
     }
@@ -55,6 +59,12 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
        lblFecha.setText(mensajes.getString("lblFecha"));
        lblTotal.setText(mensajes.getString("lblTotal"));
        btnPrestar.setText(mensajes.getString("btnPrestar"));
+=======
+        System.out.println("Número de libros: " + listaLibros.size());
+        System.out.println("Número de usuarios: " + listaUsuarios.size());
+        llenarComboBoxLibros();
+        llenarComboBoxUsuarios();
+>>>>>>> d13c2569eb787b9e974ae1a782fcbac74574a394
     }
     
 
@@ -113,14 +123,13 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
 
         lblUsuario.setText("Usuario");
 
-        cmbxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbxUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbxUsuarioActionPerformed(evt);
             }
         });
 
-        lblFecha.setText("Fecha");
+        lblFecha.setText("Fecha (yyyy-MM-dd HH:mm:ss)");
 
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +168,7 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(102, 102, 102)
                 .addComponent(btnPrestar)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,18 +214,18 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void llenarComboBoxLibros() {
+    private void llenarComboBoxLibros() {  // Limpiar los items existentes para evitar duplicados
         for (Libro libro : listaLibros) {
             cmbxLibro.addItem(libro.getTitulo()); 
         }
     }
     
-    private void llenarComboBoxUsuarios() {
-        // Llena el ComboBox de usuarios con la información de la lista de usuarios
+    private void llenarComboBoxUsuarios() {  // Limpiar los items existentes para evitar duplicados
         for (Usuario usuario : listaUsuarios) {
-            cmbxUsuario.addItem(usuario.getNombre());  // Ajusta según tus necesidades
+            cmbxUsuario.addItem(usuario.getNombre()); 
         }
     }
+    
     private void btnPrestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestarActionPerformed
         int id = Integer.parseInt(txtCode.getText());
         String tituloLibro = (String) cmbxLibro.getSelectedItem();
@@ -276,11 +285,11 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCodeActionPerformed
 
     private void cmbxLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxLibroActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cmbxLibroActionPerformed
 
     private void cmbxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxUsuarioActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cmbxUsuarioActionPerformed
 
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed

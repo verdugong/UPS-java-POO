@@ -34,6 +34,7 @@ import ec.edu.ups.poo.ejemploguiapp.vista.usuario.VentanaEliminarUsuario;
 import ec.edu.ups.poo.ejemploguiapp.vista.usuario.VentanaListarUsuario;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Libro;
 import ec.edu.ups.poo.ejemplouiapp.modelo.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -73,8 +74,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private LibroControlador libroControlador;
     private IPrestamoDAO prestamoDAO;
     private PrestamoControlador prestamoControlador;
-    private List<Libro> listaLibros;
-    private List<Usuario> listaUsuarios;
+    private List<Libro> listaLibros = new ArrayList<>();
+    private List<Usuario> listaUsuarios = new ArrayList<>();
     
     /**
      * Creates new form VentanaPrincipal
@@ -89,8 +90,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         libroControlador = new LibroControlador(libroDAO);
         prestamoDAO = new PrestamoDAO();
         prestamoControlador = new PrestamoControlador(prestamoDAO, libroDAO, usuarioDAO);
-        this.listaLibros = listaLibros;
-        this.listaUsuarios = listaUsuarios;
         locale = new Locale("es", "EC");
     }
 
@@ -574,8 +573,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void crearPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPrestamoItemActionPerformed
         if(ventanaCrearPrestamo == null){
+<<<<<<< HEAD
         ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,listaLibros,listaUsuarios);
         ventanaCrearPrestamo.cambiarIdioma(locale);
+=======
+        ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador, listaLibros, listaUsuarios);
+>>>>>>> d13c2569eb787b9e974ae1a782fcbac74574a394
         }
         if(!ventanaCrearPrestamo.isVisible()){
                 ventanaCrearPrestamo.setVisible(true);
@@ -588,9 +591,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaBuscarPrestamo = new VentanaBuscarPrestamo(prestamoControlador);
         ventanaBuscarPrestamo.cambiarIdioma(locale);
         }
-        if(!ventanaActualizarPrestamo.isVisible()){
-                ventanaActualizarPrestamo.setVisible(true);
-                desktopPane.add(ventanaActualizarPrestamo);
+        if(!ventanaBuscarPrestamo.isVisible()){
+                ventanaBuscarPrestamo.setVisible(true);
+                desktopPane.add(ventanaBuscarPrestamo);
         }
     }//GEN-LAST:event_buscarPrestamoItemActionPerformed
 
