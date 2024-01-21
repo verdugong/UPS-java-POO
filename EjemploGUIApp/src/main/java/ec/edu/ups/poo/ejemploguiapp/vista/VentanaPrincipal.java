@@ -573,13 +573,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void crearPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPrestamoItemActionPerformed
         if(ventanaCrearPrestamo == null){
-<<<<<<< HEAD
+
         ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,listaLibros,listaUsuarios);
         ventanaCrearPrestamo.cambiarIdioma(locale);
-=======
         ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador, listaLibros, listaUsuarios);
->>>>>>> d13c2569eb787b9e974ae1a782fcbac74574a394
-        }
+
         if(!ventanaCrearPrestamo.isVisible()){
                 ventanaCrearPrestamo.setVisible(true);
                 desktopPane.add(ventanaCrearPrestamo);

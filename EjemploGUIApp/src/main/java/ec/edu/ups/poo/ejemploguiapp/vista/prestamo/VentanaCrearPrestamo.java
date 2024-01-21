@@ -29,11 +29,10 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
     private PrestamoControlador prestamoControlador;
     private List<Libro> listaLibros;
     private List<Usuario> listaUsuarios;
-<<<<<<< HEAD
+
     private TitledBorder miBorder;
     
-=======
->>>>>>> d13c2569eb787b9e974ae1a782fcbac74574a394
+
     /**
      * Creates new form VentanaCrearPrestamo
      */
@@ -42,7 +41,7 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
         this.prestamoControlador = prestamoControlador;
         this.listaLibros = listaLibros;
         this.listaUsuarios = listaUsuarios;
-<<<<<<< HEAD
+
         miBorder = BorderFactory.createTitledBorder("Ingresar Datos");
         jPanel1.setBorder(miBorder);
     }
@@ -59,15 +58,15 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
        lblFecha.setText(mensajes.getString("lblFecha"));
        lblTotal.setText(mensajes.getString("lblTotal"));
        btnPrestar.setText(mensajes.getString("btnPrestar"));
-=======
+
         System.out.println("Número de libros: " + listaLibros.size());
         System.out.println("Número de usuarios: " + listaUsuarios.size());
         llenarComboBoxLibros();
         llenarComboBoxUsuarios();
->>>>>>> d13c2569eb787b9e974ae1a782fcbac74574a394
-    }
-    
 
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
