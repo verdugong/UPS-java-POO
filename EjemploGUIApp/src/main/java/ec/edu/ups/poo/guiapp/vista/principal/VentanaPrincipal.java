@@ -40,6 +40,9 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import java.awt.Image;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -94,19 +97,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         prestamoControlador = new PrestamoControlador(prestamoDAO, libroDAO, usuarioDAO);
         locale = new Locale("es", "EC");
         
-        String rutaImagen = "/imagenes/imagenJava2.png";
-        
-        // Crea un ImageIcon con la imagen
-        ImageIcon icono = new ImageIcon(getClass().getResource(rutaImagen));
-        
-        // Crea un JLabel y asigna el ImageIcon
-        JLabel labelImagen = new JLabel(icono);
-        
-        // Establece el tamaño y la posición del JLabel
-        labelImagen.setBounds(10, 10, icono.getIconWidth(), icono.getIconHeight());
-        
-        // Agrega el JLabel al JInternalFrame
-        getContentPane().add(labelImagen);
     }
 
     /**
@@ -118,7 +108,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new javax.swing.JDesktopPane();
+        ImageIcon icon=new ImageIcon(getClass().getResource("/imagenes/bibliotecA virtual.png"));
+        Image image=icon.getImage();
+        desktopPane = new javax.swing.JDesktopPane(){
+
+            public void paintComponent (Graphics g){
+                g.drawImage(image,0,0, getWidth(), getHeight(),this);
+            }
+        };
         menuBar = new javax.swing.JMenuBar();
         biblioMenu = new javax.swing.JMenu();
         crearBiblioItem = new javax.swing.JMenuItem();
@@ -360,6 +357,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lenguajeMenu.setMnemonic('e');
         lenguajeMenu.setText("Lenguaje");
 
+        menuItemIdiomaFrances.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Franciaaaaaa.png"))); // NOI18N
         menuItemIdiomaFrances.setMnemonic('y');
         menuItemIdiomaFrances.setText("Francés");
         menuItemIdiomaFrances.addActionListener(new java.awt.event.ActionListener() {
@@ -369,6 +367,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         lenguajeMenu.add(menuItemIdiomaFrances);
 
+        menuItemIdiomaIngles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Englishhhh.png"))); // NOI18N
         menuItemIdiomaIngles.setText("Inglés");
         menuItemIdiomaIngles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -377,6 +376,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         lenguajeMenu.add(menuItemIdiomaIngles);
 
+        menuItemIdiomaEspanol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Spanishhhh.png"))); // NOI18N
         menuItemIdiomaEspanol.setText("Español");
         menuItemIdiomaEspanol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -538,11 +538,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        cambiarIdioma();
     }//GEN-LAST:event_menuItemIdiomaEspanolActionPerformed
 
-    private void menuItemIdiomaFrancesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemIdiomaFrancesActionPerformed
-        locale = new Locale("fr", "FR");
-       cambiarIdioma();
-    }//GEN-LAST:event_menuItemIdiomaFrancesActionPerformed
-
     private void buscarLibroItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLibroItemActionPerformed
         if(ventanaBuscarLibro == null){
         ventanaBuscarLibro = new VentanaBuscarLibro(libroControlador);
@@ -589,18 +584,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void crearPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPrestamoItemActionPerformed
         if(ventanaCrearPrestamo == null){
-<<<<<<< HEAD:EjemploGUIApp/src/main/java/ec/edu/ups/poo/ejemploguiapp/vista/VentanaPrincipal.java
-
         ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,listaLibros,listaUsuarios);
         ventanaCrearPrestamo.cambiarIdioma(locale);
-        ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador, listaLibros, listaUsuarios);
-
-=======
-        ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,listaLibros,listaUsuarios);
-        ventanaCrearPrestamo.cambiarIdioma(locale);
-        ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador, listaLibros, listaUsuarios);
         }
->>>>>>> 60470713e1aeaaec22244b0bbe7ca7fa625a93b4:EjemploGUIApp/src/main/java/ec/edu/ups/poo/guiapp/vista/principal/VentanaPrincipal.java
         if(!ventanaCrearPrestamo.isVisible()){
                 ventanaCrearPrestamo.setVisible(true);
                 desktopPane.add(ventanaCrearPrestamo);
@@ -651,6 +637,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_eliminarPrestamoItemActionPerformed
 
+    private void menuItemIdiomaFrancesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemIdiomaFrancesActionPerformed
+        locale = new Locale("fr", "FR");
+        cambiarIdioma();
+    }//GEN-LAST:event_menuItemIdiomaFrancesActionPerformed
+
     public void cambiarIdioma(){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
        
@@ -692,6 +683,54 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        }
        if(ventanaEliminarBiblioteca!= null){
            ventanaEliminarBiblioteca.cambiarIdioma(locale);
+       }
+       if(ventanaListarBiblioteca!= null){
+           ventanaListarBiblioteca.cambiarIdioma(locale);
+       }
+       if(ventanaCrearLibro!= null){
+           ventanaCrearLibro.cambiarIdioma(locale);
+       }
+       if(ventanaActualizarLibro!= null){
+           ventanaActualizarLibro.cambiarIdioma(locale);
+       }
+       if(ventanaBuscarLibro!= null){
+           ventanaBuscarLibro.cambiarIdioma(locale);
+       }
+       if(ventanaEliminarLibro!= null){
+           ventanaEliminarLibro.cambiarIdioma(locale);
+       }
+       if(ventanaListarLibro!= null){
+           ventanaListarLibro.cambiarIdioma(locale);
+       }
+       if(ventanaCrearPrestamo!= null){
+           ventanaCrearPrestamo.cambiarIdioma(locale);
+       }
+       if(ventanaActualizarPrestamo!= null){
+           ventanaActualizarPrestamo.cambiarIdioma(locale);
+       }
+       if(ventanaBuscarPrestamo!= null){
+           ventanaBuscarPrestamo.cambiarIdioma(locale);
+       }
+       if(ventanaEliminarPrestamo!= null){
+           ventanaEliminarPrestamo.cambiarIdioma(locale);
+       }
+       if(ventanaListarPrestamo!= null){
+           ventanaListarPrestamo.cambiarIdioma(locale);
+       }
+       if(ventanaCrearUsuario!= null){
+           ventanaCrearUsuario.cambiarIdioma(locale);
+       }
+       if(ventanaActualizarUsuario!= null){
+           ventanaActualizarUsuario.cambiarIdioma(locale);
+       }
+       if(ventanaBuscarUsuario!= null){
+           ventanaBuscarUsuario.cambiarIdioma(locale);
+       }
+       if(ventanaEliminarUsuario!= null){
+           ventanaEliminarUsuario.cambiarIdioma(locale);
+       }
+       if(ventanaListarUsuario!= null){
+           ventanaListarUsuario.cambiarIdioma(locale);
        }
     }
     /**

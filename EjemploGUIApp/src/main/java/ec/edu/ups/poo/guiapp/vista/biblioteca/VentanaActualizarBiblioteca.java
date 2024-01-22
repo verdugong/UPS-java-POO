@@ -11,7 +11,9 @@ import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.TitledBorder;
-
+import java.awt.Image;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 /**
  *
  * @author sebas
@@ -65,6 +67,13 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
         btnActualizar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        ImageIcon icon=new ImageIcon(getClass().getResource("/imagenes/Actualizar-.png"));
+        Image image=icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent (Graphics g){
+                g.drawImage(image,0,0, getWidth(), getHeight(),this);
+            }
+        };
 
         setClosable(true);
         setIconifiable(true);
@@ -108,37 +117,55 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
             }
         });
 
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 245, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCode, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTelef, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnActualizar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCode, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTelef, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnActualizar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCode)
+                                    .addComponent(txtNombre)
+                                    .addComponent(txtDireccion)
+                                    .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCode)
-                            .addComponent(txtNombre)
-                            .addComponent(txtDireccion)
-                            .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(61, 61, 61)
+                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,7 +178,7 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTelef))
@@ -159,7 +186,7 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnCancelar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,9 +200,7 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -217,7 +242,6 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
         limpiarDatos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-
     private void limpiarDatos(){
         txtCode.setEditable(true);
         txtCode.setText("");
@@ -229,6 +253,7 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblDireccion;

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package ec.edu.ups.poo.guiapp.vista.prestamo;
 
 import ec.edu.ups.poo.guiapp.controlador.BibliotecaControlador;
@@ -20,7 +16,9 @@ import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.TitledBorder;
-
+import java.awt.Image;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 /**
  *
  * @author sebas

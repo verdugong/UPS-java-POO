@@ -11,7 +11,9 @@ import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.TitledBorder;
-
+import java.awt.Image;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 /**
  *
  * @author sebas
@@ -61,6 +63,13 @@ public class VentanaBuscarBiblioteca extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         txtTelef = new javax.swing.JTextField();
+        ImageIcon icon=new ImageIcon(getClass().getResource("/imagenes/Buscar.png"));
+        Image image=icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent (Graphics g){
+                g.drawImage(image,0,0, getWidth(), getHeight(),this);
+            }
+        };
 
         setClosable(true);
         setIconifiable(true);
@@ -96,35 +105,48 @@ public class VentanaBuscarBiblioteca extends javax.swing.JInternalFrame {
 
         txtTelef.setEditable(false);
 
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 245, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCode)
-                        .addGap(12, 12, 12)
-                        .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTelef)
+                            .addComponent(lblDireccion)
+                            .addComponent(lblNombre)
+                            .addComponent(lblCode))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTelef, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNombre)
-                                .addComponent(txtDireccion)
-                                .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -136,13 +158,13 @@ public class VentanaBuscarBiblioteca extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTelef))
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscar)
-                .addGap(77, 77, 77))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,7 +178,7 @@ public class VentanaBuscarBiblioteca extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -181,6 +203,7 @@ public class VentanaBuscarBiblioteca extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblDireccion;

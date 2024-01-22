@@ -238,6 +238,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemIdiomaFrances">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/Franciaaaaaa.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="121"/>
                 <Property name="text" type="java.lang.String" value="Franc&#xe9;s"/>
               </Properties>
@@ -247,6 +250,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemIdiomaIngles">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/Englishhhh.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ingl&#xe9;s"/>
               </Properties>
               <Events>
@@ -255,6 +261,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemIdiomaEspanol">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/Spanishhhh.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Espa&#xf1;ol"/>
               </Properties>
               <Events>
@@ -300,6 +309,10 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="desktopPane">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xa;&#xa;    public void paintComponent (Graphics g){&#xa;        g.drawImage(image,0,0, getWidth(), getHeight(),this);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon icon=new ImageIcon(getClass().getResource(&quot;/imagenes/bibliotecA virtual.png&quot;));&#xa;Image image=icon.getImage();"/>
+      </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="true"/>
