@@ -234,7 +234,9 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "No se a encontrado el usuario");
         }else{
             txtNombre.setText(usuario.getNombre());
+            txtNombre.setEditable(true);
             txtCorreo.setText(usuario.getCorreo());
+            txtCorreo.setEditable(true);
             txtId.setEditable(false);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed

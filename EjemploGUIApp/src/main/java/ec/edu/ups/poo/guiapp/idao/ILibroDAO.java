@@ -14,6 +14,7 @@ import java.util.List;
 public interface ILibroDAO {
     List<Libro> listaLibro();
     Libro obtenerLibro(int id);
+    Libro obtenerLibroPorTitulo(String titulo);
     void crearLibro(Libro libro);
     void actualizarLibro(int id, Libro libro);
     void eliminarLibro(int id);

@@ -21,66 +21,31 @@ import java.util.List;
 public class PrestamoControlador {
     private IPrestamoDAO prestamoDAO;
     private Prestamo prestamo;
-    
-    private ILibroDAO libroDAO;
-    private Libro libro;
-    
-    private IUsuarioDAO usuarioDAO;
-    private Usuario usuario;
 
     public PrestamoControlador(IPrestamoDAO prestamoDAO, ILibroDAO libroDAO, IUsuarioDAO usuarioDAO) {
         this.prestamoDAO = prestamoDAO;
-        this.libroDAO = libroDAO;
-        this.usuarioDAO = usuarioDAO;
-    }
-
-                  
-    
-    public void crearPrestamo(int id, List<Libro> libros, Usuario usuario, Date fechaPrestamo, double total) throws UsuarioNoEncontradoException, LibroNoEncontradoException{
-        if(usuario != null){
-            prestamo = new Prestamo(id, libros, usuario, fechaPrestamo, total);
-            prestamo.setUsuario(usuario);
-             for (Libro libro : libros) {
-                Libro libroExistente = libroDAO.obtenerLibro(libro.getCodigo());
-                if (libroExistente != null) {
-                    prestamo.agregarLibro(libroExistente);
-                } else {
-                    // Lanzar excepción si un libro no se encuentra
-                    throw new LibroNoEncontradoException("No se ha encontrado el libro con ID: " + libro.getCodigo());
-                }
-            }
-            prestamoDAO.crearPrestamo(prestamo);
-        }else{
-            throw new UsuarioNoEncontradoException("No se ha encontrado el usuario");
-        }        
     }
     
-    public class UsuarioNoEncontradoException extends Exception {
-        public UsuarioNoEncontradoException(String mensaje) {
-            super(mensaje);
-        }
-    }
-
-    public class LibroNoEncontradoException extends Exception {
-        public LibroNoEncontradoException(String mensaje) {
-            super(mensaje);
-        }
+    public void crearPrestamo(String id, List<Libro> libros, List<Usuario> usuarios, Date fechaPrestamo, double total){
+        prestamo = new Prestamo(id, libros, usuarios, fechaPrestamo, total);
+        prestamoDAO.crearPrestamo(prestamo);
     }
     
-    public void actualizarPrestamo(int id, List<Libro> libros, Usuario usuario, Date fechaPrestamo, double total){
+    public void actualizarPrestamo(String id, List<Libro> libros, List<Usuario> usuarios, Date fechaPrestamo, double total){
         prestamo = prestamoDAO.obtenerPrestamo(id);
-        prestamo.setUsuario(usuario);
+        prestamo.setLibros(libros);
+        prestamo.setUsuarios(usuarios);
         prestamo.setFechaPrestamo(fechaPrestamo);
         prestamo.setTotal(total);
         prestamoDAO.actualizarPrestamo(id, prestamo);
     }
     
-    public void eliminarPrestamo(int id){
+    public void eliminarPrestamo(String id){
         prestamo = prestamoDAO.obtenerPrestamo(id);
         prestamoDAO.eliminarPrestamo(prestamo.getId());
     }
     
-    public Prestamo buscarPrestamoPorId(int id){
+    public Prestamo buscarPrestamoPorId(String id){
         prestamo = prestamoDAO.obtenerPrestamo(id);
         return prestamo;
     }

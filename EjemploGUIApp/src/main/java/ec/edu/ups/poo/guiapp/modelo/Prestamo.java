@@ -6,51 +6,61 @@ package ec.edu.ups.poo.guiapp.modelo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
  * @author sebas
  */
 public class Prestamo {
-    private int id;
+    private String id;
     private List<Libro> libros;
-    private Usuario usuario;
+    private List<Usuario> usuarios;
     private Date fechaPrestamo;
     private double total;
 
     public Prestamo() {
         libros = new ArrayList<>();
+        usuarios = new ArrayList<>();
         fechaPrestamo = new Date();
     }
 
-    public Prestamo(int id, Date fechaPrestamo) {
+    public Prestamo(String id, Date fechaPrestamo, double total) {
         this.id = id;
-        this.fechaPrestamo = fechaPrestamo;
-        libros = new ArrayList<>();
-    }
-
-    public Prestamo(int id, List<Libro> libros, Usuario usuario, Date fechaPrestamo, double total) {
-        this.id = id;
-        this.libros = libros;
-        this.usuario = usuario;
         this.fechaPrestamo = fechaPrestamo;
         this.total = total;
     }
-    
-    public int getId() {
+
+    public Prestamo(String id, List<Libro> libros, List<Usuario> usuarios, Date fechaPrestamo, double total) {
+        this.id = id;
+        this.libros = libros;
+        this.usuarios = usuarios;
+        this.fechaPrestamo = fechaPrestamo;
+        this.total = total;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
-    } 
-
-    public Usuario getUsuario() {
-        return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public List<Libro> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(List<Libro> libros) {
+        this.libros = libros;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public Date getFechaPrestamo() {
@@ -72,10 +82,6 @@ public class Prestamo {
     public void agregarLibro(Libro libro){
         libros.add(libro);
     }
-
-    public List<Libro> getLibros() {
-        return libros;
-    }
     
     public void calcularTotal(){
         double total=0;
@@ -87,8 +93,8 @@ public class Prestamo {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + this.id;
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -104,11 +110,12 @@ public class Prestamo {
             return false;
         }
         final Prestamo other = (Prestamo) obj;
-        return this.id == other.id;
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
-        return "Prestamo{" + "id=" + id + ", libros=" + libros + ", usuario=" + usuario + ", fechaPrestamo=" + fechaPrestamo +  ", total=" + total + '}';
+        return "Prestamo{" + "id=" + id + ", libros=" + libros + ", usuarios=" + usuarios + ", fechaPrestamo=" + fechaPrestamo + ", total=" + total + '}';
     }
+
 }

@@ -13,8 +13,8 @@ import java.util.List;
  */
 public interface IPrestamoDAO {
     List<Prestamo> listarPrestamo();
-    Prestamo obtenerPrestamo(int id);
+    Prestamo obtenerPrestamo(String id);
     void crearPrestamo(Prestamo prestamo);
-    void actualizarPrestamo(int id, Prestamo prestamo);
-    void eliminarPrestamo(int id);
+    void actualizarPrestamo(String id, Prestamo prestamo);
+    void eliminarPrestamo(String id);
 }

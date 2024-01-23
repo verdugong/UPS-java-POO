@@ -6,9 +6,7 @@ package ec.edu.ups.poo.guiapp.dao;
 
 import ec.edu.ups.poo.guiapp.idao.IPrestamoDAO;
 import ec.edu.ups.poo.guiapp.modelo.Prestamo;
-import ec.edu.ups.poo.guiapp.modelo.Usuario;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,9 +32,9 @@ public class PrestamoDAO implements IPrestamoDAO{
     }
 
     @Override
-    public Prestamo obtenerPrestamo(int id) {
+    public Prestamo obtenerPrestamo(String id) {
         for (Prestamo prestamo : listaPrestamos) {
-            if(prestamo.getId() == id){
+            if(prestamo.getId().equalsIgnoreCase(id)){
                 return prestamo;
             }
         }
@@ -44,10 +42,10 @@ public class PrestamoDAO implements IPrestamoDAO{
     }
 
     @Override
-    public void actualizarPrestamo(int id, Prestamo prestamo) {
+    public void actualizarPrestamo(String id, Prestamo prestamo) {
         for (int i = 0; i < listaPrestamos.size(); i++) {
             Prestamo prestamoEncontrado = listaPrestamos.get(i);
-            if(prestamoEncontrado.getId() == id){
+            if(prestamoEncontrado.getId().equalsIgnoreCase(id)){
                 listaPrestamos.set(i, prestamo);
                 break;
             }            
@@ -55,10 +53,10 @@ public class PrestamoDAO implements IPrestamoDAO{
     }
 
     @Override
-    public void eliminarPrestamo(int id) {
+    public void eliminarPrestamo(String id) {
         for (int i = 0; i < listaPrestamos.size(); i++) {
             Prestamo prestamoEncontrado = listaPrestamos.get(i);
-            if(prestamoEncontrado.getId() == id){
+            if(prestamoEncontrado.getId().equalsIgnoreCase(id)){
                 listaPrestamos.remove(i);
                 break;
             }            

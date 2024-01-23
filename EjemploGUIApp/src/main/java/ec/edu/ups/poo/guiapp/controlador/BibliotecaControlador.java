@@ -6,6 +6,9 @@ package ec.edu.ups.poo.guiapp.controlador;
 
 import ec.edu.ups.poo.guiapp.modelo.Biblioteca;
 import ec.edu.ups.poo.guiapp.idao.IBibliotecaDAO;
+import ec.edu.ups.poo.guiapp.modelo.Libro;
+import ec.edu.ups.poo.guiapp.modelo.Prestamo;
+import ec.edu.ups.poo.guiapp.modelo.Usuario;
 import java.util.List;
 
 /**
@@ -20,8 +23,8 @@ public class BibliotecaControlador {
         this.bibliotecaDAO = bibliotecaDAO;
     }
     
-    public void crearBiblioteca(int codigo, String nombre, String direccion, String telefono){
-        biblioteca = new Biblioteca(codigo, nombre, direccion, telefono);
+    public void crearBiblioteca(int codigo, String nombre, String direccion, String telefono, List<Libro> libros, List<Prestamo> prestamos, List<Usuario> usuarios){
+        biblioteca = new Biblioteca(codigo, nombre, direccion, telefono, libros, prestamos, usuarios);
         bibliotecaDAO.crearBiblioteca(biblioteca);
     }
     
@@ -30,11 +33,14 @@ public class BibliotecaControlador {
         return biblioteca;
     }
     
-    public void actualizarBiblioteca(int codigo, String nombre, String direccion, String telefono){
+    public void actualizarBiblioteca(int codigo, String nombre, String direccion, String telefono, List<Libro> libros, List<Prestamo> prestamos, List<Usuario> usuarios){
         biblioteca = bibliotecaDAO.obtenerBiblioteca(codigo);
         biblioteca.setNombre(nombre);
         biblioteca.setDireccion(direccion);
         biblioteca.setTelefono(telefono);
+        biblioteca.setLibros(libros);
+        biblioteca.setPrestamos(prestamos);
+        biblioteca.setUsuarios(usuarios);
         bibliotecaDAO.actualizarBiblioteca(codigo, biblioteca);
     }
     
