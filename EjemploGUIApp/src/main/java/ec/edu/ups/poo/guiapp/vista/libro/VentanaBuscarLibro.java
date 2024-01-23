@@ -81,6 +81,7 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Datos"));
 
         txtCode.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +90,7 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
             }
         });
 
+        lblCode.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCode.setText("Código");
 
         btnBuscar.setText("Buscar");
@@ -100,8 +102,10 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
 
         txtPrecio.setEditable(false);
 
+        lblPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPrecio.setText("Precio");
 
+        lblDisponible.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblDisponible.setText("Disponible");
 
         txtTitulo.setEditable(false);
@@ -110,8 +114,10 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
 
         txtAnio.setEditable(false);
 
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTitulo.setText("Título");
 
+        lblAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblAutor.setText("Autor");
 
         btnSi.setText("SÍ");
@@ -121,7 +127,10 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
         btnNo.setText("NO");
         btnNo.setEnabled(false);
 
+        lblAño.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblAño.setText("Año");
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);

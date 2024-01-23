@@ -73,6 +73,7 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Datos"));
 
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +82,7 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        lblID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblID.setText("ID");
 
         btnBuscar.setText("Buscar");
@@ -90,13 +92,17 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNombre.setText("Nombre");
 
+        lblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCorreo.setText("Correo");
 
         txtNombre.setEditable(false);
 
         txtCorreo.setEditable(false);
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -114,7 +120,7 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblID)

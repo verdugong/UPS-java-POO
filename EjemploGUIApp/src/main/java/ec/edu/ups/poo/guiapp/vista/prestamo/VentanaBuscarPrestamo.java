@@ -79,6 +79,7 @@ public class VentanaBuscarPrestamo extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Datos"));
 
         btnBuscar.setText("Buscar");
@@ -105,12 +106,16 @@ public class VentanaBuscarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        lblLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblLibro.setText("Libro");
 
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblUsuario.setText("Usuario");
 
+        lblCode.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCode.setText("Código");
 
+        lblFecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblFecha.setText("Fecha");
 
         txtFecha.setEditable(false);
@@ -120,7 +125,10 @@ public class VentanaBuscarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotal.setText("Total");
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);

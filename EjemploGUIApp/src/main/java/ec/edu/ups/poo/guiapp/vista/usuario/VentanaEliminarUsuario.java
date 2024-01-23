@@ -79,6 +79,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Datos"));
 
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +88,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        lblID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblID.setText("ID");
 
         btnBuscar.setText("Buscar");
@@ -110,9 +112,13 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNombre.setText("Nombre");
 
+        lblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCorreo.setText("Correo");
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -136,7 +142,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -42,6 +42,9 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Ingresar Datos"/>
@@ -86,7 +89,7 @@
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="72" max="32767" attributes="0"/>
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
                   <Component id="lblFecha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Component id="txtFecha" min="-2" pref="157" max="-2" attributes="0"/>
@@ -139,6 +142,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblCode">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
           </Properties>
         </Component>
@@ -149,6 +155,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblLibro">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Libro"/>
           </Properties>
         </Component>
@@ -162,6 +171,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblUsuario">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Usuario"/>
           </Properties>
         </Component>
@@ -180,6 +192,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblFecha">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Fecha (yyyy-MM-dd HH:mm:ss)"/>
           </Properties>
         </Component>
@@ -190,6 +205,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblTotal">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Total"/>
           </Properties>
         </Component>
@@ -207,6 +225,11 @@
           </Events>
         </Component>
         <Container class="javax.swing.JDesktopPane" name="jDesktopPane1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xa;    public void paintComponent (Graphics g){&#xa;        g.drawImage(image,0,0, getWidth(), getHeight(),this);&#xa;}&#xa;}"/>
             <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon icon=new ImageIcon(getClass().getResource(&quot;/imagenes/CrearIMG.png&quot;));&#xa;Image image=icon.getImage();"/>

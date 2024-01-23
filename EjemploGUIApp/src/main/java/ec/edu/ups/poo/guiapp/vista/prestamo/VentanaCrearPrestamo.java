@@ -97,8 +97,10 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Crear Nuevo Prestamo");
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingresar Datos"));
 
+        lblCode.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCode.setText("Código");
 
         txtCode.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +109,7 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        lblLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblLibro.setText("Libro");
 
         cmbxLibro.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +118,7 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblUsuario.setText("Usuario");
 
         cmbxUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +127,7 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        lblFecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblFecha.setText("Fecha (yyyy-MM-dd HH:mm:ss)");
 
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +136,7 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotal.setText("Total");
 
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +151,8 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
                 btnPrestarActionPerformed(evt);
             }
         });
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -187,7 +195,7 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
                         .addComponent(btnPrestar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addComponent(lblFecha)
                 .addGap(52, 52, 52)
                 .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)

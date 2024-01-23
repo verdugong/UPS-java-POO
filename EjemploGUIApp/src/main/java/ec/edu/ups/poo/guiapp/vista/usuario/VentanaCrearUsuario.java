@@ -74,6 +74,7 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Crear Nuevo Usuario");
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingresar Datos"));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -88,10 +89,13 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNombre.setText("Nombre");
 
+        lblID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblID.setText("ID");
 
+        lblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCorreo.setText("Correo");
 
         btnGuardar.setText("Guardar");
@@ -100,6 +104,8 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);

@@ -76,6 +76,7 @@ public class VentanaListarPrestamo extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listar Datos"));
 
         btnListar.setText("Listar");

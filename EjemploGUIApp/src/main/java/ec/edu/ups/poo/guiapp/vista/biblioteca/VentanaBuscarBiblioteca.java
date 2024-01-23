@@ -76,6 +76,7 @@ public class VentanaBuscarBiblioteca extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Datos"));
 
         txtCode.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +85,7 @@ public class VentanaBuscarBiblioteca extends javax.swing.JInternalFrame {
             }
         });
 
+        lblCode.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCode.setText("Código");
 
         btnBuscar.setText("Buscar");
@@ -93,10 +95,13 @@ public class VentanaBuscarBiblioteca extends javax.swing.JInternalFrame {
             }
         });
 
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNombre.setText("Nombre");
 
+        lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblDireccion.setText("Dirección");
 
+        lblTelef.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTelef.setText("Teléfono");
 
         txtNombre.setEditable(false);
@@ -104,6 +109,8 @@ public class VentanaBuscarBiblioteca extends javax.swing.JInternalFrame {
         txtDireccion.setEditable(false);
 
         txtTelef.setEditable(false);
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);

@@ -85,6 +85,7 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Datos"));
 
         btnEliminar.setText("Eliminar");
@@ -108,6 +109,7 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        lblFecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblFecha.setText("Fecha");
 
         txtCode.addActionListener(new java.awt.event.ActionListener() {
@@ -122,8 +124,10 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotal.setText("Total");
 
+        lblCode.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCode.setText("Código");
 
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -132,9 +136,13 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        lblLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblLibro.setText("Libro");
 
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblUsuario.setText("Usuario");
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);

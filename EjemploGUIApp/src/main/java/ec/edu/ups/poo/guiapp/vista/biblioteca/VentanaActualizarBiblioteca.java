@@ -80,6 +80,7 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Actualizar Datos"));
 
         txtCode.addActionListener(new java.awt.event.ActionListener() {
@@ -88,12 +89,16 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
             }
         });
 
+        lblCode.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCode.setText("Código");
 
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNombre.setText("Nombre");
 
+        lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblDireccion.setText("Dirección");
 
+        lblTelef.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTelef.setText("Teléfono");
 
         btnActualizar.setText("Actualizar");
@@ -116,6 +121,8 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -158,7 +165,7 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

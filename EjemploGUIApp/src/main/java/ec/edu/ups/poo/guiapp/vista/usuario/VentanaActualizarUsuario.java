@@ -79,6 +79,7 @@ public class VentanaActualizarUsuario extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Actualizar Datos"));
 
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -87,10 +88,13 @@ public class VentanaActualizarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        lblID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblID.setText("ID");
 
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNombre.setText("Nombre");
 
+        lblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCorreo.setText("Correo");
 
         btnActualizar.setText("Actualizar");
@@ -114,6 +118,8 @@ public class VentanaActualizarUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
@@ -130,7 +136,7 @@ public class VentanaActualizarUsuario extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()

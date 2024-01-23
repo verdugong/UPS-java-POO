@@ -86,6 +86,7 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Datos"));
 
         txtCode.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +95,7 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
             }
         });
 
+        lblCode.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCode.setText("Código");
 
         btnBuscar.setText("Buscar");
@@ -117,12 +119,16 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
             }
         });
 
+        lblPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPrecio.setText("Precio");
 
+        lblDisponible.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblDisponible.setText("Disponible");
 
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTitulo.setText("Título");
 
+        lblAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblAutor.setText("Autor");
 
         buttonGroup1.add(btnSi);
@@ -132,7 +138,10 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
         buttonGroup1.add(btnNo);
         btnNo.setText("NO");
 
+        lblAño.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblAño.setText("Año");
+
+        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -205,9 +214,9 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
                     .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
