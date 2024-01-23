@@ -34,14 +34,11 @@ import ec.edu.ups.poo.guiapp.vista.usuario.VentanaEliminarUsuario;
 import ec.edu.ups.poo.guiapp.vista.usuario.VentanaListarUsuario;
 import java.util.Locale;
 import java.util.ResourceBundle;
-<<<<<<< HEAD
-=======
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Image;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
->>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
 
 /**
  *
@@ -93,11 +90,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         prestamoDAO = new PrestamoDAO();
         prestamoControlador = new PrestamoControlador(prestamoDAO, libroDAO, usuarioDAO);
         locale = new Locale("es", "EC");
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
     }
 
     /**
@@ -502,7 +494,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void buscarBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBiblioItemActionPerformed
         if(ventanaBuscarBiblioteca == null){
-        ventanaBuscarBiblioteca = new VentanaBuscarBiblioteca(bibliotecaControlador, libroControlador, usuarioControlador, prestamoControlador);
+        ventanaBuscarBiblioteca = new VentanaBuscarBiblioteca(bibliotecaControlador);
         ventanaBuscarBiblioteca.cambiarIdioma(locale);
         }
         if(!ventanaBuscarBiblioteca.isVisible()){
@@ -524,7 +516,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void eliminarBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBiblioItemActionPerformed
         if(ventanaEliminarBiblioteca == null){
-        ventanaEliminarBiblioteca = new VentanaEliminarBiblioteca(bibliotecaControlador,libroControlador,usuarioControlador, prestamoControlador);
+        ventanaEliminarBiblioteca = new VentanaEliminarBiblioteca(bibliotecaControlador);
         ventanaEliminarBiblioteca.cambiarIdioma(locale);
         }
         if(!ventanaEliminarBiblioteca.isVisible()){
@@ -591,10 +583,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if(ventanaCrearPrestamo == null){
         ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,libroControlador,usuarioControlador);
         ventanaCrearPrestamo.cambiarIdioma(locale);
-<<<<<<< HEAD
         ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,libroControlador,usuarioControlador);
-=======
->>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
         }
         if(!ventanaCrearPrestamo.isVisible()){
                 ventanaCrearPrestamo.setVisible(true);
@@ -604,7 +593,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void buscarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPrestamoItemActionPerformed
         if(ventanaBuscarPrestamo == null){
-        ventanaBuscarPrestamo = new VentanaBuscarPrestamo(prestamoControlador, libroControlador, usuarioControlador);
+        ventanaBuscarPrestamo = new VentanaBuscarPrestamo(prestamoControlador);
         ventanaBuscarPrestamo.cambiarIdioma(locale);
         }
         if(!ventanaBuscarPrestamo.isVisible()){
@@ -637,7 +626,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void eliminarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPrestamoItemActionPerformed
         if(ventanaEliminarPrestamo == null){
-        ventanaEliminarPrestamo = new VentanaEliminarPrestamo(prestamoControlador,libroControlador,usuarioControlador);
+        ventanaEliminarPrestamo = new VentanaEliminarPrestamo(prestamoControlador);
         ventanaEliminarPrestamo.cambiarIdioma(locale);
         }
         if(!ventanaEliminarPrestamo.isVisible()){

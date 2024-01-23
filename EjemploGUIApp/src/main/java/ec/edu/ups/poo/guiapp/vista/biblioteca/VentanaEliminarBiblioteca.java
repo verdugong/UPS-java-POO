@@ -1,68 +1,30 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ */
 package ec.edu.ups.poo.guiapp.vista.biblioteca;
 
 import ec.edu.ups.poo.guiapp.controlador.BibliotecaControlador;
-import ec.edu.ups.poo.guiapp.controlador.LibroControlador;
-import ec.edu.ups.poo.guiapp.controlador.PrestamoControlador;
-import ec.edu.ups.poo.guiapp.controlador.UsuarioControlador;
 import ec.edu.ups.poo.guiapp.modelo.Biblioteca;
 import ec.edu.ups.poo.guiapp.modelo.Libro;
 import ec.edu.ups.poo.guiapp.modelo.Prestamo;
 import ec.edu.ups.poo.guiapp.modelo.Usuario;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.border.TitledBorder;
-import java.awt.Image;
-import java.awt.Graphics;
-import javax.swing.ImageIcon;
+
 /**
  *
  * @author sebas
  */
 public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
-
+    
     private BibliotecaControlador bibliotecaControlador;
-    private LibroControlador libroControlador;
-    private UsuarioControlador usuarioControlador;
-    private PrestamoControlador prestamoControlador;
-    private TitledBorder miBorder;
-    private DefaultListModel listModelLibro;
-    private DefaultListModel listModelUsuario;
-    private DefaultListModel listModelPrestamo;
     /**
-     * Creates new form VentanaCrearBilblioteca
+     * Creates new form VentanaEliminar
      */
-    public VentanaEliminarBiblioteca(BibliotecaControlador bibliotecaControlador, LibroControlador libroControlador, UsuarioControlador usuarioControlador, PrestamoControlador prestamoControlador ) {
+    public VentanaEliminarBiblioteca(BibliotecaControlador bibliotecaControlador) {
         initComponents();
         this.bibliotecaControlador = bibliotecaControlador;
-        this.libroControlador = libroControlador;
-        this.usuarioControlador = usuarioControlador;
-        this.prestamoControlador = prestamoControlador;
-        listModelLibro = new DefaultListModel();
-        lstLibros.setModel(listModelLibro);
-        listModelUsuario = new DefaultListModel();
-        lstUsuarios.setModel(listModelUsuario);
-        listModelLibro = new DefaultListModel();
-        lstPrestamos.setModel(listModelLibro);
-         miBorder = BorderFactory.createTitledBorder("Eliminar Datos");
-        jPanel1.setBorder(miBorder);
-    }
-    
-    public void cambiarIdioma(Locale locale){
-        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
-       
-        miBorder.setTitle(mensajes.getString("TBEliminar"));
-       jPanel1.repaint();
-       lblNombre.setText(mensajes.getString("lblNombre"));
-       lblCode.setText(mensajes.getString("lblCode"));
-       lblDireccion.setText(mensajes.getString("lblDireccion"));
-       lblTelef.setText(mensajes.getString("lblTelef"));
-       btnBuscar.setText(mensajes.getString("btnBuscar"));
-       btnEliminar.setText(mensajes.getString("btnEliminar"));
-       btnCancelar.setText(mensajes.getString("btnCancelar"));
     }
 
     /**
@@ -74,69 +36,34 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        txtCode = new javax.swing.JTextField();
-        lblCode = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        txtNombre = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtTelef = new javax.swing.JTextField();
+        lblCode = new javax.swing.JLabel();
+        txtCode = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
+        lblLibro = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
         lblDireccion = new javax.swing.JLabel();
-        lblTelef = new javax.swing.JLabel();
-<<<<<<< HEAD
-        lblUsuarios = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstLibros = new javax.swing.JList<>();
+        txtDireccion = new javax.swing.JTextField();
+        btnEliminar = new javax.swing.JButton();
+        lblUsuario = new javax.swing.JLabel();
         lblPrestamos = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstUsuarios = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        lstPrestamos = new javax.swing.JList<>();
-        lblLibros = new javax.swing.JLabel();
-        btnMostrarLibros = new javax.swing.JButton();
-        btnMostrarUsuarios = new javax.swing.JButton();
-        btnMostaraPrestamos = new javax.swing.JButton();
-=======
-        ImageIcon icon=new ImageIcon(getClass().getResource("/imagenes/Delete.png"));
-        Image image=icon.getImage();
-        jDesktopPane1 = new javax.swing.JDesktopPane(){
-            public void paintComponent (Graphics g){
-                g.drawImage(image,0,0, getWidth(), getHeight(),this);
-            }
-        };
->>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
+        lblTelefono = new javax.swing.JLabel();
+        txtTelef = new javax.swing.JTextField();
+        txtUsuarios = new javax.swing.JTextField();
+        txtLibros = new javax.swing.JTextField();
+        txtPrestamos = new javax.swing.JTextField();
 
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Datos"));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Datos"));
-
-        txtCode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodeActionPerformed(evt);
-            }
-        });
-
-        lblCode.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblCode.setText("Código");
-
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
-            }
-        });
-
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -147,245 +74,160 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
             }
         });
 
-        lblNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblCode.setText("Código");
+
+        txtCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodeActionPerformed(evt);
+            }
+        });
+
         lblNombre.setText("Nombre");
 
-        lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblLibro.setText("Libros");
+
+        txtNombre.setEditable(false);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
         lblDireccion.setText("Dirección");
 
-        lblTelef.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblTelef.setText("Teléfono");
+        txtDireccion.setEditable(false);
+        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionActionPerformed(evt);
+            }
+        });
 
-<<<<<<< HEAD
-        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
-=======
-<<<<<<< HEAD
-        lblUsuarios.setText("Usuarios");
-
-        jScrollPane1.setViewportView(lstLibros);
+        lblUsuario.setText("Usuarios");
 
         lblPrestamos.setText("Prestamos");
 
-        jScrollPane2.setViewportView(lstUsuarios);
+        lblTelefono.setText("Teléfono");
 
-        jScrollPane3.setViewportView(lstPrestamos);
-
-        lblLibros.setText("Libros");
-
-        btnMostrarLibros.setText("Mostrar");
-        btnMostrarLibros.addActionListener(new java.awt.event.ActionListener() {
+        txtTelef.setEditable(false);
+        txtTelef.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarLibrosActionPerformed(evt);
+                txtTelefActionPerformed(evt);
             }
         });
 
-        btnMostrarUsuarios.setText("Mostrar");
-        btnMostrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuarios.setEditable(false);
+        txtUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarUsuariosActionPerformed(evt);
+                txtUsuariosActionPerformed(evt);
             }
         });
 
-        btnMostaraPrestamos.setText("Mostrar");
-        btnMostaraPrestamos.addActionListener(new java.awt.event.ActionListener() {
+        txtLibros.setEditable(false);
+        txtLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostaraPrestamosActionPerformed(evt);
+                txtLibrosActionPerformed(evt);
             }
         });
-=======
->>>>>>> 818ee77e80ad1c3103dac0de872839a7c2f660ad
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 245, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-        );
->>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-<<<<<<< HEAD
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPrestamos, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblUsuarios, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblLibros, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMostrarLibros)
-                            .addComponent(btnMostrarUsuarios)
-                            .addComponent(btnMostaraPrestamos))
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lblCode)
-                .addGap(12, 12, 12)
-                .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBuscar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(lblNombre)
-                        .addGap(12, 12, 12)
-                        .addComponent(txtNombre))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(lblDireccion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtDireccion))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(lblTelef)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTelef)))
-                .addGap(90, 90, 90))
-=======
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblDireccion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTelef)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCode)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnBuscar))
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
->>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscar))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-<<<<<<< HEAD
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelef))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(lblLibros)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblUsuarios)
-                                .addGap(49, 49, 49)))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(lblPrestamos)))
-                        .addGap(14, 14, 14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnMostrarLibros)
-                        .addGap(92, 92, 92)
-                        .addComponent(btnMostrarUsuarios)
-                        .addGap(86, 86, 86)
-                        .addComponent(btnMostaraPrestamos)
-                        .addGap(66, 66, 66)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-=======
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelef))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar))
-                .addGap(27, 27, 27))
->>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
-        );
+        txtPrestamos.setEditable(false);
+        txtPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrestamosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCode)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblNombre)
+                                    .addComponent(lblDireccion)
+                                    .addComponent(lblTelefono)
+                                    .addComponent(lblLibro)
+                                    .addComponent(lblUsuario)
+                                    .addComponent(lblPrestamos))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtLibros)
+                                        .addComponent(txtUsuarios, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscar)))
+                    .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLibro))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsuario))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPrestamos))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnCancelar))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodeActionPerformed
-    
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         int codigo = Integer.parseInt(txtCode.getText());
         Biblioteca biblioteca = bibliotecaControlador.buscarBiblioteca(codigo);
@@ -398,12 +240,31 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
             txtDireccion.setEditable(true);
             txtTelef.setText(biblioteca.getTelefono());
             txtTelef.setEditable(true);
-            lstLibros.setSelectedValue(biblioteca.getLibros(), false);
-            lstUsuarios.setSelectedValue(biblioteca.getUsuarios(), false);
-            lstPrestamos.setSelectedValue(biblioteca.getPrestamos(), false);
+            txtLibros.setText(convertirAStringLibro(biblioteca.getLibros()));
+            txtLibros.setEditable(true);
+            txtUsuarios.setText(convertirAStringUsuario(biblioteca.getUsuarios()));
+            txtUsuarios.setEditable(true);
+            txtPrestamos.setText(convertirAStringPrestamo(biblioteca.getPrestamos()));
+            txtPrestamos.setEditable(true);
             txtCode.setEditable(false);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpiarDatos();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodeActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int respuesta = JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas eliminar la Biblioteca?");
@@ -416,78 +277,76 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        limpiarDatos();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void txtTelefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefActionPerformed
 
-    private void btnMostrarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarLibrosActionPerformed
-        List<Libro> libros = libroControlador.listarLibro();
-        DefaultListModel modelo = (DefaultListModel) lstLibros.getModel();
-        modelo.clear();
-        for (Libro libro : libros) {
-            modelo.addElement(libro.getTitulo());
-        }
-    }//GEN-LAST:event_btnMostrarLibrosActionPerformed
+    private void txtUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuariosActionPerformed
 
-    private void btnMostrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarUsuariosActionPerformed
-        List<Usuario> usuarios = usuarioControlador.listarUsuario();
-        DefaultListModel modelo = (DefaultListModel) lstUsuarios.getModel();
-        modelo.clear();
-        for (Usuario usuario : usuarios) {
-            modelo.addElement(usuario.getNombre());
-        }
-    }//GEN-LAST:event_btnMostrarUsuariosActionPerformed
+    private void txtLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLibrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLibrosActionPerformed
 
-    private void btnMostaraPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostaraPrestamosActionPerformed
-        List<Prestamo> prestamos = prestamoControlador.listarPrestamos();
-        DefaultListModel modelo = (DefaultListModel) lstPrestamos.getModel();
-        modelo.clear();
-        for (Prestamo prestamo : prestamos) {
-            modelo.addElement(prestamo.getId());
-        }
-    }//GEN-LAST:event_btnMostaraPrestamosActionPerformed
+    private void txtPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrestamosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrestamosActionPerformed
 
-    
-    
     private void limpiarDatos(){
         txtCode.setEditable(true);
         txtCode.setText("");
         txtNombre.setText("");
         txtDireccion.setText("");
         txtTelef.setText("");
-        lstLibros.clearSelection();
-        lstUsuarios.clearSelection();
-        lstPrestamos.clearSelection();
     }
+    
+    private String convertirAStringLibro(List<Libro> libro) {
+        StringBuilder stringBuilder = new StringBuilder();
 
+        for (Object objeto : libro) {
+            stringBuilder.append(objeto.toString()).append("\n");
+        }
+
+        return stringBuilder.toString();
+    }
+    
+    private String convertirAStringUsuario(List<Usuario> usuario) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Object objeto : usuario) {
+            stringBuilder.append(objeto.toString()).append("\n");
+        }
+
+        return stringBuilder.toString();
+    }
+    
+    private String convertirAStringPrestamo(List<Prestamo> prestamo) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Object objeto : prestamo) {
+            stringBuilder.append(objeto.toString()).append("\n");
+        }
+
+        return stringBuilder.toString();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
-<<<<<<< HEAD
-    private javax.swing.JButton btnMostaraPrestamos;
-    private javax.swing.JButton btnMostrarLibros;
-    private javax.swing.JButton btnMostrarUsuarios;
-=======
-    private javax.swing.JDesktopPane jDesktopPane1;
->>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblDireccion;
-    private javax.swing.JLabel lblLibros;
+    private javax.swing.JLabel lblLibro;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrestamos;
-    private javax.swing.JLabel lblTelef;
-    private javax.swing.JLabel lblUsuarios;
-    private javax.swing.JList<String> lstLibros;
-    private javax.swing.JList<String> lstPrestamos;
-    private javax.swing.JList<String> lstUsuarios;
+    private javax.swing.JLabel lblTelefono;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtLibros;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrestamos;
     private javax.swing.JTextField txtTelef;
+    private javax.swing.JTextField txtUsuarios;
     // End of variables declaration//GEN-END:variables
 }
