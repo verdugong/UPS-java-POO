@@ -26,16 +26,27 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" pref="361" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
+=======
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+=======
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
       </Group>
     </DimensionLayout>
   </Layout>
@@ -52,6 +63,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -93,12 +105,44 @@
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+=======
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="53" pref="69" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblNombre" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDireccion" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTelef" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCode" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtCode" min="-2" pref="168" max="-2" attributes="0"/>
+                      <Component id="txtNombre" min="-2" pref="168" max="-2" attributes="0"/>
+                      <Component id="txtDireccion" min="-2" pref="168" max="-2" attributes="0"/>
+                      <Component id="txtTelef" min="-2" pref="168" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                          <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="lblCode" max="32767" attributes="0"/>
@@ -108,17 +152,35 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="lblNombre" max="32767" attributes="0"/>
                       <Component id="txtNombre" pref="28" max="32767" attributes="0"/>
+=======
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCode" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtNombre" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="lblNombre" alignment="3" pref="33" max="32767" attributes="0"/>
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtDireccion" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="lblDireccion" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
+=======
+                  <EmptySpace max="-2" attributes="0"/>
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtTelef" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="lblTelef" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
@@ -161,6 +223,11 @@
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
+=======
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
               </Group>
           </Group>
         </DimensionLayout>
@@ -205,6 +272,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
           </Events>
         </Component>
+<<<<<<< HEAD
         <Component class="javax.swing.JLabel" name="lblLibros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Libros"/>
@@ -285,6 +353,26 @@
               </AuxValues>
             </Component>
           </SubComponents>
+=======
+        <Container class="javax.swing.JDesktopPane" name="jDesktopPane1">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xa;    public void paintComponent (Graphics g){&#xa;        g.drawImage(image,0,0, getWidth(), getHeight(),this);&#xa;}&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon icon=new ImageIcon(getClass().getResource(&quot;/imagenes/CrearIMG.png&quot;));&#xa;Image image=icon.getImage();"/>
+          </AuxValues>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="245" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
         </Container>
       </SubComponents>
     </Container>

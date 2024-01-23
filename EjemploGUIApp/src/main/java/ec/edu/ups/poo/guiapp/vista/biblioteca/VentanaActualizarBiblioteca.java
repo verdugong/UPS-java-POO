@@ -20,7 +20,9 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.border.TitledBorder;
-
+import java.awt.Image;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 /**
  *
  * @author sebas
@@ -90,6 +92,7 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
         btnActualizar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+<<<<<<< HEAD
         jScrollPane1 = new javax.swing.JScrollPane();
         lstLibros = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -102,6 +105,15 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
         lblUsuarios = new javax.swing.JLabel();
         btnMostaraPrestamos = new javax.swing.JButton();
         lblPrestamos = new javax.swing.JLabel();
+=======
+        ImageIcon icon=new ImageIcon(getClass().getResource("/imagenes/Actualizar-.png"));
+        Image image=icon.getImage();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            public void paintComponent (Graphics g){
+                g.drawImage(image,0,0, getWidth(), getHeight(),this);
+            }
+        };
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
 
         setClosable(true);
         setIconifiable(true);
@@ -145,6 +157,7 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
             }
         });
 
+<<<<<<< HEAD
         jScrollPane1.setViewportView(lstLibros);
 
         jScrollPane2.setViewportView(lstUsuarios);
@@ -177,11 +190,24 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
         });
 
         lblPrestamos.setText("Prestamos");
+=======
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 245, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -225,11 +251,42 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCode, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTelef, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnActualizar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCode)
+                                    .addComponent(txtNombre)
+                                    .addComponent(txtDireccion)
+                                    .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -242,7 +299,11 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTelef))
@@ -277,10 +338,17 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
                         .addGap(53, 53, 53)
                         .addComponent(btnMostaraPrestamos)))
                 .addGap(18, 18, 18)
+<<<<<<< HEAD
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
+=======
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnActualizar)
+                    .addComponent(btnCancelar))
+                .addContainerGap(14, Short.MAX_VALUE))
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -294,7 +362,11 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
         );
 
         pack();
@@ -375,6 +447,7 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
         limpiarDatos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+<<<<<<< HEAD
     private void btnMostrarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarLibrosActionPerformed
         List<Libro> libros = libroControlador.listarLibro();
         DefaultListModel modelo = (DefaultListModel) lstLibros.getModel();
@@ -403,6 +476,8 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnMostaraPrestamosActionPerformed
 
 
+=======
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
     private void limpiarDatos(){
         txtCode.setEditable(true);
         txtCode.setText("");
@@ -417,9 +492,13 @@ public class VentanaActualizarBiblioteca extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+<<<<<<< HEAD
     private javax.swing.JButton btnMostaraPrestamos;
     private javax.swing.JButton btnMostrarLibros;
     private javax.swing.JButton btnMostrarUsuarios;
+=======
+    private javax.swing.JDesktopPane jDesktopPane1;
+>>>>>>> c9998e66668f4c6b9c0cca814d84ac4a69d59b38
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
