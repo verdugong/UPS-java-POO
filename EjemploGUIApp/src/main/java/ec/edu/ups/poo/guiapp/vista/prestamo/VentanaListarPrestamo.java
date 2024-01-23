@@ -165,7 +165,7 @@ public class VentanaListarPrestamo extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblDatos.getModel();
         modelo.setNumRows(0);
         for (Prestamo prestamo : prestamos) {
-           Object[] rowData = {prestamo.getId(), prestamo.getLibros(), prestamo.getUsuario(), prestamo.getFechaPrestamo(), prestamo.getTotal()};
+           Object[] rowData = {prestamo.getId(), prestamo.getLibros(), prestamo.getUsuarios(), prestamo.getFechaPrestamo(), prestamo.getTotal()};
            modelo.addRow(rowData);
         }
     }

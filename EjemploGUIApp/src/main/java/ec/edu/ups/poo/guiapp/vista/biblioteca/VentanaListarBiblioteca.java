@@ -6,7 +6,6 @@ package ec.edu.ups.poo.guiapp.vista.biblioteca;
 
 import ec.edu.ups.poo.guiapp.controlador.BibliotecaControlador;
 import ec.edu.ups.poo.guiapp.modelo.Biblioteca;
-import ec.edu.ups.poo.guiapp.modelo.Libro;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -89,20 +88,20 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nombre", "Dirección", "Teléfono"
+                "Código", "Nombre", "Dirección", "Teléfono", "Libros", "Usuarios", "Prestamos"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -125,7 +124,7 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
                     .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(155, 155, 155)
@@ -141,7 +140,7 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnListar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,7 +169,7 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblDatos.getModel();
         modelo.setNumRows(0);
         for (Biblioteca biblioteca : bibliotecas) {
-           Object[] rowData = {biblioteca.getCodigo(),biblioteca.getNombre(),biblioteca.getDireccion(),biblioteca.getTelefono()};
+           Object[] rowData = {biblioteca.getCodigo(),biblioteca.getNombre(),biblioteca.getDireccion(),biblioteca.getTelefono(),biblioteca.getLibros(),biblioteca.getUsuarios(),biblioteca.getPrestamos()};
            modelo.addRow(rowData);
         }
     }

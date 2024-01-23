@@ -61,4 +61,14 @@ public class LibroDAO implements ILibroDAO{
     public List<Libro> listaLibro() {
         return listaLibros;
     }
+
+    @Override
+    public Libro obtenerLibroPorTitulo(String titulo) {
+        for (Libro libro : listaLibros) {
+            if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                return libro;
+            }
+        }
+        return null;
+    }
 }

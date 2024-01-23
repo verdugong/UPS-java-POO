@@ -4,19 +4,20 @@
  */
 package ec.edu.ups.poo.guiapp.vista.prestamo;
 
+import ec.edu.ups.poo.guiapp.controlador.LibroControlador;
 import ec.edu.ups.poo.guiapp.controlador.PrestamoControlador;
-import ec.edu.ups.poo.guiapp.controlador.PrestamoControlador.LibroNoEncontradoException;
-import ec.edu.ups.poo.guiapp.controlador.PrestamoControlador.UsuarioNoEncontradoException;
+import ec.edu.ups.poo.guiapp.controlador.UsuarioControlador;
 import ec.edu.ups.poo.guiapp.modelo.Libro;
 import ec.edu.ups.poo.guiapp.modelo.Usuario;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.border.TitledBorder;
 
@@ -27,17 +28,23 @@ import javax.swing.border.TitledBorder;
 public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
     
     private PrestamoControlador prestamoControlador;
-    private List<Libro> listaLibros;
-    private List<Usuario> listaUsuarios;
+    private LibroControlador libroControlador;
+    private UsuarioControlador usuarioControlador;
     private TitledBorder miBorder;
+    private DefaultListModel listModelLibro;
+    private DefaultListModel listModelUsuario;
     /**
      * Creates new form VentanaCrearPrestamo
      */
-    public VentanaCrearPrestamo(PrestamoControlador prestamoControlador, List<Libro> listaLibros, List<Usuario> listaUsuarios) {
+    public VentanaCrearPrestamo(PrestamoControlador prestamoControlador, LibroControlador libroControlador, UsuarioControlador usuarioControlador) {
         initComponents();
         this.prestamoControlador = prestamoControlador;
-        this.listaLibros = listaLibros;
-        this.listaUsuarios = listaUsuarios;
+        this.libroControlador = libroControlador;
+        this.usuarioControlador = usuarioControlador;
+        listModelLibro = new DefaultListModel();
+        lstLibros.setModel(listModelLibro);
+        listModelUsuario = new DefaultListModel();
+        lstUsuarios.setModel(listModelUsuario);
         miBorder = BorderFactory.createTitledBorder("Ingresar Datos");
         jPanel1.setBorder(miBorder);
     }
@@ -54,10 +61,6 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
        lblFecha.setText(mensajes.getString("lblFecha"));
        lblTotal.setText(mensajes.getString("lblTotal"));
        btnPrestar.setText(mensajes.getString("btnPrestar"));
-        System.out.println("Número de libros: " + listaLibros.size());
-        System.out.println("Número de usuarios: " + listaUsuarios.size());
-        llenarComboBoxLibros();
-        llenarComboBoxUsuarios();
     }
     
 
@@ -74,14 +77,18 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
         lblCode = new javax.swing.JLabel();
         btnPrestar = new javax.swing.JButton();
         txtCode = new javax.swing.JTextField();
-        lblLibro = new javax.swing.JLabel();
-        cmbxLibro = new javax.swing.JComboBox<>();
-        lblUsuario = new javax.swing.JLabel();
-        cmbxUsuario = new javax.swing.JComboBox<>();
         lblFecha = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         lblTotal = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstUsuarios = new javax.swing.JList<>();
+        lblUsuario = new javax.swing.JLabel();
+        btnMostrarUsuarios = new javax.swing.JButton();
+        btnMostrarLibros = new javax.swing.JButton();
+        lblLibro = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstLibros = new javax.swing.JList<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -106,22 +113,6 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
-        lblLibro.setText("Libro");
-
-        cmbxLibro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbxLibroActionPerformed(evt);
-            }
-        });
-
-        lblUsuario.setText("Usuario");
-
-        cmbxUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbxUsuarioActionPerformed(evt);
-            }
-        });
-
         lblFecha.setText("Fecha (yyyy-MM-dd HH:mm:ss)");
 
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -138,46 +129,99 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
+        lstUsuarios.setModel(lstUsuarios.getModel());
+        jScrollPane2.setViewportView(lstUsuarios);
+
+        lblUsuario.setText("Usuarios");
+
+        btnMostrarUsuarios.setText("Mostrar");
+        btnMostrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarUsuariosActionPerformed(evt);
+            }
+        });
+
+        btnMostrarLibros.setText("Mostrar");
+        btnMostrarLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarLibrosActionPerformed(evt);
+            }
+        });
+
+        lblLibro.setText("Libros");
+
+        jScrollPane3.setViewportView(lstLibros);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLibro, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblCode, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(btnPrestar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtTotal)
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblCode)
+                                    .addComponent(lblLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtTotal)
-                    .addComponent(cmbxUsuario, 0, 157, Short.MAX_VALUE)
-                    .addComponent(txtCode, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbxLibro, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(19, 19, 19))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(btnPrestar)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnMostrarLibros)
+                    .addComponent(btnMostrarUsuarios))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(txtCode)
                     .addComponent(lblCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(btnMostrarLibros))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(lblLibro)))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblUsuario)
+                        .addGap(59, 59, 59))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(btnMostrarUsuarios))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,22 +251,29 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void llenarComboBoxLibros() {  // Limpiar los items existentes para evitar duplicados
-        for (Libro libro : listaLibros) {
-            cmbxLibro.addItem(libro.getTitulo()); 
-        }
-    }
-    
-    private void llenarComboBoxUsuarios() {  // Limpiar los items existentes para evitar duplicados
-        for (Usuario usuario : listaUsuarios) {
-            cmbxUsuario.addItem(usuario.getNombre()); 
-        }
-    }
     
     private void btnPrestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestarActionPerformed
-        int id = Integer.parseInt(txtCode.getText());
-        String tituloLibro = (String) cmbxLibro.getSelectedItem();
-        String nombreUsuario = (String) cmbxUsuario.getSelectedItem();
+        String id = txtCode.getText();
+        
+        List<String> librosSeleccionadosComoString = lstLibros.getSelectedValuesList();
+        List<String> usuariosSeleccionadosComoString = lstUsuarios.getSelectedValuesList();
+        
+        List<Libro> librosSeleccionados = new ArrayList<>();
+            for (String libroString : librosSeleccionadosComoString) {
+                Libro libro = libroControlador.buscarLibroPorTitulo(libroString);
+                if (libro != null) {
+                    librosSeleccionados.add(libro);
+                }
+            }
+            
+        List<Usuario> usuariosSeleccionados = new ArrayList<>();
+            for (String usuarioString : usuariosSeleccionadosComoString) {
+                Usuario usuario = usuarioControlador.buscarUsuario(usuarioString);
+                if (usuario != null) {
+                    usuariosSeleccionados.add(usuario);
+                }
+            }
+            
         String textoFecha = txtFecha.getText();
         Date fecha = null;
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -237,53 +288,18 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
         }
         double total = Double.parseDouble(txtTotal.getText());
         
-        Libro libroSeleccionado = obtenerLibroPorTitulo(tituloLibro);
+        prestamoControlador.crearPrestamo(id, librosSeleccionados, usuariosSeleccionados, fecha, total);
         
-        Usuario usuarioSeleccionado = obtenerUsuarioPorNombre(nombreUsuario);
+        JOptionPane.showMessageDialog(this, "Prestamo creado exitosamente");
         
-        if (libroSeleccionado != null && usuarioSeleccionado != null) {
-            try {
-                prestamoControlador.crearPrestamo(id, Collections.singletonList(libroSeleccionado), usuarioSeleccionado, fecha, total);
-                JOptionPane.showMessageDialog(this, "Prestamo creado exitosamente");
-            } catch (UsuarioNoEncontradoException | LibroNoEncontradoException e) {
-                JOptionPane.showMessageDialog(this, "Error al crear el préstamo: " + e.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró el libro o el usuario");
-        }
         txtCode.setText("");
         txtFecha.setText("");
         txtTotal.setText("");
     }//GEN-LAST:event_btnPrestarActionPerformed
 
-    private Libro obtenerLibroPorTitulo(String titulo) {
-        for (Libro libro : listaLibros) {
-            if (libro.getTitulo().equals(titulo)) {
-                return libro;
-            }
-        }
-        return null;
-    }
-    
-    private Usuario obtenerUsuarioPorNombre(String nombre) {
-        for (Usuario usuario : listaUsuarios) {
-            if (usuario.getNombre().equals(nombre)) {
-                return usuario;
-            }
-        }
-        return null;
-    }
     private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodeActionPerformed
-
-    private void cmbxLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxLibroActionPerformed
-
-    }//GEN-LAST:event_cmbxLibroActionPerformed
-
-    private void cmbxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxUsuarioActionPerformed
-
-    }//GEN-LAST:event_cmbxUsuarioActionPerformed
 
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
         // TODO add your handling code here:
@@ -293,17 +309,39 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTotalActionPerformed
 
+    private void btnMostrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarUsuariosActionPerformed
+        List<Usuario> usuarios = usuarioControlador.listarUsuario();
+        DefaultListModel modelo = (DefaultListModel) lstUsuarios.getModel();
+        modelo.clear();
+        for (Usuario usuario : usuarios) {
+            modelo.addElement(usuario.getNombre());
+        }
+    }//GEN-LAST:event_btnMostrarUsuariosActionPerformed
+
+    private void btnMostrarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarLibrosActionPerformed
+        List<Libro> libros = libroControlador.listarLibro();
+        DefaultListModel modelo = (DefaultListModel) lstLibros.getModel();
+        modelo.clear();
+        for (Libro libro : libros) {
+            modelo.addElement(libro.getTitulo());
+        }
+    }//GEN-LAST:event_btnMostrarLibrosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMostrarLibros;
+    private javax.swing.JButton btnMostrarUsuarios;
     private javax.swing.JButton btnPrestar;
-    private javax.swing.JComboBox<String> cmbxLibro;
-    private javax.swing.JComboBox<String> cmbxUsuario;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblLibro;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JList<String> lstLibros;
+    private javax.swing.JList<String> lstUsuarios;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtTotal;

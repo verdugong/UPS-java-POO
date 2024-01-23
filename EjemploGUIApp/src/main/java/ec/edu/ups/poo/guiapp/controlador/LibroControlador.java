@@ -45,6 +45,11 @@ public class LibroControlador {
         return libro;
     }
     
+    public Libro buscarLibroPorTitulo(String titulo){
+        libro = libroDAO.obtenerLibroPorTitulo(titulo);
+        return libro;
+    }
+    
     public List<Libro> listarLibro(){
         return libroDAO.listaLibro();
     }  

@@ -45,11 +45,13 @@ public class DirectorioControlador {
                 }
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al crear el elemento", "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace(); // Imprimir el stack trace
+            JOptionPane.showMessageDialog(null, "Error al crear el elemento: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+
         actualizarModeloLista();
     }
+
 
     public void renombrarElementoEnRuta(String nombreElementoActual, String nuevoNombre, String ruta) {
         File elementoActual = new File(ruta, nombreElementoActual);
@@ -164,17 +166,13 @@ public class DirectorioControlador {
         File archivo = new File(rutaElemento);
         StringBuilder info = new StringBuilder();
 
-        // Obtener el path absoluto
         info.append("Path absoluto: ").append(archivo.getAbsolutePath()).append("\n");
 
-        // Obtener el tamaño del archivo
         info.append("Tamaño del archivo: ").append(archivo.length()).append(" bytes\n");
 
-        // Obtener los permisos de lectura y escritura
         info.append("Permisos de lectura: ").append(archivo.canRead() ? "Sí" : "No").append("\n");
         info.append("Permisos de escritura: ").append(archivo.canWrite() ? "Sí" : "No").append("\n");
 
-        // Obtener la fecha de última modificación
         long lastModified = archivo.lastModified();
         Date fechaModificacion = new Date(lastModified);
         info.append("Fecha de última modificación: ").append(fechaModificacion).append("\n");

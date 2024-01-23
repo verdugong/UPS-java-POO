@@ -195,6 +195,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearArchivoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearArchivoMenuItemActionPerformed
+        System.out.println("Directorio de Trabajo Actual: " + System.getProperty("user.dir"));
         String[] opciones = {"Crear Archivo", "Crear Directorio"};
         int seleccion = JOptionPane.showOptionDialog(null, "Seleccione el tipo de elemento a crear:",
                 "Crear Archivo o Directorio", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,

@@ -32,14 +32,8 @@ import ec.edu.ups.poo.guiapp.vista.usuario.VentanaBuscarUsuario;
 import ec.edu.ups.poo.guiapp.vista.usuario.VentanaCrearUsuario;
 import ec.edu.ups.poo.guiapp.vista.usuario.VentanaEliminarUsuario;
 import ec.edu.ups.poo.guiapp.vista.usuario.VentanaListarUsuario;
-import ec.edu.ups.poo.guiapp.modelo.Libro;
-import ec.edu.ups.poo.guiapp.modelo.Usuario;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  *
@@ -76,8 +70,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private LibroControlador libroControlador;
     private IPrestamoDAO prestamoDAO;
     private PrestamoControlador prestamoControlador;
-    private List<Libro> listaLibros = new ArrayList<>();
-    private List<Usuario> listaUsuarios = new ArrayList<>();
     
     /**
      * Creates new form VentanaPrincipal
@@ -93,20 +85,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         prestamoDAO = new PrestamoDAO();
         prestamoControlador = new PrestamoControlador(prestamoDAO, libroDAO, usuarioDAO);
         locale = new Locale("es", "EC");
-        
-        String rutaImagen = "/imagenes/imagenJava2.png";
-        
-        // Crea un ImageIcon con la imagen
-        ImageIcon icono = new ImageIcon(getClass().getResource(rutaImagen));
-        
-        // Crea un JLabel y asigna el ImageIcon
-        JLabel labelImagen = new JLabel(icono);
-        
-        // Establece el tamaño y la posición del JLabel
-        labelImagen.setBounds(10, 10, icono.getIconWidth(), icono.getIconHeight());
-        
-        // Agrega el JLabel al JInternalFrame
-        getContentPane().add(labelImagen);
+
     }
 
     /**
@@ -150,6 +129,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuItemIdiomaEspanol = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        desktopPane.setAutoscrolls(true);
 
         biblioMenu.setMnemonic('f');
         biblioMenu.setText("Biblioteca");
@@ -393,11 +374,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -405,7 +388,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void crearBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearBiblioItemActionPerformed
         if(ventanaCrearBiblioteca == null){
-        ventanaCrearBiblioteca = new VentanaCrearBiblioteca(bibliotecaControlador);
+        ventanaCrearBiblioteca = new VentanaCrearBiblioteca(bibliotecaControlador,libroControlador,usuarioControlador, prestamoControlador);
         ventanaCrearBiblioteca.cambiarIdioma(locale);
         }
         if(!ventanaCrearBiblioteca.isVisible()){
@@ -416,7 +399,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void actualizarBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarBiblioItemActionPerformed
         if(ventanaActualizarBiblioteca == null){
-        ventanaActualizarBiblioteca = new VentanaActualizarBiblioteca(bibliotecaControlador);
+        ventanaActualizarBiblioteca = new VentanaActualizarBiblioteca(bibliotecaControlador,libroControlador,usuarioControlador, prestamoControlador);
         ventanaActualizarBiblioteca.cambiarIdioma(locale);
         }
         if(!ventanaActualizarBiblioteca.isVisible()){
@@ -497,7 +480,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void buscarBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBiblioItemActionPerformed
         if(ventanaBuscarBiblioteca == null){
-        ventanaBuscarBiblioteca = new VentanaBuscarBiblioteca(bibliotecaControlador);
+        ventanaBuscarBiblioteca = new VentanaBuscarBiblioteca(bibliotecaControlador, libroControlador, usuarioControlador, prestamoControlador);
         ventanaBuscarBiblioteca.cambiarIdioma(locale);
         }
         if(!ventanaBuscarBiblioteca.isVisible()){
@@ -519,7 +502,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void eliminarBiblioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBiblioItemActionPerformed
         if(ventanaEliminarBiblioteca == null){
-        ventanaEliminarBiblioteca = new VentanaEliminarBiblioteca(bibliotecaControlador);
+        ventanaEliminarBiblioteca = new VentanaEliminarBiblioteca(bibliotecaControlador,libroControlador,usuarioControlador, prestamoControlador);
         ventanaEliminarBiblioteca.cambiarIdioma(locale);
         }
         if(!ventanaEliminarBiblioteca.isVisible()){
@@ -589,9 +572,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void crearPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPrestamoItemActionPerformed
         if(ventanaCrearPrestamo == null){
-        ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,listaLibros,listaUsuarios);
+        ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,libroControlador,usuarioControlador);
         ventanaCrearPrestamo.cambiarIdioma(locale);
-        ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador, listaLibros, listaUsuarios);
+        ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,libroControlador,usuarioControlador);
         }
         if(!ventanaCrearPrestamo.isVisible()){
                 ventanaCrearPrestamo.setVisible(true);
@@ -601,7 +584,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void buscarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPrestamoItemActionPerformed
         if(ventanaBuscarPrestamo == null){
-        ventanaBuscarPrestamo = new VentanaBuscarPrestamo(prestamoControlador);
+        ventanaBuscarPrestamo = new VentanaBuscarPrestamo(prestamoControlador, libroControlador, usuarioControlador);
         ventanaBuscarPrestamo.cambiarIdioma(locale);
         }
         if(!ventanaBuscarPrestamo.isVisible()){
@@ -612,7 +595,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void actualizarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarPrestamoItemActionPerformed
         if(ventanaActualizarPrestamo == null){
-        ventanaActualizarPrestamo = new VentanaActualizarPrestamo(prestamoControlador,listaLibros,listaUsuarios);
+        ventanaActualizarPrestamo = new VentanaActualizarPrestamo(prestamoControlador,libroControlador,usuarioControlador);
         ventanaActualizarPrestamo.cambiarIdioma(locale);
         }
         if(!ventanaActualizarPrestamo.isVisible()){
@@ -634,7 +617,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void eliminarPrestamoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPrestamoItemActionPerformed
         if(ventanaEliminarPrestamo == null){
-        ventanaEliminarPrestamo = new VentanaEliminarPrestamo(prestamoControlador);
+        ventanaEliminarPrestamo = new VentanaEliminarPrestamo(prestamoControlador,libroControlador,usuarioControlador);
         ventanaEliminarPrestamo.cambiarIdioma(locale);
         }
         if(!ventanaEliminarPrestamo.isVisible()){
