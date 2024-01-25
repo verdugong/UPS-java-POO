@@ -22,6 +22,7 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
 
     private UsuarioControlador usuarioControlador;
     private TitledBorder miBorder;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     /**
      * Creates new form VentanaBuscarUsuario
      */
@@ -34,6 +35,7 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
     
     public void cambiarIdioma(Locale locale){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        idiomaSeleccionado = locale;
        
         miBorder.setTitle(mensajes.getString("TBBuscar"));
        jPanel1.repaint();
@@ -195,7 +197,8 @@ public class VentanaBuscarUsuario extends javax.swing.JInternalFrame {
         String id = txtId.getText();
         Usuario usuario = usuarioControlador.buscarUsuario(id);
         if(usuario == null){
-            JOptionPane.showMessageDialog(this, "No se a encontrado el usuario");
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeNOUsuario");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
         }else{
             txtNombre.setText(usuario.getNombre());
             txtCorreo.setText(usuario.getCorreo());

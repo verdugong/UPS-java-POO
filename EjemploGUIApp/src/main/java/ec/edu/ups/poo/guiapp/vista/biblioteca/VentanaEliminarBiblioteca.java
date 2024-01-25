@@ -10,7 +10,11 @@ import ec.edu.ups.poo.guiapp.modelo.Libro;
 import ec.edu.ups.poo.guiapp.modelo.Prestamo;
 import ec.edu.ups.poo.guiapp.modelo.Usuario;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -19,12 +23,33 @@ import javax.swing.JOptionPane;
 public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
     
     private BibliotecaControlador bibliotecaControlador;
+    private TitledBorder TBEliminar;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     /**
      * Creates new form VentanaEliminar
      */
     public VentanaEliminarBiblioteca(BibliotecaControlador bibliotecaControlador) {
         initComponents();
         this.bibliotecaControlador = bibliotecaControlador;
+        TBEliminar = BorderFactory.createTitledBorder("Eliminar Datos");
+        this.setBorder(TBEliminar);
+    }
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        idiomaSeleccionado = locale;
+       
+       TBEliminar.setTitle(mensajes.getString("TBEliminar"));
+       lblNombre.setText(mensajes.getString("lblNombre"));
+       lblCode.setText(mensajes.getString("lblCode"));
+       lblDireccion.setText(mensajes.getString("lblDireccion"));
+       lblTelef.setText(mensajes.getString("lblTelef"));
+       lblLibros.setText(mensajes.getString("lblLibros"));
+       lblUsuarios.setText(mensajes.getString("lblUsuarios"));
+       lblPrestamos.setText(mensajes.getString("lblPrestamos"));
+       btnBuscar.setText(mensajes.getString("btnBuscar"));
+       btnEliminar.setText(mensajes.getString("btnEliminar"));
+       btnCancelar.setText(mensajes.getString("btnCancelar"));
     }
 
     /**
@@ -41,14 +66,14 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
         lblCode = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         lblNombre = new javax.swing.JLabel();
-        lblLibro = new javax.swing.JLabel();
+        lblLibros = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         lblDireccion = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
-        lblUsuario = new javax.swing.JLabel();
+        lblUsuarios = new javax.swing.JLabel();
         lblPrestamos = new javax.swing.JLabel();
-        lblTelefono = new javax.swing.JLabel();
+        lblTelef = new javax.swing.JLabel();
         txtTelef = new javax.swing.JTextField();
         txtUsuarios = new javax.swing.JTextField();
         txtLibros = new javax.swing.JTextField();
@@ -84,7 +109,7 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
 
         lblNombre.setText("Nombre");
 
-        lblLibro.setText("Libros");
+        lblLibros.setText("Libros");
 
         txtNombre.setEditable(false);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -109,11 +134,11 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
             }
         });
 
-        lblUsuario.setText("Usuarios");
+        lblUsuarios.setText("Usuarios");
 
         lblPrestamos.setText("Prestamos");
 
-        lblTelefono.setText("Teléfono");
+        lblTelef.setText("Teléfono");
 
         txtTelef.setEditable(false);
         txtTelef.addActionListener(new java.awt.event.ActionListener() {
@@ -159,9 +184,9 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblNombre)
                                     .addComponent(lblDireccion)
-                                    .addComponent(lblTelefono)
-                                    .addComponent(lblLibro)
-                                    .addComponent(lblUsuario)
+                                    .addComponent(lblTelef)
+                                    .addComponent(lblLibros)
+                                    .addComponent(lblUsuarios)
                                     .addComponent(lblPrestamos))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,15 +230,15 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
                         .addComponent(txtTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLibro))
+                    .addComponent(lblLibros))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUsuario))
+                    .addComponent(lblUsuarios))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,7 +257,10 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
         int codigo = Integer.parseInt(txtCode.getText());
         Biblioteca biblioteca = bibliotecaControlador.buscarBiblioteca(codigo);
         if(biblioteca == null){
-            JOptionPane.showMessageDialog(this, "No se ha encontrado la biblioteca! :(");
+            
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeNOBiblioteca");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
+            
         }else{
             txtNombre.setText(biblioteca.getNombre());
             txtNombre.setEditable(true);
@@ -271,8 +299,8 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
         if(respuesta == JOptionPane.YES_OPTION){
             int codigo = Integer.parseInt(txtCode.getText());        
             bibliotecaControlador.eliminarBiblioteca(codigo);
-            JOptionPane.showMessageDialog(this, "Biblioteca eliminada exitosamente! :)");
-        
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeEliminacionExitosa");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
             limpiarDatos();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -336,11 +364,11 @@ public class VentanaEliminarBiblioteca extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblDireccion;
-    private javax.swing.JLabel lblLibro;
+    private javax.swing.JLabel lblLibros;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrestamos;
-    private javax.swing.JLabel lblTelefono;
-    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblTelef;
+    private javax.swing.JLabel lblUsuarios;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtLibros;

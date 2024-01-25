@@ -49,6 +49,9 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
                 mensajes.getString("columnaNombre"),
                 mensajes.getString("columnaDireccion"),
                 mensajes.getString("columnaTelefono"),
+                mensajes.getString("columnaLibros"),
+                mensajes.getString("columnaUsuarios"),
+                mensajes.getString("columnaPrestamos"),
                 // ... agrega más columnas según sea necesario
         };
 
@@ -56,7 +59,6 @@ public class VentanaListarBiblioteca extends javax.swing.JInternalFrame {
         modeloTabla.setColumnIdentifiers(nombresColumnas);
     }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

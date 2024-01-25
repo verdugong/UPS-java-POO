@@ -68,13 +68,14 @@
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="lblUsuario1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lblUsuarios" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txtUsuarios" min="-2" pref="157" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                          <Component id="lblLibro1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblLibros" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="txtLibros" min="-2" pref="157" max="-2" attributes="0"/>
                                       </Group>
@@ -90,8 +91,8 @@
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lblUsuario" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblLibro" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblLibrosDisponibles" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblUsuariosDisponibles" min="-2" pref="114" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -145,12 +146,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtLibros" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="lblLibro1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLibros" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtUsuarios" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="lblUsuario1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblUsuarios" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -163,9 +164,9 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="lblLibro" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLibrosDisponibles" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                          <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblUsuariosDisponibles" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
@@ -222,7 +223,7 @@
             <Property name="text" type="java.lang.String" value="Fecha (yyyy-MM-dd HH:mm:ss)"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblLibro">
+        <Component class="javax.swing.JLabel" name="lblLibrosDisponibles">
           <Properties>
             <Property name="text" type="java.lang.String" value="Libros Disponibles"/>
           </Properties>
@@ -261,9 +262,9 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblUsuario">
+        <Component class="javax.swing.JLabel" name="lblUsuariosDisponibles">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Usuarios Disponobles"/>
+            <Property name="text" type="java.lang.String" value="Usuarios Disponibles"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnMostrarUsuarios">
@@ -298,12 +299,12 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblUsuario1">
+        <Component class="javax.swing.JLabel" name="lblUsuarios">
           <Properties>
             <Property name="text" type="java.lang.String" value="Usuarios"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblLibro1">
+        <Component class="javax.swing.JLabel" name="lblLibros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Libros"/>
           </Properties>

@@ -14,8 +14,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -27,6 +31,8 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
     private UsuarioControlador usuarioControlador;
     private DefaultListModel listModelLibro;
     private DefaultListModel listModelUsuario;
+    private TitledBorder TBIngresar;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     /**
      * Creates new form VentanaCrear
      */
@@ -39,6 +45,23 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
         lstLibros.setModel(listModelLibro);
         listModelUsuario = new DefaultListModel();
         lstUsuarios.setModel(listModelUsuario);
+        TBIngresar = BorderFactory.createTitledBorder("Ingresar Datos");
+        this.setBorder(TBIngresar);
+    }
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        idiomaSeleccionado = locale;
+        
+       TBIngresar.setTitle(mensajes.getString("TBIngresar"));
+       lblCode.setText(mensajes.getString("lblCode"));
+       lblLibros.setText(mensajes.getString("lblLibros"));
+       lblUsuarios.setText(mensajes.getString("lblUsuarios"));
+       lblFecha.setText(mensajes.getString("lblFecha"));
+       lblTotal.setText(mensajes.getString("lblTotal"));
+       btnMostrarLibros.setText(mensajes.getString("btnMostrarLibros"));
+       btnMostrarUsuarios.setText(mensajes.getString("btnMostrarUsuarios"));
+       btnGuardar.setText(mensajes.getString("btnGuardar"));
     }
 
     /**
@@ -56,14 +79,14 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
         lblFecha = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstLibros = new javax.swing.JList<>();
-        lblLibro = new javax.swing.JLabel();
+        lblLibros = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         lblTotal = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstUsuarios = new javax.swing.JList<>();
         btnGuardar = new javax.swing.JButton();
-        lblUsuario = new javax.swing.JLabel();
+        lblUsuarios = new javax.swing.JLabel();
         btnMostrarUsuarios = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Crear Prestamo"));
@@ -91,7 +114,7 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
 
         jScrollPane3.setViewportView(lstLibros);
 
-        lblLibro.setText("Libros");
+        lblLibros.setText("Libros");
 
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +139,7 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
-        lblUsuario.setText("Usuarios");
+        lblUsuarios.setText("Usuarios");
 
         btnMostrarUsuarios.setText("Mostrar");
         btnMostrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -136,8 +159,8 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(125, 125, 125)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblUsuario)
-                                    .addComponent(lblLibro))
+                                    .addComponent(lblUsuarios)
+                                    .addComponent(lblLibros))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -188,9 +211,9 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(47, 47, 47)
-                                .addComponent(lblLibro)
+                                .addComponent(lblLibros)
                                 .addGap(93, 93, 93)
-                                .addComponent(lblUsuario)))
+                                .addComponent(lblUsuarios)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,14 +282,16 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
 
         } catch (ParseException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al parsear la fecha");
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeErrorFecha");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
             return;
         }
         double total = Double.parseDouble(txtTotal.getText());
         
         prestamoControlador.crearPrestamo(id, librosSeleccionados, usuariosSeleccionados, fecha, total);
         
-        JOptionPane.showMessageDialog(this, "Prestamo creado exitosamente");
+        String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeExitoPrestamo");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
         
         txtCode.setText("");
         txtFecha.setText("");
@@ -291,9 +316,9 @@ public class VentanaCrearPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblFecha;
-    private javax.swing.JLabel lblLibro;
+    private javax.swing.JLabel lblLibros;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblUsuarios;
     private javax.swing.JList<String> lstLibros;
     private javax.swing.JList<String> lstUsuarios;
     private javax.swing.JTextField txtCode;

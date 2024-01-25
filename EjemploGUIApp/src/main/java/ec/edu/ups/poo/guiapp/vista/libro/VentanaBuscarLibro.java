@@ -18,6 +18,7 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
 
     private LibroControlador libroControlador;
     private TitledBorder miBorder;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     /**
      * Creates new form VentanaBuscarLibro
      */
@@ -30,6 +31,8 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
     
     public void cambiarIdioma(Locale locale){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        idiomaSeleccionado = locale;
+       
         
         miBorder.setTitle(mensajes.getString("TBBuscar"));
        jPanel1.repaint();
@@ -248,7 +251,10 @@ public class VentanaBuscarLibro extends javax.swing.JInternalFrame {
         int codigo = Integer.parseInt(txtCode.getText());
         Libro libro = libroControlador.buscarLibroPorId(codigo);
         if(libro == null){
-            JOptionPane.showMessageDialog(this, "No se a encontrado el libro");
+            
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeNOLibro");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
+            
         }else{
             txtTitulo.setText(libro.getTitulo());
             txtAutor.setText(libro.getAutor());

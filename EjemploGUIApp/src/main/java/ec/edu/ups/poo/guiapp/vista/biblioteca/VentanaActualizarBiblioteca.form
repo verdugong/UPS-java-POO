@@ -35,8 +35,8 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblUsuario" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblLibro" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblUsuariosDisponibles" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLibrosDisponibles" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -50,7 +50,7 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="lblPrestamos" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPrestamosDisponibles" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -75,7 +75,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="lblNombre" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDireccion" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTelefono" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTelef" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -100,8 +100,8 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblUsuario1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPrestamos1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUsuarios" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPrestamos" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -114,7 +114,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="lblLibro1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblLibros" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtLibros" max="32767" attributes="0"/>
                   </Group>
@@ -151,24 +151,24 @@
                               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtTelef" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="lblPrestamos1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPrestamos" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblTelefono" min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="lblTelef" min="-2" pref="24" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtLibros" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="lblLibro1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLibros" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtUsuarios" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="lblUsuario1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblUsuarios" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="txtPrestamos" min="-2" pref="32" max="-2" attributes="0"/>
@@ -183,9 +183,9 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="lblLibro" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblLibrosDisponibles" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                      <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUsuariosDisponibles" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
@@ -201,7 +201,7 @@
                           <Component id="jScrollPane4" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
-                              <Component id="lblPrestamos" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPrestamosDisponibles" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -288,7 +288,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodeActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblUsuario">
+    <Component class="javax.swing.JLabel" name="lblUsuariosDisponibles">
       <Properties>
         <Property name="text" type="java.lang.String" value="Usuarios Disponibles"/>
       </Properties>
@@ -298,12 +298,12 @@
         <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblLibro">
+    <Component class="javax.swing.JLabel" name="lblLibrosDisponibles">
       <Properties>
         <Property name="text" type="java.lang.String" value="Libros Disponibles"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblPrestamos">
+    <Component class="javax.swing.JLabel" name="lblPrestamosDisponibles">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prestamos Disponibles"/>
       </Properties>
@@ -313,7 +313,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblTelefono">
+    <Component class="javax.swing.JLabel" name="lblTelef">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
       </Properties>
@@ -371,17 +371,17 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblUsuario1">
+    <Component class="javax.swing.JLabel" name="lblUsuarios">
       <Properties>
         <Property name="text" type="java.lang.String" value="Usuarios"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblLibro1">
+    <Component class="javax.swing.JLabel" name="lblLibros">
       <Properties>
         <Property name="text" type="java.lang.String" value="Libros"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblPrestamos1">
+    <Component class="javax.swing.JLabel" name="lblPrestamos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prestamos"/>
       </Properties>

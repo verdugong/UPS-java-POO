@@ -11,7 +11,11 @@ import ec.edu.ups.poo.guiapp.modelo.Usuario;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -20,12 +24,30 @@ import javax.swing.JOptionPane;
 public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
     
     private PrestamoControlador prestamoControlador;
+    private TitledBorder TBEliminar;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     /**
      * Creates new form VentanaEliminar
      */
     public VentanaEliminarPrestamo(PrestamoControlador prestamoControlador) {
         initComponents();
         this.prestamoControlador = prestamoControlador;
+        TBEliminar = BorderFactory.createTitledBorder("Eliminar Datos");
+        this.setBorder(TBEliminar);
+    }
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        idiomaSeleccionado = locale;
+
+       TBEliminar.setTitle(mensajes.getString("TBEliminar"));
+       lblCode.setText(mensajes.getString("lblCode"));
+       lblLibros.setText(mensajes.getString("lblLibros"));
+       lblUsuarios.setText(mensajes.getString("lblUsuarios"));
+       lblFecha.setText(mensajes.getString("lblFecha"));
+       lblTotal.setText(mensajes.getString("lblTotal"));
+       btnEliminar.setText(mensajes.getString("btnEliminar"));
+       btnCancelar.setText(mensajes.getString("btnCancelar"));
+       btnBuscar.setText(mensajes.getString("btnBuscar"));
     }
 
     /**
@@ -42,8 +64,8 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
         txtFecha = new javax.swing.JTextField();
         lblCode = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
-        lblUsuario = new javax.swing.JLabel();
-        lblLibro = new javax.swing.JLabel();
+        lblUsuarios = new javax.swing.JLabel();
+        lblLibros = new javax.swing.JLabel();
         txtLibros = new javax.swing.JTextField();
         lblTotal = new javax.swing.JLabel();
         txtUsuarios = new javax.swing.JTextField();
@@ -81,9 +103,9 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
-        lblUsuario.setText("Usuarios");
+        lblUsuarios.setText("Usuarios");
 
-        lblLibro.setText("Libros");
+        lblLibros.setText("Libros");
 
         txtLibros.setEditable(false);
         txtLibros.addActionListener(new java.awt.event.ActionListener() {
@@ -131,14 +153,14 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblUsuario)
+                            .addComponent(lblUsuarios)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(txtUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lblFecha)
                                 .addComponent(lblTotal)
-                                .addComponent(lblLibro))
+                                .addComponent(lblLibros))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtFecha, javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,11 +203,11 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLibro))
+                    .addComponent(lblLibros))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUsuario))
+                    .addComponent(lblUsuarios))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
@@ -220,7 +242,8 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
         String codigo = txtCode.getText();
         Prestamo prestamo = prestamoControlador.buscarPrestamoPorId(codigo);
         if(prestamo == null){
-            JOptionPane.showMessageDialog(this, "No se a encontrado el prestamo");
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeNOPrestamo");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
         }else{
             String fechaString = formatearFecha(prestamo.getFechaPrestamo());
             txtFecha.setText(fechaString);
@@ -243,7 +266,8 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
         if(respuesta == JOptionPane.YES_OPTION){
             String codigo = txtCode.getText();
             prestamoControlador.eliminarPrestamo(codigo);
-            JOptionPane.showMessageDialog(this, "Prestamo eliminado exitosamente");
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeEliminacionExitosa");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
 
             limpiarDatos();
         }
@@ -289,9 +313,9 @@ public class VentanaEliminarPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblFecha;
-    private javax.swing.JLabel lblLibro;
+    private javax.swing.JLabel lblLibros;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblUsuarios;
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtLibros;

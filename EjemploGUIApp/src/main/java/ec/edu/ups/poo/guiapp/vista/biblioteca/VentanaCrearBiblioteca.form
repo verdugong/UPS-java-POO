@@ -40,7 +40,7 @@
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="lblNombre" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblDireccion" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTelefono" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTelef" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -69,8 +69,8 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblUsuario" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblLibro" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblUsuarios" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblLibros" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -100,10 +100,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblCode" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="lblCode" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtCode" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -123,7 +120,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblTelefono" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="lblTelef" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -135,16 +132,15 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="lblLibro" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblLibros" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                      <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUsuarios" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="btnMostrarLibros" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                       <Component id="btnMostrarUsuarios" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="37" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -171,7 +167,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblLibro">
+    <Component class="javax.swing.JLabel" name="lblLibros">
       <Properties>
         <Property name="text" type="java.lang.String" value="Libros"/>
       </Properties>
@@ -186,7 +182,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblTelefono">
+    <Component class="javax.swing.JLabel" name="lblTelef">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
       </Properties>
@@ -230,8 +226,6 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
         <Component class="javax.swing.JList" name="lstUsuarios">
-          <Properties>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -264,7 +258,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodeActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblUsuario">
+    <Component class="javax.swing.JLabel" name="lblUsuarios">
       <Properties>
         <Property name="text" type="java.lang.String" value="Usuarios"/>
       </Properties>

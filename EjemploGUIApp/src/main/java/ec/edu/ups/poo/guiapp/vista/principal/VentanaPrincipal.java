@@ -583,7 +583,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if(ventanaCrearPrestamo == null){
         ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,libroControlador,usuarioControlador);
         ventanaCrearPrestamo.cambiarIdioma(locale);
-        ventanaCrearPrestamo = new VentanaCrearPrestamo(prestamoControlador,libroControlador,usuarioControlador);
         }
         if(!ventanaCrearPrestamo.isVisible()){
                 ventanaCrearPrestamo.setVisible(true);

@@ -21,6 +21,7 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
     
     private UsuarioControlador usuarioControlador;
     private TitledBorder miBorder;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     /**
      * Creates new form VentanaCrearUsuario
      */
@@ -33,6 +34,7 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
     
     public void cambiarIdioma(Locale locale){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        idiomaSeleccionado = locale;
        
        this.setTitle(mensajes.getString("window.titleUsuario"));
        miBorder.setTitle(mensajes.getString("TBIngresar"));
@@ -195,7 +197,9 @@ public class VentanaCrearUsuario extends javax.swing.JInternalFrame {
         String correo = txtCorreo.getText();
         
         usuarioControlador.crearUsuario(correo, nombre, id);
-        JOptionPane.showMessageDialog(this, "Usuario creado exitosamente");
+        
+        String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeExitoUsuario");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
         
         txtId.setText("");
         txtNombre.setText("");

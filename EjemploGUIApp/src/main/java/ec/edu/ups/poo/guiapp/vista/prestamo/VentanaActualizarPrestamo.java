@@ -32,6 +32,7 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
     private TitledBorder miBorder;
     private DefaultListModel listModelLibro;
     private DefaultListModel listModelUsuario;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     
     /**
      * Creates new form VentanaCrearBilblioteca
@@ -51,14 +52,19 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
     
     public void cambiarIdioma(Locale locale){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        idiomaSeleccionado = locale;
        
-        miBorder.setTitle(mensajes.getString("TBActualizar"));
+       miBorder.setTitle(mensajes.getString("TBActualizar"));
        jPanel1.repaint();
        lblCode.setText(mensajes.getString("lblCode"));
-       lblLibro.setText(mensajes.getString("lblLibro"));
-       lblUsuario.setText(mensajes.getString("lblUsuario"));
+       lblLibros.setText(mensajes.getString("lblLibros"));
+       lblUsuarios.setText(mensajes.getString("lblUsuarios"));
        lblFecha.setText(mensajes.getString("lblFecha"));
        lblTotal.setText(mensajes.getString("lblTotal"));
+       lblLibrosDisponibles.setText(mensajes.getString("lblLibrosDisponibles"));
+       lblUsuariosDisponibles.setText(mensajes.getString("lblUsuariosDisponibles"));
+       btnMostrarLibros.setText(mensajes.getString("btnMostrarLibros"));
+       btnMostrarUsuarios.setText(mensajes.getString("btnMostrarUsuarios"));
        btnBuscar.setText(mensajes.getString("btnBuscar"));
        btnActualizar.setText(mensajes.getString("btnActualizar"));
        btnCancelar.setText(mensajes.getString("btnCancelar"));
@@ -79,20 +85,20 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         btnMostrarLibros = new javax.swing.JButton();
         lblFecha = new javax.swing.JLabel();
-        lblLibro = new javax.swing.JLabel();
+        lblLibrosDisponibles = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         lblTotal = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstUsuarios = new javax.swing.JList<>();
-        lblUsuario = new javax.swing.JLabel();
+        lblUsuariosDisponibles = new javax.swing.JLabel();
         btnMostrarUsuarios = new javax.swing.JButton();
         lblCode = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstLibros = new javax.swing.JList<>();
-        lblUsuario1 = new javax.swing.JLabel();
-        lblLibro1 = new javax.swing.JLabel();
+        lblUsuarios = new javax.swing.JLabel();
+        lblLibros = new javax.swing.JLabel();
         txtLibros = new javax.swing.JTextField();
         txtUsuarios = new javax.swing.JTextField();
 
@@ -133,7 +139,7 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
 
         lblFecha.setText("Fecha (yyyy-MM-dd HH:mm:ss)");
 
-        lblLibro.setText("Libros Disponibles");
+        lblLibrosDisponibles.setText("Libros Disponibles");
 
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +157,7 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
 
         jScrollPane2.setViewportView(lstUsuarios);
 
-        lblUsuario.setText("Usuarios Disponobles");
+        lblUsuariosDisponibles.setText("Usuarios Disponibles");
 
         btnMostrarUsuarios.setText("Mostrar");
         btnMostrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -170,9 +176,9 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
 
         jScrollPane3.setViewportView(lstLibros);
 
-        lblUsuario1.setText("Usuarios");
+        lblUsuarios.setText("Usuarios");
 
-        lblLibro1.setText("Libros");
+        lblLibros.setText("Libros");
 
         txtLibros.setEditable(false);
         txtLibros.addActionListener(new java.awt.event.ActionListener() {
@@ -205,15 +211,15 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                                     .addComponent(txtFecha))
-                                .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblUsuario1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblUsuarios)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(13, 13, 13)
-                                        .addComponent(lblLibro1)
+                                        .addComponent(lblLibros)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -225,8 +231,8 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
                                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblUsuario)
-                                            .addComponent(lblLibro))
+                                            .addComponent(lblLibrosDisponibles)
+                                            .addComponent(lblUsuariosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -264,11 +270,11 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblLibro1))
+                            .addComponent(lblLibros))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblUsuario1))))
+                            .addComponent(lblUsuarios))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -277,9 +283,9 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(lblLibro)
+                        .addComponent(lblLibrosDisponibles)
                         .addGap(93, 93, 93)
-                        .addComponent(lblUsuario))
+                        .addComponent(lblUsuariosDisponibles))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(btnMostrarLibros)
@@ -340,14 +346,16 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
 
         } catch (ParseException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al parsear la fecha");
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeErrorFecha");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
             return;
         }
         double total = Double.parseDouble(txtTotal.getText());
         
         prestamoControlador.actualizarPrestamo(id, librosSeleccionados, usuariosSeleccionados, fecha, total);
         
-        JOptionPane.showMessageDialog(this, "Prestamo creado exitosamente");
+        String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeActualizarPrestamo");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
         
         limpiarDatos();
     }//GEN-LAST:event_btnActualizarActionPerformed
@@ -356,7 +364,8 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
         String codigo = txtCode.getText();
         Prestamo prestamo = prestamoControlador.buscarPrestamoPorId(codigo);
         if(prestamo == null){
-            JOptionPane.showMessageDialog(this, "No se a encontrado el prestamo");
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeNOPrestamo");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
         }else{
             String fechaString = formatearFecha(prestamo.getFechaPrestamo());
 
@@ -457,11 +466,11 @@ public class VentanaActualizarPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCode;
     private javax.swing.JLabel lblFecha;
-    private javax.swing.JLabel lblLibro;
-    private javax.swing.JLabel lblLibro1;
+    private javax.swing.JLabel lblLibros;
+    private javax.swing.JLabel lblLibrosDisponibles;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JLabel lblUsuario;
-    private javax.swing.JLabel lblUsuario1;
+    private javax.swing.JLabel lblUsuarios;
+    private javax.swing.JLabel lblUsuariosDisponibles;
     private javax.swing.JList<String> lstLibros;
     private javax.swing.JList<String> lstUsuarios;
     private javax.swing.JTextField txtCode;

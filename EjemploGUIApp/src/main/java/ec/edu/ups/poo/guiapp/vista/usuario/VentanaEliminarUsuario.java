@@ -23,6 +23,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
 
     private UsuarioControlador usuarioControlador;
     private TitledBorder miBorder;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     /**
      * Creates new form VentanaEliminarUsuario
      */
@@ -35,6 +36,7 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
     
     public void cambiarIdioma(Locale locale){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        idiomaSeleccionado = locale;
        
         miBorder.setTitle(mensajes.getString("TBEliminar"));
        jPanel1.repaint();
@@ -217,7 +219,8 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
             String id = txtId.getText();
 
             usuarioControlador.eliminarUsuario(id);
-            JOptionPane.showMessageDialog(this, "Usuario eliminado exitosamente");
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeEliminacionExitosa");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
             limpiarDatos();
         }
         
@@ -231,7 +234,8 @@ public class VentanaEliminarUsuario extends javax.swing.JInternalFrame {
         String id = txtId.getText();
         Usuario usuario = usuarioControlador.buscarUsuario(id);
         if(usuario == null){
-            JOptionPane.showMessageDialog(this, "No se a encontrado el usuario");
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeNOUsuario");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
         }else{
             txtNombre.setText(usuario.getNombre());
             txtNombre.setEditable(true);

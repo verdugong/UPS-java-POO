@@ -19,6 +19,7 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
 
     private LibroControlador libroControlador;
     private TitledBorder miBorder;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     /**
      * Creates new form VentanaEliminarLibro
      */
@@ -31,6 +32,7 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
     
     public void cambiarIdioma(Locale locale){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        idiomaSeleccionado = locale;
         
         miBorder.setTitle(mensajes.getString("TBEliminar"));
        jPanel1.repaint();
@@ -268,7 +270,8 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
             int codigo = Integer.parseInt(txtCode.getText());
 
             libroControlador.eliminarLibro(codigo);
-            JOptionPane.showMessageDialog(this, "Libro eliminado exitosamente");
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeEliminacionExitosa");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
             limpiarDatos();
         }
         
@@ -282,7 +285,10 @@ public class VentanaEliminarLibro extends javax.swing.JInternalFrame {
         int codigo = Integer.parseInt(txtCode.getText());
         Libro libro = libroControlador.buscarLibroPorId(codigo);
         if(libro == null){
-            JOptionPane.showMessageDialog(this, "No se a encontrado el libro");
+            
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeNOLibro");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
+            
         }else{
             txtTitulo.setText(libro.getTitulo());
             txtTitulo.setEditable(true);

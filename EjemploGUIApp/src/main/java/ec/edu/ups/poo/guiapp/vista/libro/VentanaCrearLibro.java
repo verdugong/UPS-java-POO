@@ -22,6 +22,7 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
     
     private LibroControlador libroControlador;
     private TitledBorder miBorder;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     /**
      * Creates new form VentanaCrearLibro
      */
@@ -33,7 +34,7 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
     }
     public void cambiarIdioma(Locale locale){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
-        
+        idiomaSeleccionado = locale;
         
        this.setTitle(mensajes.getString("window.titleLibro"));
        miBorder.setTitle(mensajes.getString("TBIngresar"));
@@ -249,7 +250,8 @@ public class VentanaCrearLibro extends javax.swing.JInternalFrame {
         boolean disponible = btnSi.isSelected();
         
         libroControlador.crearLibro(titulo, autor, anio, codigo, precio, disponible);
-        JOptionPane.showMessageDialog(this, "Libro creado exitosamente");
+        String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeExitoLibro");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
         
         txtCode.setText("");
         txtTitulo.setText("");

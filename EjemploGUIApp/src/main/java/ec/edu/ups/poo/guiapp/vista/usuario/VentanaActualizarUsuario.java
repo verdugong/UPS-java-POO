@@ -22,6 +22,7 @@ public class VentanaActualizarUsuario extends javax.swing.JInternalFrame {
 
     private UsuarioControlador usuarioControlador;
     private TitledBorder miBorder;
+    private Locale idiomaSeleccionado = Locale.getDefault();
     /**
      * Creates new form VentanaActualizarUsuario
      */
@@ -34,6 +35,7 @@ public class VentanaActualizarUsuario extends javax.swing.JInternalFrame {
     
     public void cambiarIdioma(Locale locale){
         ResourceBundle mensajes = ResourceBundle.getBundle("mensajes.mensajes", locale);
+        idiomaSeleccionado = locale;
        
         miBorder.setTitle(mensajes.getString("TBActualizar"));
        jPanel1.repaint();
@@ -210,7 +212,8 @@ public class VentanaActualizarUsuario extends javax.swing.JInternalFrame {
         String correo = txtCorreo.getText();
         
         usuarioControlador.actualizarUsuario(correo, nombre, id);
-        JOptionPane.showMessageDialog(this, "Usuario actualizado exitosamente");
+        String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeActualizarPrestamo");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
         
         limpiarDatos();
     }//GEN-LAST:event_btnActualizarActionPerformed
@@ -219,7 +222,8 @@ public class VentanaActualizarUsuario extends javax.swing.JInternalFrame {
         String id = txtId.getText();
         Usuario usuario = usuarioControlador.buscarUsuario(id);
         if(usuario == null){
-            JOptionPane.showMessageDialog(this, "No se a encontrado el usuario");
+            String mensajeBiblioteca = ResourceBundle.getBundle("mensajes.mensajes", idiomaSeleccionado).getString("mensajeNOUsuario");
+            JOptionPane.showMessageDialog(this, mensajeBiblioteca);
         }else{
             txtNombre.setText(usuario.getNombre());
             txtNombre.setEditable(true);

@@ -37,8 +37,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblUsuario" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblLibro" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUsuarios" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblLibros" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -106,9 +106,9 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                              <Component id="lblLibro" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLibros" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                              <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblUsuarios" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -168,7 +168,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblLibro">
+    <Component class="javax.swing.JLabel" name="lblLibros">
       <Properties>
         <Property name="text" type="java.lang.String" value="Libros"/>
       </Properties>
@@ -215,7 +215,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblUsuario">
+    <Component class="javax.swing.JLabel" name="lblUsuarios">
       <Properties>
         <Property name="text" type="java.lang.String" value="Usuarios"/>
       </Properties>
