@@ -37,6 +37,11 @@ public class UsuarioControlador {
         return usuario;
     }
     
+    public Usuario buscarUsuarioPorNombre(String nombre){
+        usuario = usuarioDAO.obtenerUsuarioPorNombre(nombre);
+        return usuario;
+    }
+    
     public void eliminarUsuario(String id){
         usuario = usuarioDAO.obtenerUsuario(id);
         usuarioDAO.eliminarUsuario(usuario.getIdentificacion());

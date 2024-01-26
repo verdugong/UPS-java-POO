@@ -5,6 +5,8 @@
 package ec.edu.ups.poo.guiapp.idao;
 
 import ec.edu.ups.poo.guiapp.modelo.Libro;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.List;
 
 /**
@@ -18,4 +20,8 @@ public interface ILibroDAO {
     void crearLibro(Libro libro);
     void actualizarLibro(int id, Libro libro);
     void eliminarLibro(int id);
+    void cargarLibrosEnArchivos();
+    Libro leerLibroDesdeArchivo(RandomAccessFile raf) throws IOException;
+    void escribirLibrosEnArchivo(RandomAccessFile raf, Libro libro) throws IOException;
+    void guardarDatosEnArchivo() throws IOException;
 }

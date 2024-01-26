@@ -348,7 +348,7 @@ public class VentanaCrearBiblioteca extends javax.swing.JInternalFrame {
             
         List<Usuario> usuariosSeleccionados = new ArrayList<>();
             for (String usuarioString : usuariosSeleccionadosComoString) {
-                Usuario usuario = usuarioControlador.buscarUsuario(usuarioString);
+                Usuario usuario = usuarioControlador.buscarUsuarioPorNombre(usuarioString);
                 if (usuario != null) {
                     usuariosSeleccionados.add(usuario);
                 }
