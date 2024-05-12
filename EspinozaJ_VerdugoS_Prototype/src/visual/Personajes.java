@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Usuario
+ * @author sebas
  */
 public class Personajes extends javax.swing.JInternalFrame {
 
@@ -36,11 +36,6 @@ public class Personajes extends javax.swing.JInternalFrame {
      * Creates new form Personajes
      */
     public Personajes() {
-        //Guerrero prototipoGuerrero = new Guerrero(314, "JUAN", "volar", "xd");
-        //Mago prototipoMago = new Mago("fd", "CARLOS", "invisivilidad", "hd");
-        //listaPersonajes.add(prototipoGuerrero);
-        //listaPersonajes.add(prototipoMago);
-        //this.visibilidad(false); 
         initComponents();
     }
 
@@ -121,16 +116,13 @@ public class Personajes extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSeleccionar)
                         .addGap(18, 18, 18)
-                        .addComponent(bntClonar)
-                        .addGap(0, 102, Short.MAX_VALUE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(bntClonar))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,14 +161,14 @@ public class Personajes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComboBoxPersonajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxPersonajesActionPerformed
-        // TODO add your handling code here:
+
         this.visibilidad(true);
     }//GEN-LAST:event_ComboBoxPersonajesActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         String opcionSeleccionada = ComboBoxPersonajes.getSelectedItem().toString();
         if (opcionSeleccionada.equals("Guerrero")) {
-            Guerrero prototipoGuerrero = new Guerrero(314, "Guerrero", "volar", "Azul");
+            Guerrero prototipoGuerrero = new Guerrero(99, "Guerrero", "Correr", "UPS");
             int fuerza = prototipoGuerrero.getFuerza();
             jLabel1.setText("Fuerza: " + String.valueOf(fuerza));
             String nombreG = prototipoGuerrero.getNombre();
@@ -190,7 +182,7 @@ public class Personajes extends javax.swing.JInternalFrame {
             jLabel5.setIcon(icon);
             listaPersonajes.add(prototipoGuerrero);
         } else if (opcionSeleccionada.equals("Mago")) {
-            Mago prototipoMago = new Mago("Fuego", "Mago", "invisivilidad", "Rojo");
+            Mago prototipoMago = new Mago("Telepatia", "Mago", "inmortal", "UDA");
             String encantoM = prototipoMago.getEncanto();
             jLabel1.setText("Encanto: " + encantoM);
             String nombreM = prototipoMago.getNombre();
@@ -208,14 +200,6 @@ public class Personajes extends javax.swing.JInternalFrame {
 
     private void bntClonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntClonarActionPerformed
 
-        /*String opcionSeleccionada = ComboBoxPersonajes.getSelectedItem().toString();
-        
-        if (opcionSeleccionada.equals("Guerreros")) {
-            
-
-        } else if (opcionSeleccionada.equals("Magos")) {
-            
-        }*/
         String nombreSeleccionado = ComboBoxPersonajes.getSelectedItem().toString();
         Personaje personajeSeleccionado = null;
         for (Personaje personaje : listaPersonajes) {
@@ -234,17 +218,17 @@ public class Personajes extends javax.swing.JInternalFrame {
             } else if (nombreSeleccionado.equals("Guerrero")) {
                 listaPersonajesClonadosGuerrero.add(clon);
             }
-            JOptionPane.showMessageDialog(this, "Se clonó");
+            JOptionPane.showMessageDialog(this, "Personaje Clonado");
         } else {
-            JOptionPane.showMessageDialog(this, "No se pudo encontrar el personaje seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontró el personaje", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bntClonarActionPerformed
 
-    private void visibilidad(Boolean bo) {
-        jLabel1.setVisible(bo);
-        jLabel2.setVisible(bo);
-        jLabel3.setVisible(bo);
-        jLabel4.setVisible(bo);
+    private void visibilidad(Boolean mostrar) {
+        jLabel1.setVisible(mostrar);
+        jLabel2.setVisible(mostrar);
+        jLabel3.setVisible(mostrar);
+        jLabel4.setVisible(mostrar);
     }
 
 

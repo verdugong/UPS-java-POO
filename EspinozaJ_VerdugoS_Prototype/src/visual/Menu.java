@@ -6,7 +6,7 @@ package visual;
 
 /**
  *
- * @author Usuario
+ * @author sebas
  */
 public class Menu extends javax.swing.JFrame {
     private Personajes personajes;
@@ -30,20 +30,19 @@ public class Menu extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        fileMenuPersonajes = new javax.swing.JMenu();
+        MenuItem = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        editMenuClonar = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         desktopPane.setBackground(new java.awt.Color(204, 204, 204));
 
-        fileMenuPersonajes.setMnemonic('f');
-        fileMenuPersonajes.setText("Personaje");
-        fileMenuPersonajes.addActionListener(new java.awt.event.ActionListener() {
+        MenuItem.setMnemonic('f');
+        MenuItem.setText("Menú");
+        MenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fileMenuPersonajesActionPerformed(evt);
+                MenuItemActionPerformed(evt);
             }
         });
 
@@ -53,12 +52,7 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        fileMenuPersonajes.add(jMenuItem2);
-
-        menuBar.add(fileMenuPersonajes);
-
-        editMenuClonar.setMnemonic('e');
-        editMenuClonar.setText("Clonados");
+        MenuItem.add(jMenuItem2);
 
         jMenuItem1.setText("Clonados");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -66,9 +60,9 @@ public class Menu extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        editMenuClonar.add(jMenuItem1);
+        MenuItem.add(jMenuItem1);
 
-        menuBar.add(editMenuClonar);
+        menuBar.add(MenuItem);
 
         setJMenuBar(menuBar);
 
@@ -88,9 +82,9 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fileMenuPersonajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileMenuPersonajesActionPerformed
+    private void MenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemActionPerformed
         
-    }//GEN-LAST:event_fileMenuPersonajesActionPerformed
+    }//GEN-LAST:event_MenuItemActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         if(personajes == null){
@@ -147,9 +141,8 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenuClonar;
-    private javax.swing.JMenu fileMenuPersonajes;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar menuBar;
