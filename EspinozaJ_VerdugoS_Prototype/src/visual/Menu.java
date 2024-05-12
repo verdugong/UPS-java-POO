@@ -4,6 +4,11 @@
  */
 package visual;
 
+import java.awt.Image;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sebas
@@ -17,6 +22,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        mostrarImagen();
     }
 
     /**
@@ -29,6 +35,7 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        jLabelImagen = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         MenuItem = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -37,6 +44,8 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         desktopPane.setBackground(new java.awt.Color(204, 204, 204));
+        desktopPane.add(jLabelImagen);
+        jLabelImagen.setBounds(0, 0, 880, 520);
 
         MenuItem.setMnemonic('f');
         MenuItem.setText("Menú");
@@ -102,6 +111,17 @@ public class Menu extends javax.swing.JFrame {
         clonados.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void mostrarImagen(){
+        String rutaImagen = "/imagenes/imagenMenu.png";
+            URL imageUrl = getClass().getResource(rutaImagen);
+            if (imageUrl != null) {
+                ImageIcon originalIcon = new ImageIcon(imageUrl);
+                ImageIcon icon = new ImageIcon(originalIcon.getImage().getScaledInstance(jLabelImagen.getWidth(), jLabelImagen.getHeight(), Image.SCALE_DEFAULT));
+                jLabelImagen.setIcon(icon);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+    }
     /**
      * @param args the command line arguments
      */
@@ -143,6 +163,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuItem;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JLabel jLabelImagen;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar menuBar;
