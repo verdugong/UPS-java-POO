@@ -236,6 +236,12 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="J73XyqiTvQUBGBkrZfWv-57" value="Verdugo Sebastian" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="160" y="1610" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J73XyqiTvQUBGBkrZfWv-58" value="Espinoza Jordy" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="160" y="1645" width="90" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
